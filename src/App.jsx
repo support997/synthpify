@@ -6,7 +6,7 @@ import { Phone, Clock, Users, Settings, BarChart3, Shield, CheckCircle, ArrowRig
 import { motion } from 'framer-motion'
 
 // Import images
-import heroImage from './assets/hero-ai-voice-agent.png'
+import heroImage from './assets/hero-split-restaurant-customer.png'
 import problemImage from './assets/problem-missed-calls.png'
 import solutionImage from './assets/solution-ai-dashboard.png'
 import onboardingImage from './assets/onboarding-training.png'
@@ -61,15 +61,17 @@ function App() {
                 </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4">
+              <div className="space-y-4">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4 w-full sm:w-auto">
                   Schedule a Free Demo with Our Voice Agent
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-4">
-                  <Phone className="mr-2 h-5 w-5" />
-                  See How It Works
-                </Button>
+                <div className="flex justify-center sm:justify-start">
+                  <Button variant="outline" size="lg" className="text-lg px-8 py-4">
+                    <Phone className="mr-2 h-5 w-5" />
+                    See How It Works
+                  </Button>
+                </div>
               </div>
 
               <div className="flex items-center space-x-6 pt-4">
