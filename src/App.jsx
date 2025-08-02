@@ -1073,8 +1073,8 @@ function App() {
 
       <VapiWidget 
         ref={vapiRef}
-        apiKey="82e1b653-e726-4499-b041-74da34f52b6b"
-        assistantId="005f802f-5ea4-4aa9-a882-288de81f4f0f"
+        apiKey="252067f2-002e-43bf-bf24-04b3ffcc8810"
+        assistantId="8d624bc7-38e0-4c06-abca-6fadb797d6cd"
         
       />
     </div>

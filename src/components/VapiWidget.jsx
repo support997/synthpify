@@ -2,8 +2,8 @@ import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'rea
 import Vapi from '@vapi-ai/web';
 
 const VapiWidget = forwardRef(({ 
-  apiKey = '82e1b653-e726-4499-b041-74da34f52b6b', // Fallback for testing
-  assistantId = '005f802f-5ea4-4aa9-a882-288de81f4f0f', // Fallback for testing
+  apiKey,         // remove default value
+  assistantId,    // remove default value
   config = {}, 
   hideStartButton = false 
 }, ref) => {
