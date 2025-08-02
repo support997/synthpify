@@ -12,54 +12,59 @@ const VapiWidget = forwardRef(({
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [transcript, setTranscript] = useState([]);
 
-  useEffect(() => {
-    const vapiInstance = new Vapi(apiKey);
-    setVapi(vapiInstance);
+useEffect(() => {
+  console.log('Initializing Vapi with apiKey:', apiKey);
+  const vapiInstance = new Vapi(apiKey);
+  setVapi(vapiInstance);
+  console.log('Vapi instance created:', vapiInstance);
 
-    vapiInstance.on('call-start', () => {
-      console.log('Call started');
-      setIsConnected(true);
-    });
+  vapiInstance.on('call-start', () => {
+    console.log('Call started');
+    setIsConnected(true);
+  });
 
-    vapiInstance.on('call-end', () => {
-      console.log('Call ended');
-      setIsConnected(false);
-      setIsSpeaking(false);
-    });
+  vapiInstance.on('call-end', () => {
+    console.log('Call ended');
+    setIsConnected(false);
+    setIsSpeaking(false);
+  });
 
-    vapiInstance.on('speech-start', () => {
-      console.log('Assistant started speaking');
-      setIsSpeaking(true);
-    });
+  vapiInstance.on('speech-start', () => {
+    console.log('Assistant started speaking');
+    setIsSpeaking(true);
+  });
 
-    vapiInstance.on('speech-end', () => {
-      console.log('Assistant stopped speaking');
-      setIsSpeaking(false);
-    });
+  vapiInstance.on('speech-end', () => {
+    console.log('Assistant stopped speaking');
+    setIsSpeaking(false);
+  });
 
-    vapiInstance.on('message', (message) => {
-      if (message.type === 'transcript') {
-        setTranscript(prev => [...prev, {
-          role: message.role,
-          text: message.transcript
-        }]);
-      }
-    });
-
-    vapiInstance.on('error', (error) => {
-      console.error('Vapi error:', error);
-    });
-
-    return () => {
-      vapiInstance?.stop();
-    };
-  }, [apiKey]);
-
-  const startCall = () => {
-    if (vapi) {
-      vapi.start(assistantId);
+  vapiInstance.on('message', (message) => {
+    if (message.type === 'transcript') {
+      setTranscript(prev => [...prev, {
+        role: message.role,
+        text: message.transcript
+      }]);
     }
+  });
+
+  vapiInstance.on('error', (error) => {
+    console.error('Vapi error:', error);
+  });
+
+  return () => {
+    vapiInstance?.stop();
   };
+}, [apiKey]);
+
+const startCall = () => {
+  console.log('startCall triggered', { vapi, assistantId });
+  if (vapi) {
+    vapi.start(assistantId);
+  } else {
+    console.warn('vapi is null, cannot start call');
+  }
+};
 
   const endCall = () => {
     if (vapi) {
