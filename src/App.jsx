@@ -1,9 +1,11 @@
 import './App.css'
+import { useRef } from 'react'
 import { Button } from './components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card'
 import { Badge } from './components/ui/badge'
 import { Phone, Clock, Users, Settings, BarChart3, Shield, CheckCircle, ArrowRight, Star, Zap, Target, Headphones } from 'lucide-react'
 import { motion } from 'framer-motion'
+import VapiWidget from './components/VapiWidget'
 
 // Import images
 import heroImage from './assets/hero-split-restaurant-customer.png'
@@ -14,6 +16,8 @@ import phoneImage from './assets/phone-system-live.png'
 import orderManagementImage from './assets/order-management-dashboard.png'
 
 function App() {
+  const vapiRef = useRef(null)
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Navigation */}
@@ -67,7 +71,12 @@ function App() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <div className="flex justify-center sm:justify-start">
-                  <Button variant="outline" size="lg" className="text-lg px-8 py-4">
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="text-lg px-8 py-4"
+                    onClick={() => vapiRef.current?.startCall()}
+                  >
                     <Phone className="mr-2 h-5 w-5" />
                     See How It Works
                   </Button>
@@ -442,7 +451,7 @@ function App() {
             >
               <Card className="h-full hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center personalidad-center mb-4">
                     <Clock className="h-6 w-6" />
                   </div>
                   <CardTitle>Flexible Availability</CardTitle>
@@ -1061,9 +1070,15 @@ function App() {
           </div>
         </div>
       </footer>
+
+      <VapiWidget 
+        ref={vapiRef}
+        apiKey={import.meta.env.VITE_VAPI_API_KEY}
+        assistantId={import.meta.env.VITE_VAPI_ASSISTANT_ID}
+        hideStartButton={true}
+      />
     </div>
   )
 }
 
 export default App
-
