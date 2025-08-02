@@ -2,8 +2,8 @@ import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'rea
 import Vapi from '@vapi-ai/web';
 
 const VapiWidget = forwardRef(({ 
-  apiKey, 
-  assistantId, 
+  apiKey = '82e1b653-e726-4499-b041-74da34f52b6b', // Fallback for testing
+  assistantId = '005f802f-5ea4-4aa9-a882-288de81f4f0f', // Fallback for testing
   config = {}, 
   hideStartButton = false 
 }, ref) => {
@@ -12,59 +12,66 @@ const VapiWidget = forwardRef(({
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [transcript, setTranscript] = useState([]);
 
-useEffect(() => {
-  console.log('Initializing Vapi with apiKey:', apiKey);
-  const vapiInstance = new Vapi(apiKey);
-  setVapi(vapiInstance);
-  console.log('Vapi instance created:', vapiInstance);
+  useEffect(() => {
+    console.log('🔧 Initializing Vapi with apiKey:', apiKey);
+    const vapiInstance = new Vapi(apiKey);
+    setVapi(vapiInstance);
+    console.log('✅ Vapi instance created');
 
-  vapiInstance.on('call-start', () => {
-    console.log('Call started');
-    setIsConnected(true);
-  });
+    vapiInstance.on('call-start', () => {
+      console.log('📞 Call started');
+      setIsConnected(true);
+    });
 
-  vapiInstance.on('call-end', () => {
-    console.log('Call ended');
-    setIsConnected(false);
-    setIsSpeaking(false);
-  });
+    vapiInstance.on('call-end', () => {
+      console.log('📴 Call ended');
+      setIsConnected(false);
+      setIsSpeaking(false);
+    });
 
-  vapiInstance.on('speech-start', () => {
-    console.log('Assistant started speaking');
-    setIsSpeaking(true);
-  });
+    vapiInstance.on('speech-start', () => {
+      console.log('🗣️ Assistant started speaking');
+      setIsSpeaking(true);
+    });
 
-  vapiInstance.on('speech-end', () => {
-    console.log('Assistant stopped speaking');
-    setIsSpeaking(false);
-  });
+    vapiInstance.on('speech-end', () => {
+      console.log('🤐 Assistant stopped speaking');
+      setIsSpeaking(false);
+    });
 
-  vapiInstance.on('message', (message) => {
-    if (message.type === 'transcript') {
-      setTranscript(prev => [...prev, {
-        role: message.role,
-        text: message.transcript
-      }]);
+    vapiInstance.on('message', (message) => {
+      if (message.type === 'transcript') {
+        setTranscript(prev => [...prev, {
+          role: message.role,
+          text: message.transcript
+        }]);
+      }
+    });
+
+    vapiInstance.on('error', (error) => {
+      console.error('❌ Vapi error:', error);
+      if (error?.error?.status === 401) {
+        console.error('🚫 Unauthorized – check your API key and assistant ID.');
+      }
+    });
+
+    return () => {
+      vapiInstance?.stop();
+    };
+  }, [apiKey]);
+
+  const startCall = () => {
+    console.log('▶️ startCall triggered', { vapi, assistantId });
+    if (vapi) {
+      try {
+        vapi.start(assistantId);
+      } catch (err) {
+        console.error("🔥 Error starting call:", err);
+      }
+    } else {
+      console.warn('⚠️ Vapi instance is null. Cannot start call.');
     }
-  });
-
-  vapiInstance.on('error', (error) => {
-    console.error('Vapi error:', error);
-  });
-
-  return () => {
-    vapiInstance?.stop();
   };
-}, [apiKey]);
-
-const startCall = () => {
-  console.log('startCall triggered', { vapi, assistantId });
-  if (vapi) {
-    vapi.start(assistantId);
-  } else {
-    console.warn('vapi is null, cannot start call');
-  }
-};
 
   const endCall = () => {
     if (vapi) {
@@ -161,7 +168,7 @@ const startCall = () => {
               End Call
             </button>
           </div>
-          
+
           <div style={{
             maxHeight: '200px',
             overflowY: 'auto',

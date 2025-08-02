@@ -1073,8 +1073,8 @@ function App() {
 
       <VapiWidget 
         ref={vapiRef}
-        apiKey={import.meta.env.VITE_VAPI_API_KEY}
-        assistantId={import.meta.env.VITE_VAPI_ASSISTANT_ID}
+        apiKey="82e1b653-e726-4499-b041-74da34f52b6b"
+        assistantId="005f802f-5ea4-4aa9-a882-288de81f4f0f"
         
       />
     </div>
