@@ -1137,64 +1137,80 @@ function App() {
         </div>
       </section>
 
-      {/* Terms & Privacy Section */}
       <section id="terms" className="py-20 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center space-y-4 mb-16"
-          >
-            <Badge className="bg-slate-200 text-slate-800">
-              Legal & Policy
-            </Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">
-              Terms of Service & Privacy Policy
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Please review the following terms and privacy practices governing your use of Synthify.ai's services.
-            </p>
-          </motion.div>
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="text-center space-y-4 mb-16"
+    >
+      <Badge className="bg-slate-200 text-slate-800">
+        Legal & Policy
+      </Badge>
+      <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">
+        Terms of Service & Privacy Policy
+      </h2>
+      <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+        Please review the following terms and privacy practices governing your use of Synthify.ai's services.
+      </p>
+    </motion.div>
 
-          <div className="space-y-16 text-slate-700 text-base leading-relaxed">
-            {/* Part I: Terms of Service */}
-            <div>
-              <h3 className="text-2xl font-semibold text-slate-900 mb-4">Part I: Terms of Service</h3>
-              <ul className="space-y-6 list-decimal list-inside">
-                <li><strong>Acceptance of Terms</strong><br />You represent and warrant that you have read, understood, and agree to be bound by these Terms of Service...</li>
-                <li><strong>Description of Service</strong><br />Synthify.ai provides a customizable AI voice agent service to automate customer interactions...</li>
-                <li><strong>Client Obligations</strong><br />The Client agrees to provide accurate information, comply with laws, and indemnify Synthify.ai...</li>
-                <li><strong>Fees and Payment</strong><br />Fees are outlined in the Service Agreement and are due within 30 days of invoice...</li>
-                <li><strong>Intellectual Property</strong><br />All intellectual property in the Synthify.ai platform remains owned by Synthify.ai...</li>
-                <li><strong>Confidentiality</strong><br />Both parties agree to treat all non-public information as confidential...</li>
-                <li><strong>Disclaimer of Warranties</strong><br />The service is provided "as is" without warranties of any kind, except as required by law...</li>
-                <li><strong>Limitation of Liability</strong><br />Synthify.ai is not liable for indirect damages; liability is capped at fees paid in the prior 12 months or $10,000...</li>
-                <li><strong>Termination</strong><br />Either party may terminate with 30 days’ notice. Access is revoked upon termination...</li>
-                <li><strong>Governing Law and Dispute Resolution</strong><br />This Agreement is governed by Delaware law and includes mediation and arbitration terms...</li>
-                <li><strong>Force Majeure</strong><br />Neither party is liable for events beyond their control, including natural disasters or cyberattacks...</li>
-                <li><strong>Entire Agreement</strong><br />This document and any attached SOWs represent the entire agreement between the parties...</li>
-                <li><strong>Assignment</strong><br />No party may assign this Agreement without written consent, except in a company sale or merger...</li>
-                <li><strong>Notices</strong><br />All notices must be emailed to legal@synthify.ai or as specified in the Service Agreement...</li>
-              </ul>
-            </div>
+    <div className="space-y-16 text-slate-700 text-base leading-relaxed">
+      <div>
+        <h3 className="text-2xl font-semibold text-slate-900 mb-4">Part I: Terms of Service</h3>
+        <ol className="space-y-6 list-decimal list-inside">
+          <li><strong>Acceptance of Terms:</strong> You represent and warrant that you have read, understood, and agree to be bound by these Terms of Service, and, if acting on behalf of an entity, you have the authority to bind that entity. Your access to and use of our services is conditioned upon your acceptance of and compliance with these Terms. Synthify.ai reserves the right to modify these Terms at any time. We will notify you of material changes via email or through the client dashboard at least thirty (30) days before such changes take effect. Your continued use of the services after such notice constitutes acceptance of the modified Terms.</li>
 
-            {/* Part II: Privacy Policy */}
-            <div>
-              <h3 className="text-2xl font-semibold text-slate-900 mb-4">Part II: Privacy Policy</h3>
-              <ul className="space-y-6 list-decimal list-inside">
-                <li><strong>Data Protection and GDPR Compliance</strong><br />Synthify.ai is committed to GDPR and other data protection laws...</li>
-                <li><strong>Information We Collect</strong><br />We collect contact info, order details, and technical data as authorized by the Client...</li>
-                <li><strong>Purpose of Data Collection</strong><br />We use the data solely to provide the service and improve our systems...</li>
-                <li><strong>Data Storage and Security</strong><br />Data is securely stored and encrypted, with retention only as long as required...</li>
-                <li><strong>Data Sharing and International Transfers</strong><br />We do not sell data. Transfers comply with GDPR SCCs and partner safeguards...</li>
-                <li><strong>Your Rights</strong><br />Clients and customers have rights to access, correct, or delete their data under applicable laws...</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+          <li><strong>Description of Service:</strong> Synthify.ai provides a customizable AI voice agent service to automate customer interactions, including handling inbound calls to take orders, book appointments, and qualify leads, all managed via a client dashboard. The service does not process credit card payments; all financial transactions are handled by the Client at the point of service. The full scope of services, including customizations, integrations, and service-level commitments, will be detailed in a Statement of Work (SOW) or Service Agreement executed between Synthify.ai and the Client. Synthify.ai will use commercially reasonable efforts to ensure service availability but does not guarantee uninterrupted access.</li>
+
+          <li><strong>Client Obligations:</strong> The Client agrees to: a. Provide accurate, complete, and current information to Synthify.ai for configuring and training the AI assistant. b. Use the service in compliance with all applicable laws, including but not limited to data protection laws (e.g., GDPR, CCPA) and telephony regulations (e.g., TCPA). c. Indemnify and hold Synthify.ai harmless from claims arising from the Client’s willful misconduct, negligence, or failure to comply with applicable laws in handling financial transactions, fulfilling orders, or managing bookings. d. Promptly notify Synthify.ai of any legal or regulatory issues arising from the Client’s use of the service.</li>
+
+          <li><strong>Fees and Payment:</strong> Fees are detailed in the applicable Service Agreement and are payable within thirty (30) days of invoice issuance. Synthify.ai may modify pricing with thirty (30) days’ written notice. Late payments may incur interest at 1.5% per month or the maximum rate permitted by law. Clients may dispute billing errors in writing within fifteen (15) days of receiving an invoice. No refunds will be issued for prepaid fees unless otherwise specified in the Service Agreement.</li>
+
+          <li><strong>Intellectual Property:</strong> All intellectual property rights in the Synthify.ai service, including software, AI models, documentation, and website, remain the exclusive property of Synthify.ai and its licensors. The Client retains ownership of all data provided to Synthify.ai (“Client Data”) and grants Synthify.ai a non-exclusive, worldwide, royalty-free license to use, process, and store Client Data solely to provide the services. Any improvements or derivative works based on Client Data shall be owned by Synthify.ai.</li>
+
+          <li><strong>Confidentiality:</strong> Both parties agree to treat all non-public information received from the other as confidential, except for information that is: (a) publicly available through no fault of the receiving party; (b) independently developed without use of the disclosing party’s information; (c) disclosed with the disclosing party’s prior written consent; or (d) required to be disclosed by law, provided the receiving party notifies the disclosing party promptly. Upon termination, each party shall return or destroy the other’s confidential information, except as required by law. Confidentiality obligations shall survive for three (3) years post-termination, except for trade secrets, which remain protected indefinitely.</li>
+
+          <li><strong>Disclaimer of Warranties:</strong> The service is provided “as is,” without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement, except as required by applicable law. Synthify.ai does not warrant that the service will be uninterrupted or error-free but will use commercially reasonable efforts to maintain industry-standard security measures.</li>
+
+          <li><strong>Limitation of Liability:</strong> In no event shall Synthify.ai be liable for indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, or goodwill, arising from: (a) your access to or use of the service; (b) third-party conduct or content; (c) content obtained from the service; or (d) unauthorized access or alteration of your data, except as required by applicable law. Synthify.ai’s total liability for any claim shall not exceed the greater of the fees paid by the Client in the twelve (12) months preceding the claim or $10,000, except for claims arising from gross negligence, willful misconduct, violations of data protection laws, or as provided under Section 3(c) (indemnification).</li>
+
+          <li><strong>Termination:</strong> Either party may terminate this Agreement with thirty (30) days’ written notice. Synthify.ai may terminate immediately for material breach, including non-payment, misuse of the service, or violation of applicable law. Upon termination, the Client’s access to the service will be revoked, and outstanding fees will become due. Synthify.ai will provide the Client a thirty (30)-day period to retrieve Client Data, after which Synthify.ai may delete such data, subject to applicable law. Transition assistance may be provided at Synthify.ai’s discretion, subject to additional fees as agreed in writing.</li>
+
+          <li><strong>Governing Law and Dispute Resolution:</strong> This Agreement shall be governed by the laws of the State of Delaware, excluding its conflict of law provisions. Any disputes arising under this Agreement shall first be submitted to non-binding mediation in Delaware, administered by a mutually agreed mediator. If mediation fails within sixty (60) days, disputes shall be resolved by binding arbitration in Delaware under the rules of the American Arbitration Association (AAA). The arbitration shall be conducted by a single arbitrator, and the decision shall be final and binding. Each party shall bear its own costs, except that the arbitrator may award costs and fees to the prevailing party. If arbitration is not enforceable, any legal action shall be brought exclusively in the state or federal courts located in Delaware. If any provision of this Agreement is found unenforceable, the remaining provisions shall remain in full force and effect.</li>
+
+          <li><strong>Force Majeure:</strong> Neither party shall be liable for delays or failure to perform due to causes beyond their reasonable control, including natural disasters, cyberattacks, or government actions, provided the affected party notifies the other promptly and resumes performance as soon as practicable.</li>
+
+          <li><strong>Entire Agreement:</strong> This Agreement, together with any executed Statement of Work or Service Agreement, constitutes the entire agreement between the parties and supersedes all prior agreements, understandings, or representations, whether written or oral.</li>
+
+          <li><strong>Assignment:</strong> Neither party may assign this Agreement without the other’s prior written consent, except that Synthify.ai may assign this Agreement to a successor in connection with a merger, acquisition, or sale of all or substantially all of its assets.</li>
+
+          <li><strong>Notices:</strong> All notices under this Agreement shall be in writing and delivered via email to legal@synthify.ai for Synthify.ai and to the Client’s designated contact email, or by certified mail to the addresses specified in the Service Agreement. Notices are deemed received upon confirmation of delivery.</li>
+        </ol>
+      </div>
+
+      <div>
+        <h3 className="text-2xl font-semibold text-slate-900 mb-4">Part II: Privacy Policy</h3>
+        <ol className="space-y-6 list-decimal list-inside">
+          <li><strong>Data Protection and GDPR Compliance:</strong> Synthify.ai is committed to complying with applicable data protection laws, including the General Data Protection Regulation (GDPR) for Clients or customers in the European Economic Area (EEA). Synthify.ai acts as a data processor for personal data provided by the Client or their customers, and the Client acts as the data controller under GDPR. The Client is responsible for ensuring that their use of the service complies with applicable data protection laws, including obtaining necessary consents or lawful bases for processing personal data. Synthify.ai will process personal data only as instructed by the Client and in accordance with this Agreement and any applicable Data Processing Agreement (DPA).</li>
+
+          <li><strong>Information We Collect:</strong> We collect personal information provided by you or your customers, including contact information (e.g., name, phone number, email) and order or appointment details, as authorized by the Client. We may also collect usage and technical data (e.g., IP addresses, device identifiers) to operate and improve the service. Personal data is collected only with the Client’s authorization or as necessary to provide the services.</li>
+
+          <li><strong>Purpose of Data Collection:</strong> We collect and process personal information solely to provide the services, including fulfilling orders, managing bookings, and facilitating communication. Any use of data for analytics or service improvement (e.g., AI model training) will be anonymized or conducted with your prior consent, where required by applicable law. We adhere to data minimization principles, collecting only what is necessary for the stated purposes.</li>
+
+          <li><strong>Data Storage and Security:</strong> We store personal information on secure servers and implement industry-standard security measures, including encryption, access controls, and regular security audits, to prevent unauthorized access, loss, or misuse. Data is retained only for as long as necessary to provide the services or as required by law, after which it is securely deleted. In the event of a data breach, we will notify affected Clients and, where required, data subjects or supervisory authorities promptly, in accordance with GDPR and other applicable laws.</li>
+
+          <li><strong>Data Sharing and International Transfers:</strong> We do not sell, rent, or lease personal information to third parties. We may share data with trusted third parties (e.g., cloud hosting providers, integration partners) solely to provide the services, pursuant to data processing agreements that comply with GDPR Article 28 and other applicable laws. If data is transferred internationally, including outside the EEA, we ensure compliance with applicable safeguards, such as Standard Contractual Clauses (SCCs) under GDPR or equivalent mechanisms, to protect personal data.</li>
+
+          <li><strong>Your Rights:</strong> You and your customers have the right to access, correct, delete, or port personal information we hold, and, where applicable, to restrict or object to processing, subject to legal and contractual obligations. Under GDPR, EEA data subjects may also lodge complaints with a supervisory authority. Requests can be submitted via privacy@synthify.ai or through the client dashboard. We will respond within thirty (30) days or as required by applicable law.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
       {/* CTA Section */}
@@ -1254,7 +1270,7 @@ function App() {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">Company</h3>
               <ul className="space-y-2 text-slate-400">
-                <li><a href="#" className="hover:text-white transition-colors">About</a></li>
+                <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Support</a></li>
               </ul>
