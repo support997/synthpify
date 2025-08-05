@@ -3,7 +3,7 @@ import { useRef } from 'react'
 import { Button } from './components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card'
 import { Badge } from './components/ui/badge'
-import { Phone, Clock, Users, Settings, BarChart3, Shield, CheckCircle, ArrowRight, Star, Zap, Target, Headphones } from 'lucide-react'
+import { Phone, Clock, Users, Settings, BarChart3, Shield, CheckCircle, ArrowRight, Star, Zap, Target, Headphones, Mic } from 'lucide-react'
 import { motion } from 'framer-motion'
 import VapiWidget from './components/VapiWidget'
 
@@ -17,6 +17,10 @@ import orderManagementImage from './assets/order-management-dashboard.png'
 
 function App() {
   const vapiRef = useRef(null)
+
+  const handleStartCall = () => {
+    vapiRef.current?.startCall();
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -34,7 +38,7 @@ function App() {
               <a href="#how-it-works" className="text-slate-700 hover:text-blue-600 transition-colors">How It Works</a>
               <a href="#testimonials" className="text-slate-700 hover:text-blue-600 transition-colors">Testimonials</a>
               <a href="#verticals" className="text-slate-700 hover:text-blue-600 transition-colors">Verticals</a>
-              <Button className="bg-blue-600 hover:bg-blue-700">Schedule a Free Demo</Button>
+              <Button className="bg-blue-600 hover:bg-blue-700" onClick={handleStartCall}>Schedule a Free Demo</Button>
             </div>
           </div>
         </div>
@@ -66,7 +70,7 @@ function App() {
               </div>
               
               <div className="space-y-4">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4 w-full sm:w-auto">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4 w-full sm:w-auto" onClick={handleStartCall}>
                   Schedule a Free Demo with Our Voice Agent
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -77,7 +81,7 @@ function App() {
                     className="text-lg px-8 py-4"
                     onClick={() => vapiRef.current?.startCall()}
                   >
-                    <Phone className="mr-2 h-5 w-5" />
+                    <Mic className="mr-2 h-5 w-5" />
                     See How It Works
                   </Button>
                 </div>
@@ -991,6 +995,207 @@ function App() {
           </motion.div>
         </div>
       </section>
+       {/* About Section */}
+      <section id="about" className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center space-y-4 mb-16"
+          >
+            <Badge className="bg-blue-100 text-blue-700">
+              <Users className="w-4 h-4 mr-1" />
+              About Us
+            </Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">
+              About Synthify.ai
+            </h2>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto space-y-12">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-lg text-slate-600 leading-relaxed">
+                At Synthify.ai, we believe that small business owners should be able to focus on their passion: providing the best customer service and experience to their clients, regardless of how they connect. Customer satisfaction and speed of service are critical growth factors for businesses in every industry.
+              </p>
+              <p className="text-lg text-slate-600 leading-relaxed mt-4">
+                Through our AI service, we empower businesses to achieve this focus. We help you reduce lost revenue, increase operational efficiency, and eliminate the mundane, repetitive tasks that shackle your team. Most importantly, we give time back to the business owner so you can concentrate on what you're passionate about—growing your business.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Mission</h3>
+              <p className="text-lg text-slate-600 leading-relaxed">
+                Our mission is to empower small businesses with intelligent, automated solutions that increase efficiency and enhance the customer experience. Through AI workflow automation, we create custom solutions that enable you to add a workforce that runs 24/7. This allows you to carry out tasks with speed and accuracy while keeping expenses at bay and adding revenue streams from opportunities that were otherwise missed. We bring the true meaning of "Doing more with less" to life.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Purpose</h3>
+              <p className="text-lg text-slate-600 leading-relaxed">
+                We are purpose-built to give you peace of mind. Every missed call is a missed opportunity, and every overwhelmed employee is a risk to your business. Our service is designed to eliminate these worries by ensuring every phone call is answered promptly, professionally, and productively. We are here to help you capture every order, book every reservation, and qualify every lead, so your business never has to miss a beat.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">What We Do</h3>
+              <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                We build smart, connected workflows that save your business time, reduce errors, and increase efficiency.
+              </p>
+
+              <h4 className="text-xl font-semibold text-slate-900 mb-4">How It Works</h4>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card>
+                  <CardContent className="p-6">
+                    <h5 className="font-semibold text-slate-900 mb-2">Triggers</h5>
+                    <p className="text-slate-600">Start a workflow when a customer places an order, fills out a form, sends a message, or books online.</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-6">
+                    <h5 className="font-semibold text-slate-900 mb-2">Automated Tasks</h5>
+                    <p className="text-slate-600">Instantly send confirmations, update spreadsheets or CRMs, notify your team, generate receipts, and more.</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-6">
+                    <h5 className="font-semibold text-slate-900 mb-2">Smart Rules</h5>
+                    <p className="text-slate-600">Add if/then logic to handle approvals, prevent conflicts, upsell automatically, or guide customer decisions.</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-6">
+                    <h5 className="font-semibold text-slate-900 mb-2">Data Sync</h5>
+                    <p className="text-slate-600">Seamlessly connect and update your tools like Google Sheets, Stripe, QuickBooks, CRMs, calendars, and databases.</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-6">
+                    <h5 className="font-semibold text-slate-900 mb-2">AI Integration</h5>
+                    <p className="text-slate-600">Use AI to understand voice calls, extract key info from messages, summarize orders, or qualify leads—all automatically.</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Real-World Examples We Solve</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card>
+                  <CardContent className="p-6">
+                    <h5 className="font-semibold text-slate-900 mb-2">Order Taking</h5>
+                    <p className="text-slate-600">Capture food, product, or service orders via voice, chat, or web—and send them to your dashboard for smooth processing and pickup payment.</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-6">
+                    <h5 className="font-semibold text-slate-900 mb-2">Reservation & Booking</h5>
+                    <p className="text-slate-600">Let customers schedule appointments or tables directly into your calendar or system—with no manual back-and-forth.</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-6">
+                    <h5 className="font-semibold text-slate-900 mb-2">Lead Generation</h5>
+                    <p className="text-slate-600">Automatically capture new customer interest through voice calls, forms, or messages—and push them into your CRM or email list.</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Terms & Privacy Section */}
+      <section id="terms" className="py-20 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center space-y-4 mb-16"
+          >
+            <Badge className="bg-slate-200 text-slate-800">
+              Legal & Policy
+            </Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">
+              Terms of Service & Privacy Policy
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Please review the following terms and privacy practices governing your use of Synthify.ai's services.
+            </p>
+          </motion.div>
+
+          <div className="space-y-16 text-slate-700 text-base leading-relaxed">
+            {/* Part I: Terms of Service */}
+            <div>
+              <h3 className="text-2xl font-semibold text-slate-900 mb-4">Part I: Terms of Service</h3>
+              <ul className="space-y-6 list-decimal list-inside">
+                <li><strong>Acceptance of Terms</strong><br />You represent and warrant that you have read, understood, and agree to be bound by these Terms of Service...</li>
+                <li><strong>Description of Service</strong><br />Synthify.ai provides a customizable AI voice agent service to automate customer interactions...</li>
+                <li><strong>Client Obligations</strong><br />The Client agrees to provide accurate information, comply with laws, and indemnify Synthify.ai...</li>
+                <li><strong>Fees and Payment</strong><br />Fees are outlined in the Service Agreement and are due within 30 days of invoice...</li>
+                <li><strong>Intellectual Property</strong><br />All intellectual property in the Synthify.ai platform remains owned by Synthify.ai...</li>
+                <li><strong>Confidentiality</strong><br />Both parties agree to treat all non-public information as confidential...</li>
+                <li><strong>Disclaimer of Warranties</strong><br />The service is provided "as is" without warranties of any kind, except as required by law...</li>
+                <li><strong>Limitation of Liability</strong><br />Synthify.ai is not liable for indirect damages; liability is capped at fees paid in the prior 12 months or $10,000...</li>
+                <li><strong>Termination</strong><br />Either party may terminate with 30 days’ notice. Access is revoked upon termination...</li>
+                <li><strong>Governing Law and Dispute Resolution</strong><br />This Agreement is governed by Delaware law and includes mediation and arbitration terms...</li>
+                <li><strong>Force Majeure</strong><br />Neither party is liable for events beyond their control, including natural disasters or cyberattacks...</li>
+                <li><strong>Entire Agreement</strong><br />This document and any attached SOWs represent the entire agreement between the parties...</li>
+                <li><strong>Assignment</strong><br />No party may assign this Agreement without written consent, except in a company sale or merger...</li>
+                <li><strong>Notices</strong><br />All notices must be emailed to legal@synthify.ai or as specified in the Service Agreement...</li>
+              </ul>
+            </div>
+
+            {/* Part II: Privacy Policy */}
+            <div>
+              <h3 className="text-2xl font-semibold text-slate-900 mb-4">Part II: Privacy Policy</h3>
+              <ul className="space-y-6 list-decimal list-inside">
+                <li><strong>Data Protection and GDPR Compliance</strong><br />Synthify.ai is committed to GDPR and other data protection laws...</li>
+                <li><strong>Information We Collect</strong><br />We collect contact info, order details, and technical data as authorized by the Client...</li>
+                <li><strong>Purpose of Data Collection</strong><br />We use the data solely to provide the service and improve our systems...</li>
+                <li><strong>Data Storage and Security</strong><br />Data is securely stored and encrypted, with retention only as long as required...</li>
+                <li><strong>Data Sharing and International Transfers</strong><br />We do not sell data. Transfers comply with GDPR SCCs and partner safeguards...</li>
+                <li><strong>Your Rights</strong><br />Clients and customers have rights to access, correct, or delete their data under applicable laws...</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700">
@@ -1010,7 +1215,7 @@ function App() {
               Get started with a free demo today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-4">
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-4" onClick={handleStartCall}>
                 Schedule Your Free Demo
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -1058,8 +1263,8 @@ function App() {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">Legal</h3>
               <ul className="space-y-2 text-slate-400">
-                <li><a href="#" className="hover:text-white transition-colors">Privacy</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Terms</a></li>
+                <li><a href="#terms" className="hover:text-white transition-colors">Privacy</a></li>
+                <li><a href="#terms" className="hover:text-white transition-colors">Terms</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Security</a></li>
               </ul>
             </div>
@@ -1073,8 +1278,8 @@ function App() {
 
       <VapiWidget 
         ref={vapiRef}
-        apiKey="252067f2-002e-43bf-bf24-04b3ffcc8810"
-        assistantId="8d624bc7-38e0-4c06-abca-6fadb797d6cd"
+        apiKey={import.meta.env.VITE_VAPI_API_KEY}
+        assistantId={import.meta.env.VITE_VAPI_ASSISTANT_ID}
         
       />
     </div>
