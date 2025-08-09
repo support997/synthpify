@@ -1318,7 +1318,7 @@ function App() {
         ref={vapiRef}
         apiKey={import.meta.env.VITE_VAPI_API_KEY}
         assistantId={import.meta.env.VITE_VAPI_ASSISTANT_ID}
-        
+         
       />
     </div>
   )
