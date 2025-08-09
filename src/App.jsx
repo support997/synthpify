@@ -1210,8 +1210,29 @@ function App() {
     </div>
   </div>
 </section>
+    {/* Security Section */}
+    <section id="security" className="py-20 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center space-y-4 mb-12"
+        >
+          <Badge className="bg-blue-100 text-blue-700">Security</Badge>
+          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">Security at Synthpify.ai</h2>
+        </motion.div>
 
-
+        <div className="space-y-6 text-slate-700 text-base leading-relaxed max-w-3xl mx-auto">
+          <p><strong>HTTPS:</strong> Our site is served over HTTPS to protect data in transit.</p>
+          <p><strong>Access:</strong> Administrative access to our infrastructure is restricted to authorized personnel.</p>
+          <p><strong>Privacy:</strong> We act as a data processor; clients remain data controllers. We do not sell personal data.</p>
+          <p><strong>Incidents:</strong> If we become aware of a data incident impacting clients, we will notify affected clients without undue delay as required by law.</p>
+          <p><strong>Contact:</strong> For security questions or reports, email <a href="mailto:security@synthify.ai" className="text-blue-600 underline">security@synthify.ai</a>.</p>
+        </div>
+      </div>
+    </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700">
@@ -1281,7 +1302,8 @@ function App() {
               <ul className="space-y-2 text-slate-400">
                 <li><a href="#terms" className="hover:text-white transition-colors">Privacy</a></li>
                 <li><a href="#terms" className="hover:text-white transition-colors">Terms</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Security</a></li>
+                <li><a href="#security" className="hover:text-white transition-colors">Security</a></li>
+
               </ul>
             </div>
           </div>
