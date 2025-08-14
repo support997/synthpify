@@ -40,19 +40,24 @@ export default function VapiChatLauncher() {
     });
 
   const verifyCaptcha = async () => {
-    if (!window.grecaptcha) throw new Error("reCAPTCHA not available");
-    const token = await window.grecaptcha.execute(SITE_KEY, { action: "open_chat" });
-    const res = await fetch(`${API_BASE}/api/vapi/allow`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
+    if (!window.grecaptcha) throw new Error('reCAPTCHA not loaded');
+    // 1) get a token from reCAPTCHA
+    const token = await window.grecaptcha.execute(SITE_KEY, { action: 'open_chat' });
+
+    console.log('calling', new URL('/api/vapi/allow', location.href).href);
+
+    // 2) call your same-origin proxy (Static Site rewrite: /api/* -> phoneorder.onrender.com)
+    const res = await fetch('/api/vapi/allow', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token }),
     });
+
     if (!res.ok) throw new Error(await res.text());
-    const data = await res.json();
-    if (!data.ok) throw new Error("captcha failed");
+    const { ok } = await res.json();
+    if (!ok) throw new Error('captcha_failed');
     return true;
-  };
+};
 
   const mountVapiChat = async () => {
     // Ensure the VAPI widget script is loaded (defines <vapi-widget/>)
