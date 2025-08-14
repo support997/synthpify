@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY; // reCAPTCHA v3 site key
-const API_BASE = import.meta.env.VITE_API_BASE || "https://phoneorder.onrender.com";
+const API_BASE = import.meta.env.VITE_API_BASE  
 
 // VAPI (from your snippet)
 const VAPI_WIDGET_SRC = "https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js";
