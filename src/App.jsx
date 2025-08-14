@@ -19,6 +19,9 @@ import orderManagementImage from './assets/order-management-dashboard.png'
 // ✅ NEW: import your logo
 import synthpifyLogo from './assets/synthpify_logo_small.jpeg'
 
+// VAPI chotbot
+import VapiChatLauncher from './components/VapiChatLauncher'
+
 function App() {
   const vapiRef = useRef(null)
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -617,88 +620,32 @@ ${form.message}`
       {/* Contact Section (NEW) */}
       <section id="contact" className="py-20 bg-slate-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center space-y-4 mb-10"
-          >
-            <Badge className="bg-blue-100 text-blue-700">Contact</Badge>
+          {/* Header (kept from your page) */}
+          <div className="text-center space-y-4 mb-10">
+            <div className="inline-flex items-center rounded-full bg-blue-100 text-blue-700 px-3 py-1 text-sm font-medium">
+              Contact
+            </div>
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">Talk to Us</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Prefer to speak? Start a quick call with our AI assistant, or send us a message and we’ll follow up by email.
+              Start a secure chat with our AI assistant. Protected by reCAPTCHA and server rate limits.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700" onClick={handleStartCall}>
-                Start AI Voice Assistant
-              </Button>
-              <a
-                href="mailto:support@synthpify.ai"
-                className="inline-flex items-center justify-center rounded-md border px-6 py-3 text-base border-slate-300 text-slate-700 hover:bg-white"
-              >
-                Email support@synthpify.ai
-              </a>
+          </div>
+
+          {/* Button row with secured VAPI chat */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              className="bg-blue-600 hover:bg-blue-700 text-white rounded-md px-6 py-3 text-base"
+              onClick={() => vapiRef.current?.startCall()}
+            >
+              Start AI Voice Assistant
+            </button>
+            <div className="w-full sm:w-auto">
+              <VapiChatLauncher />
             </div>
-          </motion.div>
-
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
-            <form onSubmit={handleSubmit} className="grid gap-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">Name</label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={handleChange}
-                    className="w-full rounded-lg border border-slate-300 px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Jane Doe"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">Email</label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={handleChange}
-                    className="w-full rounded-lg border border-slate-300 px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="jane@example.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  value={form.message}
-                  onChange={handleChange}
-                  className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Tell us a bit about what you need..."
-                />
-              </div>
-
-              <div className="flex items-center gap-4">
-                <Button disabled={sending} className="bg-blue-600 hover:bg-blue-700 px-6">
-                  {sending ? 'Sending…' : 'Send Message'}
-                </Button>
-                <span className="text-sm text-slate-500">
-                  Or email <a className="underline" href="mailto:support@synthpify.ai">support@synthpify.ai</a>
-                </span>
-              </div>
-            </form>
           </div>
         </div>
       </section>
+
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700">
