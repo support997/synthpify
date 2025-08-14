@@ -47,7 +47,7 @@ export default function VapiChatLauncher() {
     console.log('calling', new URL('/api/vapi/allow', location.href).href);
 
     // 2) call your same-origin proxy (Static Site rewrite: /api/* -> phoneorder.onrender.com)
-    const res = await fetch('/api/vapi/allow', {
+    const res = await fetch('https://phoneorder.onrender.com/api/vapi/allow', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token }),
