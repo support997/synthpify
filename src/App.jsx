@@ -1177,9 +1177,119 @@ ${form.message}`
       </section>
 
       {/* Terms & Privacy (unchanged content) */}
-      <section id="terms" className="py-20 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* ...existing terms/privacy content... */}
+      {/* Terms of Service */}
+      <section id="terms" className="py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <div className="text-center space-y-2">
+              <h2 className="text-2xl lg:text-3xl font-bold text-slate-900">Part I: Terms of Service</h2>
+              <p className="text-slate-600">Please read these Terms carefully before using our services.</p>
+            </div>
+
+            <ol className="list-decimal pl-6 space-y-6 text-slate-700 leading-relaxed">
+              <li>
+                <strong>Acceptance of Terms.</strong> You acknowledge that you have read, understood, and agree to be bound by these Terms of Service. Your access to and use of our services is conditioned upon your acceptance of and compliance with these Terms.
+              </li>
+
+              <li>
+                <strong>Description of Service.</strong> {BRAND} provides a customizable AI voice agent service designed to automate customer interactions for businesses. Our service includes an AI assistant that handles inbound calls to take orders, book appointments, and qualify leads, all of which are managed via a client dashboard. Our AI voice agent does not process credit card payments; all financial transactions are to be handled by the Client at the point of service. The full scope of services, including specific customizations and integrations, will be detailed in a separate Statement of Work or Service Agreement executed between {BRAND} and the Client.
+              </li>
+
+              <li>
+                <strong>Client Obligations.</strong> The Client agrees to:
+                <div className="mt-2 space-y-2">
+                  <p>a. Provide accurate, complete, and current information to {BRAND} for the purpose of configuring and training the AI assistant.</p>
+                  <p>b. Use the service in compliance with all applicable laws and regulations.</p>
+                  <p>c. Hold {BRAND} harmless from any and all claims arising from the Client's failure to handle financial transactions, fulfill orders, or manage bookings.</p>
+                </div>
+              </li>
+
+              <li>
+                <strong>Fees and Payment.</strong> Fees for our services are based on the scope of work and are subject to a separate Service Agreement. Pricing is subject to change at the sole discretion of {BRAND}, with at least thirty (30) days' notice provided to the Client.
+              </li>
+
+              <li>
+                <strong>Intellectual Property.</strong> All intellectual property rights in and to the {BRAND} service, including the software, AI models, documentation, and the website, are and shall remain the exclusive property of {BRAND} and its licensors.
+              </li>
+
+              <li>
+                <strong>Confidentiality.</strong> Both parties agree to treat all non-public information received from the other party as confidential. This includes, but is not limited to, pricing, technical information, customer data, and business strategies. This obligation of confidentiality shall survive the termination of this Agreement.
+              </li>
+
+              <li>
+                <strong>Disclaimer of Warranties.</strong> THE SERVICE IS PROVIDED "AS IS," WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. {BRAND} does not warrant that the service will be uninterrupted, error-free, or completely secure.
+              </li>
+
+              <li>
+                <strong>Limitation of Liability.</strong> IN NO EVENT SHALL {BRAND.toUpperCase()} BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING, WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM (A) YOUR ACCESS TO OR USE OF OR INABILITY TO ACCESS OR USE THE SERVICE; (B) ANY CONDUCT OR CONTENT OF ANY THIRD PARTY ON THE SERVICE; (C) ANY CONTENT OBTAINED FROM THE SERVICE; AND (D) UNAUTHORIZED ACCESS, USE OR ALTERATION OF YOUR TRANSMISSIONS OR CONTENT, WHETHER BASED ON WARRANTY, CONTRACT, TORT (INCLUDING NEGLIGENCE) OR ANY OTHER LEGAL THEORY, WHETHER OR NOT WE HAVE BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGE. Our total liability to the Client for any claim arising out of or relating to this Agreement shall not exceed the amount paid by the Client to {BRAND} in the twelve (12) months preceding the event giving rise to the claim.
+              </li>
+
+              <li>
+                <strong>Termination.</strong> Either party may terminate this Agreement at any time with thirty (30) days' written notice. Upon termination, the Client's access to the service will be revoked, and any outstanding fees will become immediately due and payable.
+              </li>
+
+              <li>
+                <strong>Governing Law and Dispute Resolution.</strong> This Agreement shall be governed by the laws of the State of Delaware, without regard to its conflict of law provisions. Any legal action or proceeding arising under this Agreement shall be brought exclusively in the state or federal courts located in Delaware.
+              </li>
+            </ol>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Privacy Policy */}
+      <section id="privacy" className="py-16 bg-slate-50 border-t border-slate-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <div className="text-center space-y-2">
+              <h2 className="text-2xl lg:text-3xl font-bold text-slate-900">Part II: Privacy Policy</h2>
+              <p className="text-slate-600">How we collect, use, and protect information.</p>
+            </div>
+
+            <ol className="list-decimal pl-6 space-y-6 text-slate-700 leading-relaxed">
+              <li>
+                <strong>Information We Collect.</strong> We collect information that you or your customers provide to us when using our service, including contact information (name, phone number, email) and specific order or appointment details.
+              </li>
+
+              <li>
+                <strong>Purpose of Data Collection.</strong> We collect this information for the sole purpose of providing our services to you. This data is used to fulfill orders and bookings and to facilitate communication.
+              </li>
+
+              <li>
+                <strong>Data Storage and Security.</strong> We are committed to protecting the security of your data. We store information on secure servers and use industry-standard measures to prevent unauthorized access, loss, or misuse of data.
+              </li>
+
+              <li>
+                <strong>Data Sharing.</strong> We do not sell, rent, or lease your data to third parties. We only share information as necessary to provide our services, which may include sharing with internal teams or third-party services for integration purposes.
+              </li>
+
+              <li>
+                <strong>Your Rights.</strong> You or your customers have the right to access, correct, or delete personal information we hold, subject to legal and contractual obligations.
+              </li>
+            </ol>
+
+            <div className="pt-4 text-slate-600 text-sm">
+              <p>
+                If you have questions about these terms or our privacy practices, please contact us at
+                {' '}<a href="mailto:privacy@synthpify.ai" className="text-blue-600 underline">privacy@synthpify.ai</a>.
+              </p>
+            </div>
+
+            <div className="pt-8 text-center">
+              <a href="#top" className="text-blue-600 underline">Back to top</a>
+            </div>
+          </motion.div>
         </div>
       </section>
 
