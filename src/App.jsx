@@ -22,6 +22,9 @@ import synthpifyLogo from './assets/synthpify_logo_small.jpeg'
 // VAPI chotbot
 import VapiChatLauncher from './components/VapiChatLauncher'
 
+const BRAND = 'Synthpify.ai' // <- change here if needed
+const LAST_UPDATED = 'August 13, 2025'
+
 function App() {
   const vapiRef = useRef(null)
   const [form, setForm] = useState({ name: '', email: '', message: '' })
