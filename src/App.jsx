@@ -547,7 +547,7 @@ ${form.message}`
         </div>
       </section>
 
-      {/* Testimonials Section */}
+ {/* Testimonials Section */}
       <section id="testimonials" className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
@@ -568,21 +568,611 @@ ${form.message}`
               See how businesses like yours have transformed their customer service and increased revenue with our AI Voice Agent.
             </p>
           </motion.div>
-          {/* existing testimonials area unchanged */}
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Testimonial 1 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-slate-600 mb-6">
+                    "Since implementing the AI Voice Agent, we haven't missed a single order. Our revenue increased by 35% in just three months. The system is incredibly easy to use and our customers love the quick response times."
+                  </p>
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-blue-600 font-semibold">MR</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-slate-900">Maria Rodriguez</div>
+                      <div className="text-sm text-slate-500">Owner, Bella's Pizzeria</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Testimonial 2 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-slate-600 mb-6">
+                    "The AI agent handles our appointment bookings flawlessly. It's like having a dedicated receptionist 24/7. Our clients are impressed with the professional service, and we can focus on what we do best."
+                  </p>
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-green-600 font-semibold">DT</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-slate-900">Dr. Thomas Chen</div>
+                      <div className="text-sm text-slate-500">Dental Practice Owner</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Testimonial 3 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-slate-600 mb-6">
+                    "Game changer for our restaurant! The AI takes orders accurately and handles special requests perfectly. We've reduced wait times and increased customer satisfaction significantly."
+                  </p>
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-purple-600 font-semibold">JS</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-slate-900">James Smith</div>
+                      <div className="text-sm text-slate-500">Manager, Urban Bistro</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Testimonial 4 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-slate-600 mb-6">
+                    "The setup was incredibly smooth, and the support team was fantastic. Within a week, we were capturing calls we would have otherwise missed. ROI was immediate."
+                  </p>
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-orange-600 font-semibold">LW</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-slate-900">Lisa Wang</div>
+                      <div className="text-sm text-slate-500">Owner, Fresh Flowers Co.</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Testimonial 5 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-slate-600 mb-6">
+                    "Our customers love the quick response and professional service. The AI understands our menu perfectly and even handles complex dietary restrictions. Highly recommended!"
+                  </p>
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-teal-600 font-semibold">RP</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-slate-900">Robert Park</div>
+                      <div className="text-sm text-slate-500">Chef & Owner, Fusion Kitchen</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Testimonial 6 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-slate-600 mb-6">
+                    "Best investment we've made for our business. The AI agent works seamlessly with our existing systems and has eliminated the stress of missing important calls during busy periods."
+                  </p>
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-indigo-600 font-semibold">SJ</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-slate-900">Sarah Johnson</div>
+                      <div className="text-sm text-slate-500">Owner, Cozy Café</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Verticals Section (unchanged content) */}
+      {/* Verticals Section */}
       <section id="verticals" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* ...existing verticals content... */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center space-y-4 mb-16"
+          >
+            <Badge className="bg-blue-100 text-blue-700">
+              <BarChart3 className="w-4 h-4 mr-1" />
+              Industry Solutions
+            </Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">
+              Perfect for Every Business Type
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Our AI Voice Agent adapts to your industry's unique needs, handling calls professionally across all business verticals.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {/* QSR */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full hover:shadow-lg transition-shadow group">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-200 transition-colors">
+                    <span className="text-2xl">🍔</span>
+                  </div>
+                  <h3 className="font-semibold text-slate-900 mb-2">Quick Service Restaurants</h3>
+                  <p className="text-sm text-slate-600">Fast food chains, pizza shops, coffee shops, and drive-thru restaurants</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Full Service Restaurants */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full hover:shadow-lg transition-shadow group">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-red-100 text-red-600 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-red-200 transition-colors">
+                    <span className="text-2xl">🍽️</span>
+                  </div>
+                  <h3 className="font-semibold text-slate-900 mb-2">Full Service Restaurants</h3>
+                  <p className="text-sm text-slate-600">Fine dining, casual dining, bistros, and specialty cuisine restaurants</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Spa & Wellness */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full hover:shadow-lg transition-shadow group">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-pink-100 text-pink-600 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-pink-200 transition-colors">
+                    <span className="text-2xl">🧘</span>
+                  </div>
+                  <h3 className="font-semibold text-slate-900 mb-2">Spa & Wellness</h3>
+                  <p className="text-sm text-slate-600">Day spas, massage therapy, wellness centers, and beauty salons</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Nail Salons */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full hover:shadow-lg transition-shadow group">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-200 transition-colors">
+                    <span className="text-2xl">💅</span>
+                  </div>
+                  <h3 className="font-semibold text-slate-900 mb-2">Nail Salons</h3>
+                  <p className="text-sm text-slate-600">Nail art studios, manicure/pedicure services, and nail care specialists</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Hair Salons */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full hover:shadow-lg transition-shadow group">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-200 transition-colors">
+                    <span className="text-2xl">✂️</span>
+                  </div>
+                  <h3 className="font-semibold text-slate-900 mb-2">Hair Salons</h3>
+                  <p className="text-sm text-slate-600">Hair styling, barbershops, color specialists, and hair treatment centers</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Plumbers */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full hover:shadow-lg transition-shadow group">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors">
+                    <span className="text-2xl">🔧</span>
+                  </div>
+                  <h3 className="font-semibold text-slate-900 mb-2">Plumbing Services</h3>
+                  <p className="text-sm text-slate-600">Emergency plumbers, pipe repair, drain cleaning, and installation services</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Electricians */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full hover:shadow-lg transition-shadow group">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-200 transition-colors">
+                    <span className="text-2xl">⚡</span>
+                  </div>
+                  <h3 className="font-semibold text-slate-900 mb-2">Electrical Services</h3>
+                  <p className="text-sm text-slate-600">Residential electricians, commercial wiring, and emergency electrical repairs</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* HVAC */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full hover:shadow-lg transition-shadow group">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-cyan-100 text-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-cyan-200 transition-colors">
+                    <span className="text-2xl">❄️</span>
+                  </div>
+                  <h3 className="font-semibold text-slate-900 mb-2">HVAC Contractors</h3>
+                  <p className="text-sm text-slate-600">Heating, ventilation, air conditioning installation, repair, and maintenance</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Roofers */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full hover:shadow-lg transition-shadow group">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-slate-100 text-slate-600 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-slate-200 transition-colors">
+                    <span className="text-2xl">🏠</span>
+                  </div>
+                  <h3 className="font-semibold text-slate-900 mb-2">Roofing Services</h3>
+                  <p className="text-sm text-slate-600">Roof installation, repair, inspection, and emergency roofing services</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Medical Offices */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full hover:shadow-lg transition-shadow group">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 transition-colors">
+                    <span className="text-2xl">🏥</span>
+                  </div>
+                  <h3 className="font-semibold text-slate-900 mb-2">Medical Offices</h3>
+                  <p className="text-sm text-slate-600">Doctor offices, dental practices, clinics, and healthcare providers</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Professional Offices */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.1 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full hover:shadow-lg transition-shadow group">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo-200 transition-colors">
+                    <span className="text-2xl">💼</span>
+                  </div>
+                  <h3 className="font-semibold text-slate-900 mb-2">Professional Offices</h3>
+                  <p className="text-sm text-slate-600">Law firms, accounting offices, consulting services, and business professionals</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Hotels */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full hover:shadow-lg transition-shadow group">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-teal-100 text-teal-600 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-200 transition-colors">
+                    <span className="text-2xl">🏨</span>
+                  </div>
+                  <h3 className="font-semibold text-slate-900 mb-2">Hotels & Hospitality</h3>
+                  <p className="text-sm text-slate-600">Hotels, motels, bed & breakfasts, and hospitality services</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Car Dealers */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.3 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full hover:shadow-lg transition-shadow group">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-gray-100 text-gray-600 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-200 transition-colors">
+                    <span className="text-2xl">🚗</span>
+                  </div>
+                  <h3 className="font-semibold text-slate-900 mb-2">Car Dealerships</h3>
+                  <p className="text-sm text-slate-600">Auto sales, used car lots, service departments, and automotive services</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.4 }}
+            viewport={{ once: true }}
+            className="text-center mt-16"
+          >
+            <div className="bg-blue-50 rounded-2xl p-8">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                Don't See Your Industry?
+              </h3>
+              <p className="text-lg text-slate-600 mb-6">
+                Our AI Voice Agent is highly customizable and can be trained for any business type. 
+                Contact us to discuss your specific industry needs.
+              </p>
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+                Contact Us for Custom Solutions
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* About Section (unchanged content) */}
+      {/* About Section */}
       <section id="about" className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* ...existing about content... */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center space-y-4 mb-16"
+          >
+            <Badge className="bg-blue-100 text-blue-700">
+              <Users className="w-4 h-4 mr-1" />
+              About Us
+            </Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">
+              About Synthify.ai
+            </h2>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto space-y-12">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-lg text-slate-600 leading-relaxed">
+                At Synthify.ai, we believe that small business owners should be able to focus on their passion: providing the best customer service and experience to their clients, regardless of how they connect. Customer satisfaction and speed of service are critical growth factors for businesses in every industry.
+              </p>
+              <p className="text-lg text-slate-600 leading-relaxed mt-4">
+                Through our AI service, we empower businesses to achieve this focus. We help you reduce lost revenue, increase operational efficiency, and eliminate the mundane, repetitive tasks that shackle your team. Most importantly, we give time back to the business owner so you can concentrate on what you're passionate about—growing your business.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Mission</h3>
+              <p className="text-lg text-slate-600 leading-relaxed">
+                Our mission is to empower small businesses with intelligent, automated solutions that increase efficiency and enhance the customer experience. Through AI workflow automation, we create custom solutions that enable you to add a workforce that runs 24/7. This allows you to carry out tasks with speed and accuracy while keeping expenses at bay and adding revenue streams from opportunities that were otherwise missed. We bring the true meaning of "Doing more with less" to life.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Purpose</h3>
+              <p className="text-lg text-slate-600 leading-relaxed">
+                We are purpose-built to give you peace of mind. Every missed call is a missed opportunity, and every overwhelmed employee is a risk to your business. Our service is designed to eliminate these worries by ensuring every phone call is answered promptly, professionally, and productively. We are here to help you capture every order, book every reservation, and qualify every lead, so your business never has to miss a beat.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">What We Do</h3>
+              <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                We build smart, connected workflows that save your business time, reduce errors, and increase efficiency.
+              </p>
+
+              <h4 className="text-xl font-semibold text-slate-900 mb-4">How It Works</h4>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card>
+                  <CardContent className="p-6">
+                    <h5 className="font-semibold text-slate-900 mb-2">Triggers</h5>
+                    <p className="text-slate-600">Start a workflow when a customer places an order, fills out a form, sends a message, or books online.</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-6">
+                    <h5 className="font-semibold text-slate-900 mb-2">Automated Tasks</h5>
+                    <p className="text-slate-600">Instantly send confirmations, update spreadsheets or CRMs, notify your team, generate receipts, and more.</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-6">
+                    <h5 className="font-semibold text-slate-900 mb-2">Smart Rules</h5>
+                    <p className="text-slate-600">Add if/then logic to handle approvals, prevent conflicts, upsell automatically, or guide customer decisions.</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-6">
+                    <h5 className="font-semibold text-slate-900 mb-2">Data Sync</h5>
+                    <p className="text-slate-600">Seamlessly connect and update your tools like Google Sheets, Stripe, QuickBooks, CRMs, calendars, and databases.</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-6">
+                    <h5 className="font-semibold text-slate-900 mb-2">AI Integration</h5>
+                    <p className="text-slate-600">Use AI to understand voice calls, extract key info from messages, summarize orders, or qualify leads—all automatically.</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Real-World Examples We Solve</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card>
+                  <CardContent className="p-6">
+                    <h5 className="font-semibold text-slate-900 mb-2">Order Taking</h5>
+                    <p className="text-slate-600">Capture food, product, or service orders via voice, chat, or web—and send them to your dashboard for smooth processing and pickup payment.</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-6">
+                    <h5 className="font-semibold text-slate-900 mb-2">Reservation & Booking</h5>
+                    <p className="text-slate-600">Let customers schedule appointments or tables directly into your calendar or system—with no manual back-and-forth.</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-6">
+                    <h5 className="font-semibold text-slate-900 mb-2">Lead Generation</h5>
+                    <p className="text-slate-600">Automatically capture new customer interest through voice calls, forms, or messages—and push them into your CRM or email list.</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
