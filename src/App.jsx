@@ -73,7 +73,7 @@ ${form.message}`
               <img
                 src={synthpifyLogo}
                 alt="Synthpify logo"
-                className="h-8 w-8 rounded-full object-cover"
+                className="h-20 w-20 rounded-full object-cover"
               />
               <span className="text-xl font-bold text-slate-900">Synthpify AI</span>
             </div>
@@ -1391,7 +1391,7 @@ ${form.message}`
                 <img
                   src={synthpifyLogo}
                   alt="Synthpify AI logo"
-                  className="h-16 w-16 rounded-full object-cover"
+                  className="h-20 w-20 rounded-full object-cover"
                 />
                 <span className="text-xl font-bold">Synthpify AI</span>
               </div>
