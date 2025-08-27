@@ -1343,7 +1343,7 @@ ${form.message}`
               Start AI Voice Assistant
             </button>
             <div className="w-full sm:w-auto">
-              <VapiChatLauncher />
+              
             </div>
           </div>
         </div>
