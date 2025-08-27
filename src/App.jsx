@@ -18,7 +18,7 @@ import orderManagementImage from './assets/order-management-dashboard.png'
 
 // ✅ NEW: import your logo
 import synthpifyLogo from './assets/synthpify_logo_small.jpeg'
-import synthpifyLogoTransparent from './assets/synthpify_logo_transparent.png'
+import synthpifyLogoTransparent from './assets/synthpify_logo_dark.png'
 
 // VAPI chotbot
 import VapiChatLauncher from './components/VapiChatLauncher'
