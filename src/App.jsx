@@ -1330,7 +1330,7 @@ ${form.message}`
             </div>
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">Talk to Us</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Start a secure chat with our AI assistant. Protected by reCAPTCHA and server rate limits.
+              Start a chat with our AI assistant. 
             </p>
           </div>
 

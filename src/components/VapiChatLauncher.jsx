@@ -1,34 +1,25 @@
-import React, { useEffect, useRef, useState } from "react";
+// src/components/VapiChatLauncher.jsx
+import React, { useRef, useState } from "react";
 
-const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY; // reCAPTCHA v3 site key
-const API_BASE = import.meta.env.VITE_API_BASE  
+const VAPI_WIDGET_SRC =
+  "https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js";
 
-// VAPI (from your snippet)
-const VAPI_WIDGET_SRC = "https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js";
-const VAPI_PUBLIC_KEY = import.meta.env.VITE_VAPI_PUBLIC_KEY  
-const VAPI_ASSISTANT_ID = import.meta.env.VITE_VAPI_ASSISTANT_ID  
+// Must exist on the **frontend** env (.env, .env.production etc)
+const VAPI_PUBLIC_KEY = import.meta.env.VITE_VAPI_PUBLIC_KEY;
+const VAPI_ASSISTANT_ID = import.meta.env.VITE_VAPI_ASSISTANT_ID;
 
 export default function VapiChatLauncher() {
-  const [allowed, setAllowed] = useState(false);
+  const [opened, setOpened] = useState(false);
   const [busy, setBusy] = useState(false);
   const chatRootRef = useRef(null);
 
-  // Load reCAPTCHA v3
-  useEffect(() => {
-    if (window.grecaptcha || !SITE_KEY) return;
-    const s = document.createElement("script");
-    s.src = `https://www.google.com/recaptcha/api.js?render=${SITE_KEY}`;
-    s.async = true;
-    document.head.appendChild(s);
-  }, []);
-
   const loadScriptOnce = (src) =>
     new Promise((resolve, reject) => {
-      // already loaded?
       const existing = Array.from(document.scripts).find((el) => el.src === src);
       if (existing) {
-        existing.addEventListener("load", () => resolve());
         if (existing.readyState === "complete") resolve();
+        existing.addEventListener("load", () => resolve());
+        existing.addEventListener("error", reject);
         return;
       }
       const s = document.createElement("script");
@@ -39,49 +30,39 @@ export default function VapiChatLauncher() {
       document.head.appendChild(s);
     });
 
-  const verifyCaptcha = async () => {
-    if (!window.grecaptcha) throw new Error("reCAPTCHA not available");
-    const token = await window.grecaptcha.execute(SITE_KEY, { action: "open_chat" });
-    const res = await fetch(`${API_BASE}/api/vapi/allow`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ token }),
-    });
-    if (!res.ok) throw new Error(await res.text());
-    const data = await res.json();
-    if (!data.ok) throw new Error("captcha failed");
-    return true;
-  };
-
   const mountVapiChat = async () => {
-    // Ensure the VAPI widget script is loaded (defines <vapi-widget/>)
+    if (!VAPI_PUBLIC_KEY || !VAPI_ASSISTANT_ID) {
+      console.error("Missing VAPI env vars on the FRONTEND build.");
+      throw new Error("Missing VAPI configuration");
+    }
     await loadScriptOnce(VAPI_WIDGET_SRC);
 
-    // clear any previous widget (avoid duplicates)
     if (chatRootRef.current) chatRootRef.current.innerHTML = "";
 
-    // Create the custom element with your IDs
     const widget = document.createElement("vapi-widget");
-    widget.setAttribute("assistant-id", VAPI_ASSISTANT_ID);
     widget.setAttribute("public-key", VAPI_PUBLIC_KEY);
+    widget.setAttribute("assistant-id", VAPI_ASSISTANT_ID);
 
-    // OPTIONAL: you can set extra attributes supported by VAPI here, e.g.:
-    // widget.setAttribute("title", "Synthpify AI");
-    // widget.setAttribute("position", "inline");
+    // Keep it INLINE chat so it never floats over the voice button
+    widget.setAttribute("mode", "chat");
+    widget.setAttribute("position", "inline");
+    widget.setAttribute("theme", "dark");
+    widget.setAttribute("title", "TALK WITH AI");
+    widget.setAttribute("chat-first-message", "Hey, How can I help you today?");
+    widget.setAttribute("chat-placeholder", "Type your message...");
 
-    chatRootRef.current?.appendChild(widget);
+    chatRootRef.current.appendChild(widget);
   };
 
   const handleOpenChat = async () => {
     try {
       setBusy(true);
-      await verifyCaptcha();
-      setAllowed(true);
-      setTimeout(mountVapiChat, 0); // mount after container renders
-    } catch (err) {
-      console.error(err);
+      setOpened(true);
+      await mountVapiChat();
+    } catch (e) {
+      console.error(e);
       alert("Could not open chat. Please try again.");
+      setOpened(false);
     } finally {
       setBusy(false);
     }
@@ -89,10 +70,10 @@ export default function VapiChatLauncher() {
 
   return (
     <div className="w-full">
-      {!allowed ? (
+      {!opened ? (
         <button
           onClick={handleOpenChat}
-          disabled={busy || !SITE_KEY}
+          disabled={busy}
           className="w-full sm:w-auto inline-flex items-center justify-center rounded-md bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-base"
         >
           {busy ? "Starting…" : "Chat with Synthpify AI"}
