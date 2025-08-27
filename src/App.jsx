@@ -18,7 +18,7 @@ import orderManagementImage from './assets/order-management-dashboard.png'
 
 // ✅ NEW: import your logo
 import synthpifyLogo from './assets/synthpify_logo_small.jpeg'
-import synthpifyLogoTransparent from './assets/synthpify_logo_transparent.png'
+
 
 // VAPI chotbot
 import VapiChatLauncher from './components/VapiChatLauncher'
@@ -72,7 +72,7 @@ ${form.message}`
             <div className="flex items-center space-x-2">
               {/* ✅ Replaced phone icon + name */}
               <img
-                src={synthpifyLogoTransparent}
+                src={synthpifyLogo}
                 alt="Synthpify logo"
                 className="h-16 w-auto object-contain"
               />
