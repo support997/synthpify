@@ -18,7 +18,6 @@ import orderManagementImage from './assets/order-management-dashboard.png'
 
 // ✅ NEW: import your logo
 import synthpifyLogo from './assets/synthpify_logo_small.jpeg'
-import synthpifyLogoTransparent from './assets/synthpify_logo_dark.png'
 
 // VAPI chotbot
 import VapiChatLauncher from './components/VapiChatLauncher'
@@ -76,7 +75,6 @@ ${form.message}`
                 alt="Synthpify logo"
                 className="h-16 w-auto object-contain"
               />
-              <span className="text-xl font-bold text-slate-900">Synthpify AI</span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
               <a href="#home" className="text-slate-700 hover:text-blue-600 transition-colors">Home</a>
@@ -1389,11 +1387,7 @@ ${form.message}`
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 {/* ✅ Replaced phone icon + name in footer */}
-                <img
-                  src={synthpifyLogoTransparent}
-                  alt="Synthpify AI logo"
-                  className="h-16 w-auto object-contain"
-                />
+                
                 <span className="text-xl font-bold">Synthpify AI</span>
               </div>
               <p className="text-slate-400">
