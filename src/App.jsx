@@ -1285,7 +1285,7 @@ ${form.message}`
             <div className="pt-4 text-slate-600 text-sm">
               <p>
                 If you have questions about these terms or our privacy practices, please contact us at
-                {' '}<a href="mailto:privacy@synthpify.ai" className="text-blue-600 underline">privacy@synthpify.ai</a>.
+                {' '}<a href="mailto:privacy@synthpify.ai" className="text-blue-600 underline">support@synthpify.ai</a>
               </p>
             </div>
 
