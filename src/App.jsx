@@ -19,7 +19,6 @@ import orderManagementImage from './assets/order-management-dashboard.png'
 // ✅ NEW: import your logo
 import synthpifyLogo from './assets/synthpify_logo_small.jpeg'
 
-
 // VAPI chotbot
 import VapiChatLauncher from './components/VapiChatLauncher'
 
@@ -73,9 +72,10 @@ ${form.message}`
               {/* ✅ Replaced phone icon + name */}
               <img
                 src={synthpifyLogo}
-                alt="Synthpify"
-                className="h-16 w-auto object-contain"
+                alt="Synthpify logo"
+                className="h-8 w-8 rounded-full object-cover"
               />
+              <span className="text-xl font-bold text-slate-900">Synthpify AI</span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
               <a href="#home" className="text-slate-700 hover:text-blue-600 transition-colors">Home</a>
@@ -1285,7 +1285,7 @@ ${form.message}`
             <div className="pt-4 text-slate-600 text-sm">
               <p>
                 If you have questions about these terms or our privacy practices, please contact us at
-                {' '}<a href="mailto:privacy@synthpify.ai" className="text-blue-600 underline">support@synthpify.ai</a>
+                {' '}<a href="mailto:privacy@synthpify.ai" className="text-blue-600 underline">privacy@synthpify.ai</a>.
               </p>
             </div>
 
@@ -1315,7 +1315,7 @@ ${form.message}`
             <p><strong>Access:</strong> Administrative access to our infrastructure is restricted to authorized personnel.</p>
             <p><strong>Privacy:</strong> We act as a data processor; clients remain data controllers. We do not sell personal data.</p>
             <p><strong>Incidents:</strong> If we become aware of a data incident impacting clients, we will notify affected clients without undue delay as required by law.</p>
-            <p><strong>Contact:</strong> For security questions or reports, email <a href="mailto:support@synthify.ai" className="text-blue-600 underline">support@synthify.ai</a>.</p>
+            <p><strong>Contact:</strong> For security questions or reports, email <a href="mailto:security@synthify.ai" className="text-blue-600 underline">security@synthify.ai</a>.</p>
           </div>
         </div>
       </section>
@@ -1387,12 +1387,12 @@ ${form.message}`
           <div className="grid md:grid-cols-4 gap-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
-                {/* ✅ Replaced phone icon + name in footer  */}
+                {/* ✅ Replaced phone icon + name in footer */}
                 <img
-                src={synthpifyLogo}
-                alt="Synthpify logo"
-                className="h-28 w-28 rounded-full object-contain p-2 bg-white/5"
-              />
+                  src={synthpifyLogo}
+                  alt="Synthpify AI logo"
+                  className="h-8 w-8 rounded-full object-cover"
+                />
                 <span className="text-xl font-bold">Synthpify AI</span>
               </div>
               <p className="text-slate-400">
