@@ -18,7 +18,7 @@ import orderManagementImage from './assets/order-management-dashboard.png'
 
 // ✅ NEW: import your logo
 import synthpifyLogo from './assets/synthpify_logo_small.jpeg'
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 
 // VAPI chotbot
 //import VapiChatLauncher from './components/VapiChatLauncher'
