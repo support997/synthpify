@@ -1391,7 +1391,7 @@ ${form.message}`
                 <img
                 src={synthpifyLogo}
                 alt="Synthpify logo"
-                className="h-28 w-28 rounded-full object-cover"
+                className="h-28 w-28 rounded-full object-contain p-2 bg-white/5"
               />
                 <span className="text-xl font-bold">Synthpify AI</span>
               </div>
