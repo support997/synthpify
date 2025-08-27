@@ -1315,7 +1315,7 @@ ${form.message}`
             <p><strong>Access:</strong> Administrative access to our infrastructure is restricted to authorized personnel.</p>
             <p><strong>Privacy:</strong> We act as a data processor; clients remain data controllers. We do not sell personal data.</p>
             <p><strong>Incidents:</strong> If we become aware of a data incident impacting clients, we will notify affected clients without undue delay as required by law.</p>
-            <p><strong>Contact:</strong> For security questions or reports, email <a href="mailto:security@synthify.ai" className="text-blue-600 underline">security@synthify.ai</a>.</p>
+            <p><strong>Contact:</strong> For security questions or reports, email <a href="mailto:support@synthify.ai" className="text-blue-600 underline">support@synthify.ai</a>.</p>
           </div>
         </div>
       </section>
