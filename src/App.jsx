@@ -73,7 +73,7 @@ ${form.message}`
               {/* ✅ Replaced phone icon + name */}
               <img
                 src={synthpifyLogo}
-                alt="Synthpify logo"
+                alt="Synthpify"
                 className="h-16 w-auto object-contain"
               />
             </div>
@@ -1388,7 +1388,11 @@ ${form.message}`
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 {/* ✅ Replaced phone icon + name in footer */}
-                
+                <img
+                src={synthpifyLogo}
+                alt="Synthpify logo"
+                className="h-18 h-18 object-contain"
+              />
                 <span className="text-xl font-bold">Synthpify AI</span>
               </div>
               <p className="text-slate-400">
