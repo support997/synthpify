@@ -1387,11 +1387,11 @@ ${form.message}`
           <div className="grid md:grid-cols-4 gap-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
-                {/* ✅ Replaced phone icon + name in footer */}
+                {/* ✅ Replaced phone icon + name in footer  */}
                 <img
                 src={synthpifyLogo}
                 alt="Synthpify logo"
-                className="h-18 w-18 rounded-full object-cover"
+                className="h-20 w-20 rounded-full object-cover"
               />
                 <span className="text-xl font-bold">Synthpify AI</span>
               </div>
