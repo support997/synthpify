@@ -20,7 +20,7 @@ import orderManagementImage from './assets/order-management-dashboard.png'
 import synthpifyLogo from './assets/synthpify_logo_small.jpeg'
 
 // VAPI chotbot
-import VapiChatLauncher from './components/VapiChatLauncher'
+//import VapiChatLauncher from './components/VapiChatLauncher'
 
 const BRAND = 'Synthpify.ai' // <- change here if needed
 const LAST_UPDATED = 'August 13, 2025'
