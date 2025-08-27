@@ -63,7 +63,8 @@ ${form.message}`
     }, 600)
   }
 
-  function InlineVapiChat() {
+  // === Inline VAPI Chat (robust) ===
+function InlineVapiChat() {
   const rootRef = useRef(null);
   const [open, setOpen] = useState(false);
 
@@ -75,7 +76,8 @@ ${form.message}`
     new Promise((resolve, reject) => {
       const existing = Array.from(document.scripts).find(s => s.src === src);
       if (existing) {
-        if (existing.readyState === 'complete') resolve();
+        // If already there, wait until it’s ready
+        if (existing.readyState === 'complete') return resolve();
         existing.addEventListener('load', () => resolve());
         existing.addEventListener('error', reject);
         return;
@@ -89,38 +91,40 @@ ${form.message}`
     });
 
   useEffect(() => {
-    if (!open) return;
+    if (!open || !rootRef.current) return;
     if (!PUBLIC_KEY || !ASSISTANT_ID) {
       console.error('VAPI public key / assistant ID missing on FRONTEND build.');
       return;
     }
 
     let cancelled = false;
+
+    // 1) Insert the custom element markup first
+    rootRef.current.innerHTML = `
+      <vapi-widget
+        public-key="${PUBLIC_KEY}"
+        assistant-id="${ASSISTANT_ID}"
+        mode="chat"
+        position="inline"
+        theme="dark"
+        title="Chat with Synthpify AI"
+        chat-first-message="Hey, how can I help you today?"
+        chat-placeholder="Type your message..."
+        style="display:block;width:100%;min-height:520px"
+      ></vapi-widget>`;
+
+    // 2) Load the widget script once, then wait for definition
     (async () => {
       await loadScriptOnce(WIDGET_SRC);
-      if (cancelled || !rootRef.current) return;
-
-      // Clear any previous instance
-      rootRef.current.innerHTML = '';
-
-      // Create the widget element
-      const w = document.createElement('vapi-widget');
-      w.setAttribute('public-key', PUBLIC_KEY);
-      w.setAttribute('assistant-id', ASSISTANT_ID);
-
-      // Stay in text chat and INLINE so it won't grab mic or overlap voice UI
-      w.setAttribute('mode', 'chat');
-      w.setAttribute('position', 'inline');
-
-      // (Optional) styling/UX
-      w.setAttribute('theme', 'dark');
-      w.setAttribute('title', 'Chat with Synthpify AI');
-      w.setAttribute('chat-first-message', 'Hey, how can I help you today?');
-      w.setAttribute('chat-placeholder', 'Type your message...');
-
-      rootRef.current.appendChild(w);
+      if (cancelled) return;
+      if (window.customElements?.whenDefined) {
+        await customElements.whenDefined('vapi-widget');
+      }
+      // Optional: sanity log to confirm it’s upgraded
+      console.log('✅ vapi-widget defined and ready');
     })();
 
+    // 3) Cleanup if we unmount/close
     return () => {
       cancelled = true;
       if (rootRef.current) rootRef.current.innerHTML = '';
@@ -147,6 +151,7 @@ ${form.message}`
     </div>
   );
 }
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
