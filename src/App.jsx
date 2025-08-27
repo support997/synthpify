@@ -18,6 +18,7 @@ import orderManagementImage from './assets/order-management-dashboard.png'
 
 // ✅ NEW: import your logo
 import synthpifyLogo from './assets/synthpify_logo_small.jpeg'
+import React, { useEffect, useRef, useState } from 'react';
 
 // VAPI chotbot
 //import VapiChatLauncher from './components/VapiChatLauncher'
@@ -61,6 +62,91 @@ ${form.message}`
       setForm({ name: '', email: '', message: '' })
     }, 600)
   }
+
+  function InlineVapiChat() {
+  const rootRef = useRef(null);
+  const [open, setOpen] = useState(false);
+
+  const PUBLIC_KEY = import.meta.env.VITE_VAPI_PUBLIC_KEY;
+  const ASSISTANT_ID = import.meta.env.VITE_VAPI_ASSISTANT_ID;
+  const WIDGET_SRC = 'https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js';
+
+  const loadScriptOnce = (src) =>
+    new Promise((resolve, reject) => {
+      const existing = Array.from(document.scripts).find(s => s.src === src);
+      if (existing) {
+        if (existing.readyState === 'complete') resolve();
+        existing.addEventListener('load', () => resolve());
+        existing.addEventListener('error', reject);
+        return;
+      }
+      const s = document.createElement('script');
+      s.src = src;
+      s.async = true;
+      s.onload = () => resolve();
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+
+  useEffect(() => {
+    if (!open) return;
+    if (!PUBLIC_KEY || !ASSISTANT_ID) {
+      console.error('VAPI public key / assistant ID missing on FRONTEND build.');
+      return;
+    }
+
+    let cancelled = false;
+    (async () => {
+      await loadScriptOnce(WIDGET_SRC);
+      if (cancelled || !rootRef.current) return;
+
+      // Clear any previous instance
+      rootRef.current.innerHTML = '';
+
+      // Create the widget element
+      const w = document.createElement('vapi-widget');
+      w.setAttribute('public-key', PUBLIC_KEY);
+      w.setAttribute('assistant-id', ASSISTANT_ID);
+
+      // Stay in text chat and INLINE so it won't grab mic or overlap voice UI
+      w.setAttribute('mode', 'chat');
+      w.setAttribute('position', 'inline');
+
+      // (Optional) styling/UX
+      w.setAttribute('theme', 'dark');
+      w.setAttribute('title', 'Chat with Synthpify AI');
+      w.setAttribute('chat-first-message', 'Hey, how can I help you today?');
+      w.setAttribute('chat-placeholder', 'Type your message...');
+
+      rootRef.current.appendChild(w);
+    })();
+
+    return () => {
+      cancelled = true;
+      if (rootRef.current) rootRef.current.innerHTML = '';
+    };
+  }, [open, PUBLIC_KEY, ASSISTANT_ID]);
+
+  return (
+    <div className="w-full">
+      {!open ? (
+        <button
+          onClick={() => setOpen(true)}
+          className="w-full sm:w-auto inline-flex items-center justify-center rounded-md bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-base"
+        >
+          Chat with Synthpify AI
+        </button>
+      ) : (
+        <div className="mt-6">
+          <div
+            ref={rootRef}
+            className="w-full rounded-xl border border-slate-200 bg-white p-2 min-h-[520px]"
+          />
+        </div>
+      )}
+    </div>
+  );
+}
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -1343,7 +1429,7 @@ ${form.message}`
               Start AI Voice Assistant
             </button>
             <div className="w-full sm:w-auto">
-              
+                <InlineVapiChat />
             </div>
           </div>
         </div>
