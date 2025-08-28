@@ -63,77 +63,61 @@ ${form.message}`
     }, 600)
   }
 
-  // === Inline VAPI Chat (robust) ===
-function InlineVapiChat() {
-  const [open, setOpen] = useState(false);
-  const [ready, setReady] = useState(false);
-
-  const PUBLIC_KEY = import.meta.env.VITE_VAPI_PUBLIC_KEY;
-  const ASSISTANT_ID = import.meta.env.VITE_VAPI_ASSISTANT_ID;
-
-  // try jsDelivr first, then unpkg
-  const SOURCES = [
-    'https://cdn.jsdelivr.net/npm/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js',
-    'https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js',
-  ];
-
-  const loadWidgetOnce = () =>
-    new Promise(async (resolve, reject) => {
-      // already defined?
-      if (window.customElements?.get?.('vapi-widget')) return resolve();
-
-      // already loading?
-      const existing = Array.from(document.scripts).find(s =>
-        s.src.includes('@vapi-ai/client-sdk-react') && s.src.includes('widget.umd.js')
-      );
-      if (existing) {
-        existing.addEventListener('load', () => resolve());
-        existing.addEventListener('error', reject);
-        return;
-      }
-
-      for (const src of SOURCES) {
-        try {
-          await new Promise((res, rej) => {
-            const s = document.createElement('script');
-            s.src = src;
-            s.async = true;
-            s.onload = () => res();
-            s.onerror = () => rej(new Error('failed:' + src));
-            document.head.appendChild(s);
-          });
-          break; // loaded successfully
-        } catch {
-          // try next CDN
-        }
-      }
-
-      if (!window.customElements?.get?.('vapi-widget')) {
-        return reject(new Error('vapi-widget script could not be loaded'));
-      }
-      resolve();
-    });
-
+ // === n8n Chat Embed (popup bubble; no reCAPTCHA; safe with voice) ===
+function N8nChatEmbed() {
   useEffect(() => {
-    if (!open) return;
-    if (!PUBLIC_KEY || !ASSISTANT_ID) {
-      console.error('VAPI public key / assistant ID missing on FRONTEND build.');
-      return;
+    // 1) Load n8n chat CSS once
+    if (!document.getElementById('n8n-chat-css')) {
+      const link = document.createElement('link');
+      link.id = 'n8n-chat-css';
+      link.rel = 'stylesheet';
+      link.href = 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css';
+      document.head.appendChild(link);
     }
-    let cancelled = false;
+
+    // 2) Load the module and create the chat bubble
+    let cleanup = () => {};
     (async () => {
       try {
-        await loadWidgetOnce();
-        if (window.customElements?.whenDefined) {
-          await customElements.whenDefined('vapi-widget');
-        }
-        if (!cancelled) setReady(true);
+        const { createChat } = await import('https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js');
+
+        // ⚠️ IMPORTANT: remove the stray "Y" in your URL
+        const instance = createChat({
+          webhookUrl: 'https://n8n-nu6j.onrender.com/webhook/fa608d72-de1f-4d49-9b6e-36d20e4d61d1/chat',
+          // Optional tweaks:
+          // theme: 'dark',
+          // defaultOpen: false,
+          // initialMessages: ['Hi! How can I help?'],
+        });
+
+        // 3) Push bubble to bottom-left so it doesn't collide with your voice button
+        const style = document.createElement('style');
+        style.id = 'n8n-chat-left-pos';
+        style.textContent = `
+          .n8n-chat .n8n-chat-floating-button { left: 24px; right: auto; }
+          .n8n-chat .n8n-chat-modal          { left: 24px; right: auto; }
+        `;
+        document.head.appendChild(style);
+
+        // Best-effort cleanup
+        cleanup = () => {
+          document.getElementById('n8n-chat-left-pos')?.remove();
+          // Remove the widget container if present
+          document.querySelector('.n8n-chat')?.remove();
+          // If the SDK exposes a destroy method in future:
+          try { instance?.destroy?.(); } catch {}
+        };
       } catch (e) {
-        console.error('Failed to load vapi-widget:', e);
+        console.error('Failed to load n8n chat widget:', e);
       }
     })();
-    return () => { cancelled = true; };
-  }, [open, PUBLIC_KEY, ASSISTANT_ID]);
+
+    return () => cleanup();
+  }, []);
+
+  // No visible JSX needed; the widget injects its own FAB/modal.
+  return null;
+}
 
   return (
     <div className="w-full">
@@ -1454,7 +1438,7 @@ function InlineVapiChat() {
               Start AI Voice Assistant
             </button>
             <div className="w-full sm:w-auto">
-                <InlineVapiChat />
+                <N8nChatEmbed />
             </div>
           </div>
         </div>
