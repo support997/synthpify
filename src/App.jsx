@@ -119,42 +119,6 @@ function N8nChatEmbed() {
   return null;
 }
 
-  return (
-    <div className="w-full">
-      {!open ? (
-        <button
-          onClick={() => setOpen(true)}
-          className="w-full sm:w-auto inline-flex items-center justify-center rounded-md bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-base"
-        >
-          Chat with Synthpify AI
-        </button>
-      ) : (
-        <div className="mt-6">
-          <div className="w-full rounded-xl border border-slate-200 bg-white p-2 min-h-[520px] flex items-stretch">
-            {!ready ? (
-              <div className="w-full flex items-center justify-center text-slate-500">
-                Loading chat…
-              </div>
-            ) : (
-              <vapi-widget
-                public-key={PUBLIC_KEY}
-                assistant-id={ASSISTANT_ID}
-                mode="chat"
-                position="inline"
-                theme="dark"
-                title="Chat with Synthpify AI"
-                chat-first-message="Hey, how can I help you today?"
-                chat-placeholder="Type your message..."
-                style={{ display: 'block', width: '100%', minHeight: '520px' }}
-              />
-            )}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
 
 
   return (
