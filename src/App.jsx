@@ -65,70 +65,74 @@ ${form.message}`
 
   // === Inline VAPI Chat (robust) ===
 function InlineVapiChat() {
-  const rootRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const [ready, setReady] = useState(false);
 
   const PUBLIC_KEY = import.meta.env.VITE_VAPI_PUBLIC_KEY;
   const ASSISTANT_ID = import.meta.env.VITE_VAPI_ASSISTANT_ID;
-  const WIDGET_SRC = 'https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js';
 
-  const loadScriptOnce = (src) =>
-    new Promise((resolve, reject) => {
-      const existing = Array.from(document.scripts).find(s => s.src === src);
+  // try jsDelivr first, then unpkg
+  const SOURCES = [
+    'https://cdn.jsdelivr.net/npm/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js',
+    'https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js',
+  ];
+
+  const loadWidgetOnce = () =>
+    new Promise(async (resolve, reject) => {
+      // already defined?
+      if (window.customElements?.get?.('vapi-widget')) return resolve();
+
+      // already loading?
+      const existing = Array.from(document.scripts).find(s =>
+        s.src.includes('@vapi-ai/client-sdk-react') && s.src.includes('widget.umd.js')
+      );
       if (existing) {
-        // If already there, wait until it’s ready
-        if (existing.readyState === 'complete') return resolve();
         existing.addEventListener('load', () => resolve());
         existing.addEventListener('error', reject);
         return;
       }
-      const s = document.createElement('script');
-      s.src = src;
-      s.async = true;
-      s.onload = () => resolve();
-      s.onerror = reject;
-      document.head.appendChild(s);
+
+      for (const src of SOURCES) {
+        try {
+          await new Promise((res, rej) => {
+            const s = document.createElement('script');
+            s.src = src;
+            s.async = true;
+            s.onload = () => res();
+            s.onerror = () => rej(new Error('failed:' + src));
+            document.head.appendChild(s);
+          });
+          break; // loaded successfully
+        } catch {
+          // try next CDN
+        }
+      }
+
+      if (!window.customElements?.get?.('vapi-widget')) {
+        return reject(new Error('vapi-widget script could not be loaded'));
+      }
+      resolve();
     });
 
   useEffect(() => {
-    if (!open || !rootRef.current) return;
+    if (!open) return;
     if (!PUBLIC_KEY || !ASSISTANT_ID) {
       console.error('VAPI public key / assistant ID missing on FRONTEND build.');
       return;
     }
-
     let cancelled = false;
-
-    // 1) Insert the custom element markup first
-    rootRef.current.innerHTML = `
-      <vapi-widget
-        public-key="${PUBLIC_KEY}"
-        assistant-id="${ASSISTANT_ID}"
-        mode="chat"
-        position="inline"
-        theme="dark"
-        title="Chat with Synthpify AI"
-        chat-first-message="Hey, how can I help you today?"
-        chat-placeholder="Type your message..."
-        style="display:block;width:100%;min-height:520px"
-      ></vapi-widget>`;
-
-    // 2) Load the widget script once, then wait for definition
     (async () => {
-      await loadScriptOnce(WIDGET_SRC);
-      if (cancelled) return;
-      if (window.customElements?.whenDefined) {
-        await customElements.whenDefined('vapi-widget');
+      try {
+        await loadWidgetOnce();
+        if (window.customElements?.whenDefined) {
+          await customElements.whenDefined('vapi-widget');
+        }
+        if (!cancelled) setReady(true);
+      } catch (e) {
+        console.error('Failed to load vapi-widget:', e);
       }
-      // Optional: sanity log to confirm it’s upgraded
-      console.log('✅ vapi-widget defined and ready');
     })();
-
-    // 3) Cleanup if we unmount/close
-    return () => {
-      cancelled = true;
-      if (rootRef.current) rootRef.current.innerHTML = '';
-    };
+    return () => { cancelled = true; };
   }, [open, PUBLIC_KEY, ASSISTANT_ID]);
 
   return (
@@ -142,15 +146,31 @@ function InlineVapiChat() {
         </button>
       ) : (
         <div className="mt-6">
-          <div
-            ref={rootRef}
-            className="w-full rounded-xl border border-slate-200 bg-white p-2 min-h-[520px]"
-          />
+          <div className="w-full rounded-xl border border-slate-200 bg-white p-2 min-h-[520px] flex items-stretch">
+            {!ready ? (
+              <div className="w-full flex items-center justify-center text-slate-500">
+                Loading chat…
+              </div>
+            ) : (
+              <vapi-widget
+                public-key={PUBLIC_KEY}
+                assistant-id={ASSISTANT_ID}
+                mode="chat"
+                position="inline"
+                theme="dark"
+                title="Chat with Synthpify AI"
+                chat-first-message="Hey, how can I help you today?"
+                chat-placeholder="Type your message..."
+                style={{ display: 'block', width: '100%', minHeight: '520px' }}
+              />
+            )}
+          </div>
         </div>
       )}
     </div>
   );
 }
+
 
 
   return (
