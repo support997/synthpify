@@ -63,10 +63,9 @@ ${form.message}`
     }, 600)
   }
 
- // === n8n Chat Embed (popup bubble; no reCAPTCHA; safe with voice) ===
-function N8nChatEmbed() {
+ function N8nChatEmbed() {
   useEffect(() => {
-    // 1) Load n8n chat CSS once
+    // CSS for n8n widget
     if (!document.getElementById('n8n-chat-css')) {
       const link = document.createElement('link');
       link.id = 'n8n-chat-css';
@@ -75,49 +74,68 @@ function N8nChatEmbed() {
       document.head.appendChild(link);
     }
 
-    // 2) Load the module and create the chat bubble
-    let cleanup = () => {};
-    (async () => {
-      try {
-        const { createChat } = await import('https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js');
+    // Bottom-left container
+    let container = document.getElementById('n8n-chat');
+    if (!container) {
+      container = document.createElement('div');
+      container.id = 'n8n-chat';
+      document.body.appendChild(container);
+    }
+    Object.assign(container.style, {
+      position: 'fixed',
+      left: '24px',
+      right: 'auto',
+      bottom: '24px',
+      zIndex: '2147483647',
+    });
 
-        // ⚠️ IMPORTANT: remove the stray "Y" in your URL
-        const instance = createChat({
-          webhookUrl: 'https://n8n-nu6j.onrender.com/webhook/fa608d72-de1f-4d49-9b6e-36d20e4d61d1/chat',
-          // Optional tweaks:
-          // theme: 'dark',
-          // defaultOpen: false,
-          // initialMessages: ['Hi! How can I help?'],
-        });
+    // Style + position overrides (match voice button color)
+    const STYLE_ID = 'n8n-chat-left-css';
+    document.getElementById(STYLE_ID)?.remove();
+    const style = document.createElement('style');
+    style.id = STYLE_ID;
+    style.textContent = `
+      /* place bubble/window on the left */
+      #n8n-chat .n8n-chat-floating-button { left: 0; right: auto; }
+      #n8n-chat .n8n-chat-modal          { left: 0; right: auto; }
 
-        // 3) Push bubble to bottom-left so it doesn't collide with your voice button
-        const style = document.createElement('style');
-        style.id = 'n8n-chat-left-pos';
-        style.textContent = `
-          .n8n-chat .n8n-chat-floating-button { left: 24px; right: auto; }
-          .n8n-chat .n8n-chat-modal          { left: 24px; right: auto; }
-        `;
-        document.head.appendChild(style);
-
-        // Best-effort cleanup
-        cleanup = () => {
-          document.getElementById('n8n-chat-left-pos')?.remove();
-          // Remove the widget container if present
-          document.querySelector('.n8n-chat')?.remove();
-          // If the SDK exposes a destroy method in future:
-          try { instance?.destroy?.(); } catch {}
-        };
-      } catch (e) {
-        console.error('Failed to load n8n chat widget:', e);
+      /* color match to "Talk to Assistant" */
+      #n8n-chat .n8n-chat-floating-button {
+        background: #10B981 !important;           /* emerald-600 */
+        color: #ffffff !important;
+        border-radius: 9999px !important;         /* pill shape, like your button */
+        box-shadow: 0 10px 15px -3px rgba(16,185,129,.3),
+                    0 4px 6px -2px rgba(16,185,129,.2) !important;
       }
-    })();
+      #n8n-chat .n8n-chat-floating-button:hover {
+        background: #059669 !important;           /* emerald-700 */
+      }
+      #n8n-chat .n8n-chat-floating-button svg {
+        color: #ffffff !important; fill: currentColor !important;
+      }
+    `;
+    document.head.appendChild(style);
 
-    return () => cleanup();
+    // Load & mount n8n
+    (async () => {
+      const { createChat } = await import('https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js');
+      const inst = createChat({
+        webhookUrl: 'https://n8n-nu6j.onrender.com/webhook/fa608d72-de1f-4d49-9b6e-36d20e4d61d1/chat',
+        target: '#n8n-chat',
+        mode: 'window',
+      });
+
+      // optional helpers for your "Chat with our AI" button
+      window.openN8nChat = () => (inst?.open ? inst.open() :
+        document.querySelector('#n8n-chat .n8n-chat-floating-button')?.click());
+      window.closeN8nChat = () => (inst?.close ? inst.close() :
+        document.querySelector('#n8n-chat .n8n-chat-floating-button')?.click());
+    })();
   }, []);
 
-  // No visible JSX needed; the widget injects its own FAB/modal.
   return null;
 }
+
 
 
 
@@ -1381,30 +1399,23 @@ function N8nChatEmbed() {
 
       {/* Contact Section (NEW) */}
       <section id="contact" className="py-20 bg-slate-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header (kept from your page) */}
-          <div className="text-center space-y-4 mb-10">
-            <div className="inline-flex items-center rounded-full bg-blue-100 text-blue-700 px-3 py-1 text-sm font-medium">
-              Contact
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">Talk to Us</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Start a chat with our AI assistant. 
-            </p>
-          </div>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            className="bg-blue-600 hover:bg-blue-700 text-white rounded-md px-6 py-3 text-base"
+            onClick={() => vapiRef.current?.startCall()}
+          >
+            Start AI Voice Assistant
+          </button>
 
-          {/* Button row with secured VAPI chat */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              className="bg-blue-600 hover:bg-blue-700 text-white rounded-md px-6 py-3 text-base"
-              onClick={() => vapiRef.current?.startCall()}
-            >
-              Start AI Voice Assistant
-            </button>
-            <div className="w-full sm:w-auto">
-                <N8nChatEmbed />
-            </div>
-          </div>
+          <button
+            className="bg-slate-900 hover:bg-slate-800 text-white rounded-md px-6 py-3 text-base"
+            onClick={() => (window.openN8nChat ? window.openN8nChat() : alert('Chat is loading…'))}
+          >
+            Chat with our AI
+          </button>
+
+          {/* Mount the n8n bubble once; it renders at bottom-left */}
+          <N8nChatEmbed />
         </div>
       </section>
 
