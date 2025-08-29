@@ -1337,7 +1337,7 @@ ${form.message}`
             import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
             createChat({
-              webhookUrl: 'YOUR_PRODUCTION_WEBHOOK_URL'
+              webhookUrl: 'https://n8n-nu6j.onrender.com/webhook/fa608d72-de1f-4d49-9b6e-36d20e4d61d1/chat'
             });
           </script>
          
