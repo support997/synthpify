@@ -38,13 +38,13 @@ export default function N8nChatEmbed() {
           showWelcomeScreen: false,
           defaultLanguage: 'en',
           initialMessages: [
-            'Synthpify',
-            'We put in the hard work so you can focus on what matters most.',
+            'Hi there! 👋'
+           
           ],
           i18n: {
             en: {
-              title: 'Hi there! 👋',
-              subtitle: "Start a chat. We're here to help you 24/7.",
+              title: 'Synthpify AI',
+              subtitle: "We put in the hard work so you can focus on what matters most.",
               footer: '',
               getStarted: 'New Conversation',
               inputPlaceholder: 'Type your question..',
