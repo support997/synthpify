@@ -48,7 +48,7 @@ function N8nChatEmbed() {
           branding: {
             logo: 'https://i.postimg.cc/GpdryNWY/synthpify-logo-dark.png',
             name: 'Synthpify',
-            welcomeText: 'Hi 👋, how can we help?',
+            welcomeText: 'Hi 👋, how can we help? ',
             responseTimeText: 'We will assign an agent for you. Give us a sec'
           }
         });
