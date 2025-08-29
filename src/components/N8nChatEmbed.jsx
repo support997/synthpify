@@ -38,8 +38,8 @@ export default function N8nChatEmbed() {
           showWelcomeScreen: false,
           defaultLanguage: 'en',
           initialMessages: [
-            'Hi there! 👋',
-            'My name is Nathan. How can I assist you today?',
+            'Synthpify',
+            'We put in the hard work so you can focus on what matters most.',
           ],
           i18n: {
             en: {
