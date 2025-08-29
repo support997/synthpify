@@ -71,7 +71,15 @@ ${form.message}`
       window.openN8nChat = () => { window.__pendingOpenN8n = true; };
     }
 
-    // --- 1) Ensure n8n CSS is present ---
+function N8nChatEmbed() {
+  useEffect(() => {
+    // 0) Early stub so clicks before load get queued
+    if (!window.openN8nChat) {
+      window.__pendingOpenN8n = false;
+      window.openN8nChat = () => { window.__pendingOpenN8n = true; };
+    }
+
+    // 1) Ensure n8n CSS
     if (!document.getElementById('n8n-chat-css')) {
       const link = document.createElement('link');
       link.id = 'n8n-chat-css';
@@ -80,49 +88,66 @@ ${form.message}`
       document.head.appendChild(link);
     }
 
-    // --- 2) Global overrides: put bubble/window on the LEFT + tint it ---
-    document.getElementById('n8n-chat-override')?.remove();
-    const style = document.createElement('style');
-    style.id = 'n8n-chat-override';
-    style.textContent = `
-      .n8n-chat .n8n-chat-floating-button { left: 24px !important; right: auto !important; bottom: 24px !important; }
-      .n8n-chat .n8n-chat-modal          { left: 24px !important; right: auto !important; bottom: 92px !important; }
+    // 2) Create a fixed bottom-left container we fully control
+    let container = document.getElementById('n8n-left-chat');
+    if (!container) {
+      container = document.createElement('div');
+      container.id = 'n8n-left-chat';
+      document.body.appendChild(container);
+    }
+    Object.assign(container.style, {
+      position: 'fixed',
+      left: '24px',
+      bottom: '24px',
+      right: 'auto',
+      zIndex: '2147483647'
+    });
 
-      /* Emerald gradient to match your voice FAB look */
-      .n8n-chat .n8n-chat-floating-button {
+    // 3) Left position + color overrides scoped to our container
+    const STYLE_ID = 'n8n-left-chat-css';
+    document.getElementById(STYLE_ID)?.remove();
+    const style = document.createElement('style');
+    style.id = STYLE_ID;
+    style.textContent = `
+      #n8n-left-chat .n8n-chat-floating-button { left: 0 !important; right: auto !important; bottom: 0 !important; }
+      #n8n-left-chat .n8n-chat-modal          { left: 0 !important; right: auto !important; bottom: 68px !important; }
+
+      /* Match your Talk-to-Assistant look (emerald gradient) */
+      #n8n-left-chat .n8n-chat-floating-button {
         background: linear-gradient(90deg, #10B981, #14B8A6) !important;
         color: #fff !important;
         border-radius: 9999px !important;
         box-shadow: 0 10px 15px -3px rgba(16,185,129,.3),
                     0 4px 6px -2px rgba(16,185,129,.2) !important;
       }
-      .n8n-chat .n8n-chat-floating-button:hover { filter: brightness(0.95) !important; }
-      .n8n-chat .n8n-chat-floating-button svg   { color: #fff !important; fill: currentColor !important; }
+      #n8n-left-chat .n8n-chat-floating-button:hover { filter: brightness(0.95) !important; }
+      #n8n-left-chat .n8n-chat-floating-button svg   { color:#fff !important; fill: currentColor !important; }
     `;
     document.head.appendChild(style);
 
-    // --- 3) Load the module and wire up open/close helpers ---
+    // 4) Load SDK and mount into our container (bottom-left)
     let inst;
     (async () => {
       try {
         const { createChat } = await import('https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js');
         inst = createChat({
           webhookUrl: 'https://n8n-nu6j.onrender.com/webhook/fa608d72-de1f-4d49-9b6e-36d20e4d61d1/chat',
-          // Let n8n attach to <body>; our CSS forces left placement
+          target: '#n8n-left-chat',       // ⬅️ anchor here
+          mode: 'window',                 // render toggle + window in target
           // theme: 'dark',
         });
 
-        // Replace stub with real open/close that always works
+        // Robust open/close helpers (work even if no API methods)
         window.openN8nChat = () => {
           if (inst?.open) inst.open();
-          else document.querySelector('.n8n-chat .n8n-chat-floating-button')?.click();
+          else document.querySelector('#n8n-left-chat .n8n-chat-floating-button')?.click();
         };
         window.closeN8nChat = () => {
           if (inst?.close) inst.close();
-          else document.querySelector('.n8n-chat .n8n-chat-floating-button')?.click();
+          else document.querySelector('#n8n-left-chat .n8n-chat-floating-button')?.click();
         };
 
-        // If the user clicked before load finished, auto-open now
+        // If user clicked before ready, open now
         if (window.__pendingOpenN8n) {
           window.__pendingOpenN8n = false;
           window.openN8nChat();
@@ -132,7 +157,7 @@ ${form.message}`
       }
     })();
 
-    // Keep widget persistent; no teardown on unmount
+    // keep persistent
     return () => {};
   }, []);
 
@@ -169,7 +194,7 @@ ${form.message}`
           </div>
         </div>
       </nav>
-
+      <N8nChatEmbed /> 
       {/* Hero Section */}
       <section id="home" className="relative py-20 lg:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
