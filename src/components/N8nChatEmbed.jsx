@@ -45,7 +45,12 @@ function N8nChatEmbed() {
 
         const inst = createChat({
           webhookUrl: 'https://n8n-nu6j.onrender.com/webhook/fa608d72-de1f-4d49-9b6e-36d20e4d61d1/chat',
-          // no target: default attaches to <body> with .n8n-chat (which our CSS controls)
+          branding: {
+            logo: 'https://i.postimg.cc/GpdryNWY/synthpify-logo-dark.png',
+            name: 'Synthpify',
+            welcomeText: 'Hi 👋, how can we help?',
+            responseTimeText: 'We will assign an agent for you. Give us a sec'
+          }
         });
 
         // Robust open/close (works whether API exists or not)
