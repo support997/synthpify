@@ -63,15 +63,15 @@ ${form.message}`
     }, 600)
   }
 
-  function N8nChatEmbed() {
+    function N8nChatEmbed() {
   useEffect(() => {
-    // 0) Early stub so clicks before load get queued
+    // Queue early clicks until the widget is ready
     if (!window.openN8nChat) {
       window.__pendingOpenN8n = false;
       window.openN8nChat = () => { window.__pendingOpenN8n = true; };
     }
 
-    // 1) Ensure n8n CSS
+    // Ensure n8n CSS is loaded once
     if (!document.getElementById('n8n-chat-css')) {
       const link = document.createElement('link');
       link.id = 'n8n-chat-css';
@@ -80,66 +80,47 @@ ${form.message}`
       document.head.appendChild(link);
     }
 
-    // 2) Create a fixed bottom-left container we fully control
-    let container = document.getElementById('n8n-left-chat');
-    if (!container) {
-      container = document.createElement('div');
-      container.id = 'n8n-left-chat';
-      document.body.appendChild(container);
-    }
-    Object.assign(container.style, {
-      position: 'fixed',
-      left: '24px',
-      bottom: '24px',
-      right: 'auto',
-      zIndex: '2147483647'
-    });
-
-    // 3) Left position + color overrides scoped to our container
-    const STYLE_ID = 'n8n-left-chat-css';
+    // GLOBAL overrides: force bottom-left + tint to emerald gradient
+    const STYLE_ID = 'n8n-chat-override';
     document.getElementById(STYLE_ID)?.remove();
     const style = document.createElement('style');
     style.id = STYLE_ID;
     style.textContent = `
-      #n8n-left-chat .n8n-chat-floating-button { left: 0 !important; right: auto !important; bottom: 0 !important; }
-      #n8n-left-chat .n8n-chat-modal          { left: 0 !important; right: auto !important; bottom: 68px !important; }
+      .n8n-chat .n8n-chat-floating-button { left: 24px !important; right: auto !important; bottom: 24px !important; }
+      .n8n-chat .n8n-chat-modal          { left: 24px !important; right: auto !important; bottom: 92px !important; }
 
-      /* Match your Talk-to-Assistant look (emerald gradient) */
-      #n8n-left-chat .n8n-chat-floating-button {
+      .n8n-chat .n8n-chat-floating-button {
         background: linear-gradient(90deg, #10B981, #14B8A6) !important;
-        color: #fff !important;
-        border-radius: 9999px !important;
+        color: #fff !important; border-radius: 9999px !important;
         box-shadow: 0 10px 15px -3px rgba(16,185,129,.3),
                     0 4px 6px -2px rgba(16,185,129,.2) !important;
       }
-      #n8n-left-chat .n8n-chat-floating-button:hover { filter: brightness(0.95) !important; }
-      #n8n-left-chat .n8n-chat-floating-button svg   { color:#fff !important; fill: currentColor !important; }
+      .n8n-chat .n8n-chat-floating-button:hover { filter: brightness(0.95) !important; }
+      .n8n-chat .n8n-chat-floating-button svg { color:#fff !important; fill: currentColor !important; }
     `;
     document.head.appendChild(style);
 
-    // 4) Load SDK and mount into our container (bottom-left)
-    let inst;
+    // Load the SDK and mount (let it attach to <body>)
     (async () => {
       try {
         const { createChat } = await import('https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js');
-        inst = createChat({
+
+        const inst = createChat({
           webhookUrl: 'https://n8n-nu6j.onrender.com/webhook/fa608d72-de1f-4d49-9b6e-36d20e4d61d1/chat',
-          target: '#n8n-left-chat',       // ⬅️ anchor here
-          mode: 'window',                 // render toggle + window in target
-          // theme: 'dark',
+          // no target: default attaches to <body> with .n8n-chat (which our CSS controls)
         });
 
-        // Robust open/close helpers (work even if no API methods)
+        // Robust open/close (works whether API exists or not)
         window.openN8nChat = () => {
           if (inst?.open) inst.open();
-          else document.querySelector('#n8n-left-chat .n8n-chat-floating-button')?.click();
+          else document.querySelector('.n8n-chat .n8n-chat-floating-button')?.click();
         };
         window.closeN8nChat = () => {
           if (inst?.close) inst.close();
-          else document.querySelector('#n8n-left-chat .n8n-chat-floating-button')?.click();
+          else document.querySelector('.n8n-chat .n8n-chat-floating-button')?.click();
         };
 
-        // If user clicked before ready, open now
+        // If the user clicked before load finished, open now
         if (window.__pendingOpenN8n) {
           window.__pendingOpenN8n = false;
           window.openN8nChat();
@@ -149,7 +130,7 @@ ${form.message}`
       }
     })();
 
-    // keep persistent
+    // Keep persistent
     return () => {};
   }, []);
 
@@ -1438,8 +1419,6 @@ ${form.message}`
           >
             Chat with our AI
           </button>
-
-         
         </div>
       </section>
 
