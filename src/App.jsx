@@ -1331,7 +1331,7 @@ ${form.message}`
             Start AI Voice Assistant
           </button>
         </div>
-         
+       </section>  
       
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700">
