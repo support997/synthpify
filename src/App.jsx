@@ -6,6 +6,7 @@ import { Badge } from './components/ui/badge'
 import { Phone, Clock, Users, Settings, BarChart3, Shield, CheckCircle, ArrowRight, Star, Zap, Target, Headphones, Mic } from 'lucide-react'
 import { motion } from 'framer-motion'
 import VapiWidget from './components/VapiWidget'
+import N8nChatEmbed from './components/N8nChatEmbed' // Import the new component
 
 // Import images
 import heroImage from './assets/hero-split-restaurant-customer.png'
@@ -43,103 +44,25 @@ function App() {
   // Simple mailto fallback so you receive messages at support@synthpify.ai.
   // (If you add a backend route later, swap this for a fetch('/api/contact', ...))
   const handleSubmit = (e) => {
-    e.preventDefault()
-    setSending(true)
-    const subject = `New website contact from ${form.name || 'Anonymous'}`
-    const body =
-`Name: ${form.name}
+      e.preventDefault()
+      setSending(true)
+      const subject = `New website contact from ${form.name || 'Anonymous'}`
+      const body =
+        `Name: ${form.name}
 Email: ${form.email}
 Message:
 ${form.message}`
 
-    const mailto = `mailto:support@synthpify.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    // Open email client
-    window.location.href = mailto
+      const mailto = `mailto:support@synthpify.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+      // Open email client
+      window.location.href = mailto
 
-    // UX nicety: reset after a moment
-    setTimeout(() => {
-      setSending(false)
-      setForm({ name: '', email: '', message: '' })
-    }, 600)
-  }
-
-    function N8nChatEmbed() {
-  useEffect(() => {
-    // Queue early clicks until the widget is ready
-    if (!window.openN8nChat) {
-      window.__pendingOpenN8n = false;
-      window.openN8nChat = () => { window.__pendingOpenN8n = true; };
+      // UX nicety: reset after a moment
+      setTimeout(() => {
+        setSending(false)
+        setForm({ name: '', email: '', message: '' })
+      }, 600)
     }
-
-    // Ensure n8n CSS is loaded once
-    if (!document.getElementById('n8n-chat-css')) {
-      const link = document.createElement('link');
-      link.id = 'n8n-chat-css';
-      link.rel = 'stylesheet';
-      link.href = 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css';
-      document.head.appendChild(link);
-    }
-
-    // GLOBAL overrides: force bottom-left + tint to emerald gradient
-    const STYLE_ID = 'n8n-chat-override';
-    document.getElementById(STYLE_ID)?.remove();
-    const style = document.createElement('style');
-    style.id = STYLE_ID;
-    style.textContent = `
-      .n8n-chat .n8n-chat-floating-button { left: 24px !important; right: auto !important; bottom: 24px !important; }
-      .n8n-chat .n8n-chat-modal          { left: 24px !important; right: auto !important; bottom: 92px !important; }
-
-      .n8n-chat .n8n-chat-floating-button {
-        background: linear-gradient(90deg, #10B981, #14B8A6) !important;
-        color: #fff !important; border-radius: 9999px !important;
-        box-shadow: 0 10px 15px -3px rgba(16,185,129,.3),
-                    0 4px 6px -2px rgba(16,185,129,.2) !important;
-      }
-      .n8n-chat .n8n-chat-floating-button:hover { filter: brightness(0.95) !important; }
-      .n8n-chat .n8n-chat-floating-button svg { color:#fff !important; fill: currentColor !important; }
-    `;
-    document.head.appendChild(style);
-
-    // Load the SDK and mount (let it attach to <body>)
-    (async () => {
-      try {
-        const { createChat } = await import('https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js');
-
-        const inst = createChat({
-          webhookUrl: 'https://n8n-nu6j.onrender.com/webhook/fa608d72-de1f-4d49-9b6e-36d20e4d61d1/chat',
-          // no target: default attaches to <body> with .n8n-chat (which our CSS controls)
-        });
-
-        // Robust open/close (works whether API exists or not)
-        window.openN8nChat = () => {
-          if (inst?.open) inst.open();
-          else document.querySelector('.n8n-chat .n8n-chat-floating-button')?.click();
-        };
-        window.closeN8nChat = () => {
-          if (inst?.close) inst.close();
-          else document.querySelector('.n8n-chat .n8n-chat-floating-button')?.click();
-        };
-
-        // If the user clicked before load finished, open now
-        if (window.__pendingOpenN8n) {
-          window.__pendingOpenN8n = false;
-          window.openN8nChat();
-        }
-      } catch (e) {
-        console.error('Failed to load n8n chat widget:', e);
-      }
-    })();
-
-    // Keep persistent
-    return () => {};
-  }, []);
-
-  return null;
-}
-
-
-
-
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -168,7 +91,6 @@ ${form.message}`
           </div>
         </div>
       </nav>
-      <N8nChatEmbed />   {/* mount once, globally */}
       {/* Hero Section */}
       <section id="home" className="relative py-20 lg:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1293,7 +1215,7 @@ ${form.message}`
               </li>
 
               <li>
-                <strong>Fees and Payment.</strong> Fees for our services are based on the scope of work and are subject to a separate Service Agreement. Pricing is subject to change at the sole discretion of {BRAND}, with at least thirty (30) days' notice provided to the Client.
+                <strong>Fees and Payment.</strong> Fees for our services are based on the scope of work and are subject to a separate Service Agreement. Pricing is subject to change at the sole discretion of {BRAND}, with at least thirty (3d) days' notice provided to the Client.
               </li>
 
               <li>
@@ -1408,17 +1330,11 @@ ${form.message}`
           >
             Start AI Voice Assistant
           </button>
-
-          <button
-            className="bg-blue-600 hover:bg-blue-700 text-white rounded-md px-6 py-3 text-base"
-            onClick={() => {
-              // Queue the intent immediately; it will open as soon as the widget is ready
-              window.__pendingOpenN8n = true;
-              if (typeof window.openN8nChat === 'function') window.openN8nChat();
-            }}
-          >
-            Chat with our AI
-          </button>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+          <div className="w-96 h-96">
+            <N8nChatEmbed targetId="my-static-chat" />
+          </div>
         </div>
       </section>
 
