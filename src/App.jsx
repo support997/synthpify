@@ -1316,6 +1316,7 @@ ${form.message}`
 
       {/* Contact Section (NEW) */}
       <section id="contact" className="py-20 bg-slate-50">
+        <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">Contact US</h2>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
             className="bg-blue-600 hover:bg-blue-700 text-white rounded-md px-6 py-3 text-base"
