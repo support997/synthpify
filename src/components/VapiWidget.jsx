@@ -91,7 +91,7 @@ const VapiWidget = forwardRef(({
     <div style={{
       position: 'fixed',
       bottom: '24px',
-      right: '24px',
+      left: '24px',
       zIndex: 1000,
       fontFamily: 'Arial, sans-serif'
     }}>
