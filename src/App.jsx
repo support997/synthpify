@@ -1331,15 +1331,16 @@ ${form.message}`
             Start AI Voice Assistant
           </button>
         </div>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          <div className="flex flex-col items-center">
-            {/* Add this text label */}
-            <h3 className="text-xl font-semibold text-slate-900 mb-4">Chat with our AI Assistant</h3>
-            <div className="w-96 h-96 border border-gray-300 rounded-lg">
-              <N8nChatEmbed targetId="my-static-chat" />
-            </div>
-          </div>
-        </div>
+         
+        <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+          <script type="module">
+            import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+            createChat({
+              webhookUrl: 'YOUR_PRODUCTION_WEBHOOK_URL'
+            });
+          </script>
+         
       </section>
 
 
