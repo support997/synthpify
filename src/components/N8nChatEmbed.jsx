@@ -1,3 +1,6 @@
+// src/components/N8nChatEmbed.jsx
+import React, { useEffect } from 'react';
+
 function N8nChatEmbed() {
   useEffect(() => {
     // Remove any old left-side overrides/containers from earlier attempts
@@ -32,13 +35,13 @@ function N8nChatEmbed() {
           showWelcomeScreen: false,
           defaultLanguage: 'en',
           initialMessages: [
-            'Hi there!👋',
+            'Hi there! 👋'
             
           ],
           i18n: {
             en: {
               title: 'Synthpify AI',
-              subtitle: "SWe handle the heavy lifting, so you don’t have to",
+              subtitle: "We put in the hard work so you can focus on what matters most.",
               footer: '',
               getStarted: 'New Conversation',
               inputPlaceholder: 'Type your question..',
