@@ -91,6 +91,7 @@ ${form.message}`
           </div>
         </div>
       </nav>
+      <N8nChatEmbed />   {/* mount once, globally */}
       {/* Hero Section */}
       <section id="home" className="relative py-20 lg:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -122,15 +123,7 @@ ${form.message}`
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <div className="flex justify-center sm:justify-start">
-                  <Button 
-                    variant="outline" 
-                    size="lg" 
-                    className="text-lg px-8 py-4"
-                    onClick={() => vapiRef.current?.startCall()}
-                  >
-                    <Mic className="mr-2 h-5 w-5" />
-                    See How It Works
-                  </Button>
+                  {/* Removed "See How It Works" button */}
                 </div>
               </div>
 
@@ -1331,8 +1324,9 @@ ${form.message}`
             Start AI Voice Assistant
           </button>
         </div>
-       </section>  
-      
+      </section>
+
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
