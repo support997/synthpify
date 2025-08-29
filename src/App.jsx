@@ -1332,8 +1332,12 @@ ${form.message}`
           </button>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          <div className="w-96 h-96">
-            <N8nChatEmbed targetId="my-static-chat" />
+          <div className="flex flex-col items-center">
+            {/* Add this text label */}
+            <h3 className="text-xl font-semibold text-slate-900 mb-4">Chat with our AI Assistant</h3>
+            <div className="w-96 h-96 border border-gray-300 rounded-lg">
+              <N8nChatEmbed targetId="my-static-chat" />
+            </div>
           </div>
         </div>
       </section>
