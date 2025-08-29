@@ -1316,7 +1316,16 @@ ${form.message}`
 
       {/* Contact Section (NEW) */}
       <section id="contact" className="py-20 bg-slate-50">
-        <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">Contact US</h2>
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center space-y-4 mb-12"
+          >
+            <Badge className="bg-blue-100 text-blue-700">Contact us</Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">Contact us at Synthpify.ai</h2>
+          </motion.div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
             className="bg-blue-600 hover:bg-blue-700 text-white rounded-md px-6 py-3 text-base"
