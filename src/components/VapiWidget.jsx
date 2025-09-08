@@ -3,7 +3,7 @@ import Vapi from '@vapi-ai/web';
 
 const VapiWidget = forwardRef(({ 
   apiKey,         // remove default value
-  assistantVoiceId,    // remove default value
+  assistantId,    // remove default value
   config = {}, 
   hideStartButton = false 
 }, ref) => {
@@ -61,10 +61,10 @@ const VapiWidget = forwardRef(({
   }, [apiKey]);
 
   const startCall = () => {
-    console.log('▶️ startCall triggered', { vapi, assistantVoiceId});
+    console.log('▶️ startCall triggered', { vapi, assistantId});
     if (vapi) {
       try {
-        vapi.start(assistantVoiceId);
+        vapi.start(assistantId);
       } catch (err) {
         console.error("🔥 Error starting call:", err);
       }

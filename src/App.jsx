@@ -1424,7 +1424,7 @@ ${form.message}`
       <VapiWidget 
         ref={vapiRef}
         apiKey={import.meta.env.VITE_VAPI_PUBLIC_KEY}
-        assistantId={import.meta.env.VITE_VAPI_VOICE_ASSISTANT_ID}
+        assistantVoiceId={import.meta.env.VITE_VAPI_VOICE_ASSISTANT_ID}
       />
     </div>
   )
