@@ -64,10 +64,18 @@ ${form.message}`
       }, 600)
     }
 
-    console.log(
-    'Assistant ID (first 8):',
-    (import.meta.env.VITE_VAPI_VOICE_ASSISTANT_ID || import.meta.env.VITE_VAPI_ASSISTANT_ID || '').slice(0, 8)
-  );
+    useEffect(() => {
+      const origin = window.location.origin;
+      const publicKey = import.meta.env.VITE_VAPI_PUBLIC_KEY || '';
+      const assistant =
+        import.meta.env.VITE_VAPI_VOICE_ASSISTANT_ID ||
+        import.meta.env.VITE_VAPI_ASSISTANT_ID ||
+        '';
+
+      console.log('Origin:', origin);
+      console.log('Public Key (first 8):', publicKey.slice(0, 8));
+      console.log('Assistant ID (first 8):', assistant.slice(0, 8));
+    }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">

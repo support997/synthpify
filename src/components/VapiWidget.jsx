@@ -58,6 +58,24 @@ const VapiWidget = forwardRef(({
     };
   }, [apiKey]);
 
+  useEffect(() => {
+    if (!vapi) return;
+    const onError = async (err) => {
+      if (err?.error instanceof Response) {
+        const text = await err.error.text().catch(() => '');
+        console.error('❌ Vapi HTTP ', err.error.status, text);
+      } else {
+        console.error('❌ Vapi error', err);
+      }
+    };
+    vapi.on('error', onError);
+    return () => {
+      // remove listener if supported
+      vapi.off && vapi.off('error', onError);
+    };
+  }, [vapi]);
+
+
   const startCall = async () => {
     const id = assistantId ?? assistantVoiceId;
     console.log('▶️ startCall triggered', { hasVapi: !!vapi, id });
