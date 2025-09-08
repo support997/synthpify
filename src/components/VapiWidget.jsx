@@ -69,7 +69,7 @@ const VapiWidget = forwardRef(({
         console.error("🔥 Error starting call:", err);
       }
     } else {
-      console.warn('⚠️ Vapi instance is null. Cannot start call.');
+      console.warn('⚠️ Vapi instance is null. Cannot start call. ');
     }
   };
 
