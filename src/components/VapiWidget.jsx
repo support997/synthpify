@@ -61,10 +61,10 @@ const VapiWidget = forwardRef(({
   }, [apiKey]);
 
   const startCall = () => {
-    console.log('▶️ startCall triggered', { vapi, assistantId });
+    console.log('▶️ startCall triggered', { vapi, assistantVoiceId});
     if (vapi) {
       try {
-        vapi.start(assistantId);
+        vapi.start(assistantVoiceId;
       } catch (err) {
         console.error("🔥 Error starting call:", err);
       }
