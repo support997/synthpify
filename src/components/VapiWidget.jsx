@@ -3,7 +3,7 @@ import Vapi from '@vapi-ai/web';
 
 const VapiWidget = forwardRef(({ 
   apiKey,         // remove default value
-  assistantId,    // remove default value
+  assistantVoiceId,    // remove default value
   config = {}, 
   hideStartButton = false 
 }, ref) => {
