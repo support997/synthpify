@@ -91,7 +91,8 @@ const VapiWidget = forwardRef(({
 
     try {
       // ✅ Newer @vapi-ai/web expects object form
-      await vapi.start({ assistant: id, ...config });
+      //await vapi.start({ assistant: id, ...config });
+      await vapi.start({ assistant: id });
     } catch (e1) {
       // ↩️ Back-compat: some older versions accept a string
       try {
