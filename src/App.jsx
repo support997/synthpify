@@ -64,6 +64,11 @@ ${form.message}`
       }, 600)
     }
 
+    console.log(
+    'Assistant ID (first 8):',
+    (import.meta.env.VITE_VAPI_VOICE_ASSISTANT_ID || import.meta.env.VITE_VAPI_ASSISTANT_ID || '').slice(0, 8)
+  );
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Navigation */}
@@ -1424,7 +1429,7 @@ ${form.message}`
       <VapiWidget 
         ref={vapiRef}
         apiKey={import.meta.env.VITE_VAPI_PUBLIC_KEY}
-        assistantVoiceId={import.meta.env.VITE_VAPI_VOICE_ASSISTANT_ID}
+        assistantId={import.meta.env.VITE_VAPI_ASSISTANT_ID}
       />
     </div>
   )
