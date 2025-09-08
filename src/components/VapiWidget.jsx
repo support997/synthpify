@@ -2,8 +2,9 @@ import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'rea
 import Vapi from '@vapi-ai/web';
 
 const VapiWidget = forwardRef(({ 
-  apiKey,         // remove default value
-  assistantId,    // remove default value
+  apiKey,
+  assistantId,          // NEW: what App.jsx passes
+  assistantVoiceId,     // OLD: back-compat if some parts still pass this
   config = {}, 
   hideStartButton = false 
 }, ref) => {
@@ -41,10 +42,7 @@ const VapiWidget = forwardRef(({
 
     vapiInstance.on('message', (message) => {
       if (message.type === 'transcript') {
-        setTranscript(prev => [...prev, {
-          role: message.role,
-          text: message.transcript
-        }]);
+        setTranscript(prev => [...prev, { role: message.role, text: message.transcript }]);
       }
     });
 
@@ -60,23 +58,34 @@ const VapiWidget = forwardRef(({
     };
   }, [apiKey]);
 
-  const startCall = () => {
-    console.log('▶️ startCall triggered', { vapi, assistantId});
-    if (vapi) {
+  const startCall = async () => {
+    const id = assistantId ?? assistantVoiceId;
+    console.log('▶️ startCall triggered', { hasVapi: !!vapi, id });
+
+    if (!vapi) {
+      console.warn('⚠️ Vapi instance is null. Cannot start call.');
+      return;
+    }
+    if (!id) {
+      console.error('⚠️ No assistant id provided to VapiWidget.');
+      return;
+    }
+
+    try {
+      // ✅ Newer @vapi-ai/web expects object form
+      await vapi.start({ assistant: id, ...config });
+    } catch (e1) {
+      // ↩️ Back-compat: some older versions accept a string
       try {
-        vapi.start(assistantId);
-      } catch (err) {
-        console.error("🔥 Error starting call:", err);
+        await vapi.start(id);
+      } catch (e2) {
+        console.error('🔥 Error starting call (both signatures failed):', e2);
       }
-    } else {
-      console.warn('⚠️ Vapi instance is null. Cannot start call. ');
     }
   };
 
   const endCall = () => {
-    if (vapi) {
-      vapi.stop();
-    }
+    vapi?.stop();
   };
 
   useImperativeHandle(ref, () => ({
