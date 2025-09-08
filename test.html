@@ -1,0 +1,60 @@
+html = """<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vapi Widget Test (Voice)</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 24px; }
+    .tip { background: #f6f8fa; border: 1px solid #e5e7eb; padding: 12px 14px; border-radius: 8px; max-width: 860px; }
+    code { background: #f0f2f4; padding: 2px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Vapi Web Component — Voice Mode</h1>
+  <p class="tip">
+    Tip: if your Vapi Public Key has <em>Allowed Origins</em> configured, be sure to add the origin you load this file from
+    (e.g. <code>http://localhost:5500</code>, <code>http://127.0.0.1:5500</code>, or your site domain).
+    You may need to serve this file via a local web server so the browser sends an <code>Origin</code> header.
+  </p>
+
+  <!-- Vapi Widget Embed -->
+  <vapi-widget
+    public-key="36f90df5-963b-4517-8f79-3dceea98e5c5"
+    assistant-id="732b8e97-db60-44d2-acf0-7638eebbe54c"
+    mode="voice"
+    theme="dark"
+    base-bg-color="#000000"
+    accent-color="#14B8A6"
+    cta-button-color="#000000"
+    cta-button-text-color="#ffffff"
+    border-radius="large"
+    size="full"
+    position="bottom-right"
+    title="TALK WITH AI"
+    start-button-text="Start"
+    end-button-text="End Call"
+    chat-first-message="Hey, How can I help you today?"
+    chat-placeholder="Type your message..."
+    voice-show-transcript="true"
+    consent-required="true"
+    consent-title="Terms and conditions"
+    consent-content='By clicking "Agree," and each time I interact with this AI agent, I consent to the recording, storage, and sharing of my communications with third-party service providers, and as otherwise described in our Terms of Service.'
+    consent-storage-key="vapi_widget_consent"
+  ></vapi-widget>
+
+  <!-- Load the Vapi widget script (web component) -->
+  <script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async type="text/javascript"></script>
+
+  <script>
+    window.addEventListener('load', () => {
+      console.log('✅ Vapi Widget Test loaded');
+    });
+  </script>
+</body>
+</html>
+"""
+path = "/mnt/data/vapi-widget-test.html"
+with open(path, "w", encoding="utf-8") as f:
+    f.write(html)
+path
