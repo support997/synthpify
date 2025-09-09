@@ -77,27 +77,29 @@ const VapiWidget = forwardRef(({
 
 
   const startCall = async () => {
-  const id = assistantId ?? assistantVoiceId;
+  const id = (assistantId ?? assistantVoiceId)?.toString().trim();
   console.log('▶️ startCall triggered', { hasVapi: !!vapi, id });
 
   if (!vapi) return;
-  if (!id) {
-    console.error('⚠️ No assistant id provided to VapiWidget.');
-    return;
-  }
-
-  try {
-    // IMPORTANT: send only the assistant id (no extra fields)
-    await vapi.start({ assistant: id });
-  } catch (e1) {
-    // Legacy fallback; safe to keep
-    try {
-      await vapi.start(id);
-    } catch (e2) {
-      console.error('🔥 Error starting call (both signatures failed):', e2);
+    if (!id) {
+      console.error('⚠️ No assistant id provided to VapiWidget.');
+      return;
     }
-  }
-};
+
+    try {
+      // 1) Prefer the string signature → produces { assistant: "uuid" }
+      await vapi.start(id);
+    } catch (e1) {
+      console.warn('String start failed, trying object form…', e1);
+      try {
+        // 2) Fallback for SDKs that require object
+        await vapi.start({ assistant: id });
+      } catch (e2) {
+        console.error('🔥 Error starting call (both signatures failed):', e2);
+      }
+    }
+  };
+
 
 
   const endCall = () => {
