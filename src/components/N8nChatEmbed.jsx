@@ -32,7 +32,7 @@ export default function N8nChatEmbed() {
         const { createChat } = await import(/* @vite-ignore */ N8N_ESM);
 
         const inst = createChat({
-          webhookUrl: 'https://n8n-nu6j.onrender.com/webhook/fa608d72-de1f-4d49-9b6e-36d20e4d61d1/chat',
+          webhookUrl: 'https://n8n-synthpify.onrender.com/webhook/fa608d72-de1f-4d49-9b6e-36d20e4d61d1/chat',
           mode: 'window',                  // FAB + modal (bottom-right)
           loadPreviousSession: true,
           showWelcomeScreen: false,
