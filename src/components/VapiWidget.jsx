@@ -1,12 +1,12 @@
 import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import Vapi from '@vapi-ai/web';
 
-const VapiWidget = forwardRef(({ 
+const VapiWidget = forwardRef(({
   apiKey,
   assistantId,          // NEW: what App.jsx passes
   assistantVoiceId,     // OLD: back-compat if some parts still pass this
-  config = {}, 
-  hideStartButton = false 
+  config = {},
+  hideStartButton = false
 }, ref) => {
   const [vapi, setVapi] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
@@ -14,6 +14,10 @@ const VapiWidget = forwardRef(({
   const [transcript, setTranscript] = useState([]);
 
   useEffect(() => {
+    if (!apiKey) {
+      console.error('❌ VapiWidget: No apiKey provided. Skipping initialization.');
+      return;
+    }
     console.log('🔧 Initializing Vapi with apiKey:', apiKey);
     const vapiInstance = new Vapi(apiKey);
     setVapi(vapiInstance);
@@ -77,10 +81,10 @@ const VapiWidget = forwardRef(({
 
 
   const startCall = async () => {
-  const id = (assistantId ?? assistantVoiceId)?.toString().trim();
-  console.log('▶️ startCall triggered', { hasVapi: !!vapi, id });
+    const id = (assistantId ?? assistantVoiceId)?.toString().trim();
+    console.log('▶️ startCall triggered', { hasVapi: !!vapi, id });
 
-  if (!vapi) return;
+    if (!vapi) return;
     if (!id) {
       console.error('⚠️ No assistant id provided to VapiWidget.');
       return;
