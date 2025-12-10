@@ -9,7 +9,8 @@ export default function Contact() {
         e.preventDefault()
         setStatus('sending')
         try {
-            const res = await fetch('http://localhost:3001/api/contact', {
+            const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001'
+            const res = await fetch(`${apiBase}/api/contact`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
