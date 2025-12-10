@@ -5,7 +5,7 @@ const VAPI_WIDGET_SRC =
   "https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js";
 
 // Must exist on the **frontend** env (.env, .env.production etc)
-const VAPI_PUBLIC_KEY = import.meta.env.VITE_VAPI_PUBLIC_KEY;
+const VAPI_PUBLIC_KEY = import.meta.env.VITE_VAPI_API_KEY;
 const VAPI_ASSISTANT_ID = import.meta.env.VITE_VAPI_ASSISTANT_ID;
 
 export default function VapiChatLauncher() {

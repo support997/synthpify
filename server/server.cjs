@@ -15,9 +15,12 @@ const required = [
 ];
 
 const missing = required.filter(k => !process.env[k]);
+let mockMode = false;
+
 if (missing.length) {
-  console.error(`❌ Missing environment variables: ${missing.join(', ')}`);
-  process.exit(1);
+  console.warn(`⚠️  Missing environment variables: ${missing.join(', ')}`);
+  console.warn(`⚠️  Starting in MOCK MODE. Emails will be logged to console but not sent.`);
+  mockMode = true;
 }
 
 //
@@ -27,7 +30,7 @@ const app = express();
 app.use(express.json({ limit: '100kb' }));
 
 // Allow single or comma-separated origins in CORS_ORIGIN
-const corsOrigins = process.env.CORS_ORIGIN
+const corsOrigins = (process.env.CORS_ORIGIN || (mockMode ? 'http://localhost:5001' : ''))
   .split(',')
   .map(s => s.trim())
   .filter(Boolean);
@@ -44,27 +47,46 @@ app.use(cors({
 //
 // SMTP transporter (Gmail or any SMTP)
 //
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,                 // e.g. smtp.gmail.com
-  port: Number(process.env.SMTP_PORT),         // 587 for STARTTLS, 465 for SSL
-  secure: process.env.SMTP_SECURE === 'true' || Number(process.env.SMTP_PORT) === 465,
-  auth: {
-    user: process.env.SMTP_USER,               // e.g. youremail@gmail.com
-    pass: process.env.SMTP_PASS                // e.g. Gmail App Password
-  }
-});
+//
+// SMTP transporter (Gmail or any SMTP)
+//
+let transporter;
+if (!mockMode) {
+  transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,                 // e.g. smtp.gmail.com
+    port: Number(process.env.SMTP_PORT),         // 587 for STARTTLS, 465 for SSL
+    secure: process.env.SMTP_SECURE === 'true' || Number(process.env.SMTP_PORT) === 465,
+    auth: {
+      user: process.env.SMTP_USER,               // e.g. youremail@gmail.com
+      pass: process.env.SMTP_PASS                // e.g. Gmail App Password
+    }
+  });
+}
 
 // Verify SMTP on startup (logs warning if it fails, but server can still run)
-transporter.verify()
-  .then(() => console.log('✅ SMTP ready'))
-  .catch(err => console.warn('⚠️ SMTP verify failed:', err.message));
+// Verify SMTP on startup (logs warning if it fails, but server can still run)
+if (!mockMode && transporter) {
+  transporter.verify()
+    .then(() => console.log('✅ SMTP ready'))
+    .catch(err => console.warn('⚠️ SMTP verify failed:', err.message));
+}
+
+const rateLimit = require('express-rate-limit');
 
 //
 // Routes
 //
 app.get('/api/health', (_req, res) => res.json({ ok: true }));
 
-app.post('/api/contact', async (req, res) => {
+const contactLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // Limit each IP to 5 requests per windowMs
+  message: { error: 'Too many requests, please try again later.' },
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+
+app.post('/api/contact', contactLimiter, async (req, res) => {
   const { name = '', email = '', phone = '', subject = '', message = '' } = req.body || {};
 
   if (!name.trim() || !email.trim() || !message.trim()) {
@@ -78,7 +100,7 @@ app.post('/api/contact', async (req, res) => {
       replyTo: email, // lets you reply straight to the user
       subject: subject || `New contact from ${name}`,
       text:
-`New contact submission
+        `New contact submission
 
 Name: ${name}
 Email: ${email}
@@ -98,6 +120,14 @@ ${message}
       `
     };
 
+    if (mockMode) {
+      console.log('📝 [MOCK MODE] Email would be sent:');
+      console.log(mailOptions);
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 500));
+      return res.json({ ok: true });
+    }
+
     await transporter.sendMail(mailOptions);
     return res.json({ ok: true });
   } catch (err) {
@@ -109,7 +139,7 @@ ${message}
 //
 // Start server
 //
-const PORT = process.env.PORT || 5000; // Render sets PORT automatically
+const PORT = process.env.PORT || 3001; // Render sets PORT automatically
 app.listen(PORT, () => {
   console.log(`🚀 Server listening on port ${PORT}`);
 });
