@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { Twitter, Linkedin, Instagram, Download } from 'lucide-react'
+import { Twitter, Linkedin, Instagram } from 'lucide-react'
 import logoFooter from '../assets/logo_footer.png'
 import { Link } from 'react-router-dom'
 
@@ -47,9 +47,7 @@ export default function Footer() {
                 <div className="text-xs text-slate-600">
                     &copy; {new Date().getFullYear()} Synthpify AI. All rights reserved.
                 </div>
-                <button className="text-xs text-slate-500 hover:text-white transition-colors flex items-center gap-2">
-                    <Download size={12} /> Download Template
-                </button>
+
             </div>
         </footer>
     )
