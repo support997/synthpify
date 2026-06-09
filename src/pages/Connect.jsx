@@ -18,20 +18,41 @@ import {
 const Connect = () => {
   const [copied, setCopied] = useState(false);
 
-  const generateVCard = () => {
-    const vcard = `BEGIN:VCARD
-VERSION:3.0
-FN:Wesley Lin
-ORG:Synthpify.ai
-TITLE:Founder, Business Development
-TEL;TYPE=CELL:347-738-0038
-EMAIL:Wlin@synthpify.ai
-URL:https://www.synthpify.ai
-NOTE:Synthpify.ai specializes in developing advanced business automation tools and conversational AI assistants.
-END:VCARD`;
+  const generateVCard = async () => {
+    // Fetch photo and convert to Base64
+    let photoBase64 = '';
+    try {
+      const response = await fetch('/wesley.jpg');
+      const blob = await response.blob();
+      photoBase64 = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          // Strip the data:image/jpeg;base64, prefix
+          const base64 = reader.result.split(',')[1];
+          resolve(base64);
+        };
+        reader.readAsDataURL(blob);
+      });
+    } catch (err) {
+      console.warn('Could not load photo for vCard:', err);
+    }
 
-    const blob = new Blob([vcard], { type: 'text/vcard' });
-    const url = URL.createObjectURL(blob);
+    const vcard = [
+      'BEGIN:VCARD',
+      'VERSION:3.0',
+      'FN:Wesley Lin',
+      'ORG:Synthpify.ai',
+      'TITLE:Founder, Business Development',
+      'TEL;TYPE=CELL:347-738-0038',
+      'EMAIL:Wlin@synthpify.ai',
+      'URL:https://www.synthpify.ai',
+      'NOTE:Synthpify.ai specializes in developing advanced business automation tools and conversational AI assistants.',
+      photoBase64 ? `PHOTO;ENCODING=b;TYPE=JPEG:${photoBase64}` : '',
+      'END:VCARD'
+    ].filter(Boolean).join('\r\n');
+
+    const vcfBlob = new Blob([vcard], { type: 'text/vcard' });
+    const url = URL.createObjectURL(vcfBlob);
     const link = document.createElement('a');
     link.href = url;
     link.download = 'Wesley_Lin_Synthpify.vcf';
