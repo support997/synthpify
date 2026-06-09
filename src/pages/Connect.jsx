@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Download, Phone, Mail, Globe, Briefcase, Calendar, MapPin, Share2, ArrowLeft, Utensils, Wrench, Building2, Home as HomeIcon, Stethoscope, Truck, ShoppingCart, Copy } from 'lucide-react';
+import { Download, Phone, Mail, Globe, Briefcase, Calendar, MapPin, Share2, ArrowLeft, Utensils, Wrench, Building2, Home as HomeIcon, Stethoscope, Truck, ShoppingCart, Copy, Smartphone, Mic } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Accordion,
@@ -268,6 +268,45 @@ const Connect = () => {
               <p className="text-neutral-700 text-[15px] leading-relaxed mb-10 font-medium">
                 Synthpify.ai specializes in developing advanced business automation tools and conversational AI assistants to streamline complex operational workflows. By seamlessly orchestrating intelligent voice agents and automated logic pipelines, the platform transforms how companies manage customer interactions and day-to-day tasks.
               </p>
+
+              <div className="grid grid-cols-4 gap-2 pb-6 mb-4">
+                
+                {/* Card 1: Clover */}
+                <div className="bg-white rounded-xl p-2.5 shadow-sm ring-1 ring-black/[0.03] flex flex-col justify-between items-center text-center h-[90px]">
+                  <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center p-1.5 mb-1.5 shrink-0">
+                    <img src="/clover-logo.png" alt="Clover" className="w-full h-full object-contain" />
+                  </div>
+                  <span className="font-bold text-[9px] text-neutral-800 leading-[1.1]">Merchant services</span>
+                </div>
+
+                {/* Card 2: Custom App */}
+                <div className="bg-white rounded-xl p-2.5 shadow-sm ring-1 ring-black/[0.03] flex flex-col justify-between items-center text-center h-[90px]">
+                  <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mb-1.5 shrink-0">
+                    <Smartphone className="w-4 h-4 text-blue-600" />
+                  </div>
+                  <span className="font-bold text-[9px] text-neutral-800 leading-[1.1]">Custom App</span>
+                </div>
+
+                {/* Card 3: AI Voice */}
+                <div className="bg-white rounded-xl p-2.5 shadow-sm ring-1 ring-black/[0.03] flex flex-col justify-between items-center text-center h-[90px]">
+                  <div className="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center mb-1.5 shrink-0">
+                    <Mic className="w-4 h-4 text-purple-600" />
+                  </div>
+                  <span className="font-bold text-[8.5px] text-neutral-800 leading-[1.1]">
+                    AI Voice<br/>
+                    <span className="font-medium text-neutral-500">Workflow Automation</span>
+                  </span>
+                </div>
+
+                {/* Card 4: Online Ordering */}
+                <div className="bg-white rounded-xl p-2.5 shadow-sm ring-1 ring-black/[0.03] flex flex-col justify-between items-center text-center h-[90px]">
+                  <div className="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center mb-1.5 shrink-0">
+                    <ShoppingCart className="w-4 h-4 text-orange-600" />
+                  </div>
+                  <span className="font-bold text-[9px] text-neutral-800 leading-[1.1]">Online ordering</span>
+                </div>
+
+              </div>
 
               <h3 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest mb-4">Industries</h3>
               <Accordion type="single" collapsible className="w-full space-y-3">
