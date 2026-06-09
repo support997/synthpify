@@ -16,7 +16,7 @@ const Connect = () => {
 VERSION:3.0
 FN:Wesley Lin
 ORG:Synthpify.ai
-TITLE:Business Development Consultant
+TITLE:Founder, Business Development
 TEL;TYPE=CELL:347-738-0038
 EMAIL:Wlin@synpthify.ai
 URL:https://www.synthpify.ai
@@ -72,10 +72,10 @@ END:VCARD`;
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 py-12 px-4 sm:px-6 flex items-center justify-center font-sans relative overflow-hidden">
+    <div className="min-h-screen bg-slate-50 text-slate-900 py-12 px-4 sm:px-6 flex items-center justify-center font-sans relative overflow-hidden">
       {/* Decorative blurred blobs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-600/20 rounded-full blur-[128px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[128px] pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-500/10 rounded-full blur-[128px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[128px] pointer-events-none" />
 
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
@@ -83,10 +83,10 @@ END:VCARD`;
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="w-full max-w-md relative z-10 my-auto"
       >
-        <Card className="bg-slate-900/60 border-slate-800/50 backdrop-blur-2xl shadow-2xl shadow-brand-900/20 rounded-3xl overflow-hidden">
+        <Card className="bg-white border-slate-200 shadow-xl shadow-slate-200/50 rounded-3xl overflow-hidden">
           <CardContent className="p-0">
             {/* Header section */}
-            <div className="p-8 text-center border-b border-slate-800/50 bg-slate-800/20">
+            <div className="p-8 text-center border-b border-slate-100 bg-slate-50/50">
               <motion.div 
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -95,10 +95,11 @@ END:VCARD`;
               >
                 <span className="text-3xl font-bold text-white tracking-wider">WL</span>
               </motion.div>
-              <h1 className="text-3xl font-bold text-white mb-2">Wesley Lin</h1>
-              <p className="text-brand-300 font-medium flex items-center justify-center gap-2 mb-6">
+              <h1 className="text-3xl font-bold text-slate-900 mb-1">Wesley Lin</h1>
+              <p className="text-lg font-semibold text-brand-600 mb-2">Synthpify.ai</p>
+              <p className="text-slate-600 font-medium flex items-center justify-center gap-2 mb-6">
                 <Briefcase className="w-4 h-4" />
-                Business Development Consultant
+                Founder, Business Development
               </p>
               
               <Button 
@@ -111,47 +112,47 @@ END:VCARD`;
             </div>
 
             {/* Quick Actions */}
-            <div className="flex justify-center gap-6 p-6 border-b border-slate-800/50 bg-slate-900/40">
+            <div className="flex justify-center gap-6 p-6 border-b border-slate-100 bg-white">
               <a href="tel:3477380038" className="flex flex-col items-center gap-2 group">
-                <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-brand-500/20 transition-colors border border-slate-700">
-                  <Phone className="w-5 h-5 text-slate-300 group-hover:text-brand-400" />
+                <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-brand-50 transition-colors border border-slate-200">
+                  <Phone className="w-5 h-5 text-slate-600 group-hover:text-brand-600" />
                 </div>
-                <span className="text-xs text-slate-400 font-medium">Call</span>
+                <span className="text-xs text-slate-500 font-medium group-hover:text-brand-600 transition-colors">Call</span>
               </a>
               <a href="mailto:Wlin@synpthify.ai" className="flex flex-col items-center gap-2 group">
-                <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-brand-500/20 transition-colors border border-slate-700">
-                  <Mail className="w-5 h-5 text-slate-300 group-hover:text-brand-400" />
+                <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-brand-50 transition-colors border border-slate-200">
+                  <Mail className="w-5 h-5 text-slate-600 group-hover:text-brand-600" />
                 </div>
-                <span className="text-xs text-slate-400 font-medium">Email</span>
+                <span className="text-xs text-slate-500 font-medium group-hover:text-brand-600 transition-colors">Email</span>
               </a>
               <a href="https://www.synthpify.ai" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 group">
-                <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-brand-500/20 transition-colors border border-slate-700">
-                  <Globe className="w-5 h-5 text-slate-300 group-hover:text-brand-400" />
+                <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-brand-50 transition-colors border border-slate-200">
+                  <Globe className="w-5 h-5 text-slate-600 group-hover:text-brand-600" />
                 </div>
-                <span className="text-xs text-slate-400 font-medium">Website</span>
+                <span className="text-xs text-slate-500 font-medium group-hover:text-brand-600 transition-colors">Website</span>
               </a>
             </div>
 
             {/* About & Industries */}
-            <div className="p-8 bg-slate-900/60">
-              <h2 className="text-xl font-semibold text-white mb-4">About Synthpify.ai</h2>
-              <p className="text-slate-300 leading-relaxed text-sm mb-8">
+            <div className="p-8 bg-slate-50/50">
+              <h2 className="text-xl font-semibold text-slate-900 mb-4">About Synthpify.ai</h2>
+              <p className="text-slate-600 leading-relaxed text-sm mb-8">
                 Synthpify.ai specializes in developing advanced business automation tools and conversational AI assistants to streamline complex operational workflows. By seamlessly orchestrating intelligent voice agents and automated logic pipelines, the platform transforms how companies manage customer interactions and day-to-day tasks.
               </p>
 
-              <h3 className="text-lg font-semibold text-white mb-4">Industries We Transform</h3>
+              <h3 className="text-lg font-semibold text-slate-900 mb-4">Industries We Transform</h3>
               <Accordion type="single" collapsible className="w-full space-y-3">
                 {industries.map((ind, i) => (
-                  <AccordionItem value={`item-${i}`} key={i} className="border-slate-700/50 border rounded-xl px-4 bg-slate-800/40 backdrop-blur-sm overflow-hidden">
-                    <AccordionTrigger className="hover:no-underline text-sm font-semibold text-slate-200 py-4">
+                  <AccordionItem value={`item-${i}`} key={i} className="border-slate-200 border rounded-xl px-4 bg-white overflow-hidden shadow-sm">
+                    <AccordionTrigger className="hover:no-underline text-sm font-semibold text-slate-800 py-4">
                       <div className="flex items-center gap-3 text-left">
-                        <div className="p-2 rounded-lg bg-slate-800/80 border border-slate-700/50">
+                        <div className="p-2 rounded-lg bg-brand-50 border border-brand-100">
                           {ind.icon}
                         </div>
                         {ind.title}
                       </div>
                     </AccordionTrigger>
-                    <AccordionContent className="text-slate-400 text-sm leading-relaxed pb-5 pt-1 px-1">
+                    <AccordionContent className="text-slate-600 text-sm leading-relaxed pb-5 pt-1 px-1">
                       {ind.desc}
                     </AccordionContent>
                   </AccordionItem>
@@ -164,7 +165,7 @@ END:VCARD`;
         
         {/* Footer info */}
         <div className="text-center mt-8 pb-8 opacity-60">
-          <p className="text-xs text-slate-500">&copy; {new Date().getFullYear()} Synthpify.ai</p>
+          <p className="text-xs text-slate-500 font-medium">&copy; {new Date().getFullYear()} Synthpify.ai</p>
         </div>
       </motion.div>
     </div>
