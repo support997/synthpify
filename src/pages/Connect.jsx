@@ -19,19 +19,32 @@ const Connect = () => {
   const [copied, setCopied] = useState(false);
 
   const generateVCard = async () => {
-    // Fetch photo and convert to Base64
+    // Fetch photo, crop to a square from the top, and convert to Base64
     let photoBase64 = '';
     try {
-      const response = await fetch('/wesley.jpg');
-      const blob = await response.blob();
-      photoBase64 = await new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          // Strip the data:image/jpeg;base64, prefix
-          const base64 = reader.result.split(',')[1];
-          resolve(base64);
+      photoBase64 = await new Promise((resolve, reject) => {
+        const img = new Image();
+        img.crossOrigin = 'Anonymous';
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          // Make it a perfect square based on width
+          const size = Math.min(img.width, img.height);
+          canvas.width = size;
+          canvas.height = size;
+          
+          const ctx = canvas.getContext('2d');
+          
+          // Crop from the very top (srcY = 0) so the face sits in the middle of the square
+          const srcX = (img.width - size) / 2;
+          const srcY = 0; 
+          
+          ctx.drawImage(img, srcX, srcY, size, size, 0, 0, size, size);
+          
+          const dataURL = canvas.toDataURL('image/jpeg', 0.85);
+          resolve(dataURL.split(',')[1]);
         };
-        reader.readAsDataURL(blob);
+        img.onerror = reject;
+        img.src = '/wesley.jpg';
       });
     } catch (err) {
       console.warn('Could not load photo for vCard:', err);
@@ -46,7 +59,7 @@ const Connect = () => {
       'TEL;TYPE=CELL:347-738-0038',
       'EMAIL:Wlin@synthpify.ai',
       'URL:https://www.synthpify.ai',
-      'NOTE:Synthpify.ai specializes in developing advanced business automation tools and conversational AI assistants.',
+      'NOTE:Synthpify.ai specializes in developing advanced business automation tools and conversational AI assistants to streamline complex operational workflows. By seamlessly orchestrating intelligent voice agents and automated logic pipelines, the platform transforms how companies manage customer interactions and day-to-day tasks. We also offer merchant service, custom App dev and online ordering service.',
       photoBase64 ? `PHOTO;ENCODING=b;TYPE=JPEG:${photoBase64}` : '',
       'END:VCARD'
     ].filter(Boolean).join('\r\n');
