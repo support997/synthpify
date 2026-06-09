@@ -86,6 +86,9 @@ const contactLimiter = rateLimit({
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
+const leadsRoute = require('./routes/leads.cjs');
+app.use('/api', contactLimiter, leadsRoute);
+
 app.post('/api/contact', contactLimiter, async (req, res) => {
   const { name = '', email = '', phone = '', subject = '', message = '' } = req.body || {};
 
