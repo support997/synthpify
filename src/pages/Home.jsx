@@ -453,7 +453,7 @@ export default function Home({ onScheduleClick }) {
                 <div className="flex items-center gap-1 text-yellow-400 text-xs mb-4">
                   {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} fill="currentColor" />)}
                 </div>
-                <p className="text-slate-700 italic mb-6">"The real estate analysis platform built for Prosphinsa gave us institutional-grade underwriting in minutes. We evaluate 5x more properties with complete confidence."</p>
+                <p className="text-slate-700 italic mb-6">"The real estate analysis platform built for Propshinsa gave us institutional-grade underwriting in minutes. We evaluate 5x more properties with complete confidence."</p>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center font-bold text-amber-700 text-xs">JS</div>

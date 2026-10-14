@@ -94,9 +94,9 @@ export const projects = [
     placeholderIcon: 'Star'
   },
   {
-    id: 'prosphinsa',
-    name: 'Prosphinsa',
-    liveUrl: 'https://prosphinsa.com',
+    id: 'propshinsa',
+    name: 'Propshinsa',
+    liveUrl: 'https://propshinsa.com/',
     tagline: 'Intelligent Real Estate Investment & Underwriting Platform',
     category: 'FinTech & PropTech',
     industry: 'Real Estate & Private Equity',
@@ -138,7 +138,7 @@ export const projects = [
       { label: 'Deal Throughput', value: '5x More Deals', desc: 'Analyzed weekly with zero spreadsheet formula bugs' },
       { label: 'Report Quality', value: 'Institutional', desc: 'Standardized underwriting acceptable to private lenders' }
     ],
-    screenshot: '/prosphinsa.png',
+    screenshot: '/propshinsa.png',
     placeholderIcon: 'TrendingUp'
   },
   {

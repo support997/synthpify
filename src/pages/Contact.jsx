@@ -100,7 +100,7 @@ export default function Contact() {
           <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
             <h3 className="text-xl font-bold text-slate-900">Get in Touch Directly</h3>
             <p className="text-slate-600 text-sm leading-relaxed">
-              Have questions about our deployed projects (Beanpilot, Envigo, Prosphinsa) or want a tailored estimate for your business? Reach out directly.
+              Have questions about our deployed projects (Beanpilot, Envigo, Propshinsa) or want a tailored estimate for your business? Reach out directly.
             </p>
 
             <div className="space-y-4 pt-2">

@@ -37,7 +37,7 @@ export default function Footer() {
                         </li>
                         <li><Link to="/projects" className="hover:text-white transition-colors text-slate-400">Beanpilot (Payroll)</Link></li>
                         <li><Link to="/projects" className="hover:text-white transition-colors text-slate-400">Envigo (Loyalty)</Link></li>
-                        <li><Link to="/projects" className="hover:text-white transition-colors text-slate-400">Prosphinsa (PropTech)</Link></li>
+                        <li><Link to="/projects" className="hover:text-white transition-colors text-slate-400">Propshinsa (PropTech)</Link></li>
                         <li><Link to="/projects" className="hover:text-white transition-colors text-slate-400">Voice AI & POS</Link></li>
                     </ul>
                 </div>
