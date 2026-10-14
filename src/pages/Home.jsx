@@ -134,20 +134,20 @@ export default function Home({ onScheduleClick }) {
                 <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-6">
                   <Zap size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">POS & Workflow Automations</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">POS, Kiosk & QSR Solutions</h3>
                 <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                  Connect Clover POS, payment gateways, kitchen display systems, Google Workspace, and n8n pipelines to eliminate manual data entry.
+                  End-to-end QSR technology featuring custom POS registers, self-service kiosks, online ordering apps, and an integrated kitchen display management system. Deliver the seamless operations and enterprise-grade capabilities of major restaurant chains at a price built for SMBs.
                 </p>
               </div>
               <ul className="space-y-2 text-xs font-semibold text-slate-700 pt-4 border-t border-slate-200">
                 <li className="flex items-center gap-2">
-                  <CheckCircle size={14} className="text-emerald-600" /> Clover POS & Merchant Services
+                  <CheckCircle size={14} className="text-emerald-600" /> Custom POS & Self-Service Kiosks
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle size={14} className="text-emerald-600" /> Real-Time Webhook Pipelines
+                  <CheckCircle size={14} className="text-emerald-600" /> Online Ordering & Kitchen Display Systems
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle size={14} className="text-emerald-600" /> Automated Customer Reviews & SMS
+                  <CheckCircle size={14} className="text-emerald-600" /> Enterprise-Grade Solutions, SMB-Friendly Pricing
                 </li>
               </ul>
             </div>
