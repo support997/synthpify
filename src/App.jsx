@@ -14,6 +14,15 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Support from './pages/Support'
 import Connect from './pages/Connect'
+import Projects from './pages/Projects'
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 function AppContent({ handleStartCall, vapiRef }) {
   const location = useLocation();
@@ -21,11 +30,13 @@ function AppContent({ handleStartCall, vapiRef }) {
 
   return (
     <div className="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-brand-100 selection:text-brand-700 min-h-screen flex flex-col">
+      <ScrollToTop />
       {!isConnectPage && <Navbar onScheduleClick={handleStartCall} />}
       {!isConnectPage && <N8nChatEmbed />}
 
       <Routes>
         <Route path="/" element={<Home onScheduleClick={handleStartCall} />} />
+        <Route path="/projects" element={<Projects onScheduleClick={handleStartCall} />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/security" element={<Security />} />
