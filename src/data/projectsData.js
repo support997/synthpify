@@ -49,6 +49,7 @@ export const projects = [
   {
     id: 'envigo',
     name: 'Envigo',
+    liveUrl: 'https://engivo-1.onrender.com/',
     tagline: 'Customer Loyalty, Rewards Ledger & Google Review Growth Engine',
     category: 'Customer Engagement & RepTech',
     industry: 'Retail & Hospitality',
