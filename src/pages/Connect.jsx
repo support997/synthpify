@@ -24,7 +24,27 @@ const Connect = () => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    document.title = "Wesley Lin | Synthpify.ai - Connect";
+    document.title = "Wesley Lin | Retain Repeat Customers, Google Reviews & Kiosk/POS Solutions";
+
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Connect with Wesley Lin, Founder & Solutions Architect at Synthpify.ai. Helping businesses retain repeat customers, automate 5-star Google reviews, deploy modern Kiosks & POS systems, and run 24/7 AI voice receptionists.');
+    }
+
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', 'Wesley Lin | Retain Repeat Customers, Google Reviews & Kiosk/POS Solutions');
+    }
+
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) {
+      ogDesc.setAttribute('content', 'Connect with Wesley Lin, Founder & Solutions Architect at Synthpify.ai. Helping businesses retain repeat customers, automate 5-star Google reviews, deploy modern Kiosks & POS systems, and run 24/7 AI voice receptionists.');
+    }
+
+    const ogImage = document.querySelector('meta[property="og:image"]');
+    if (ogImage) {
+      ogImage.setAttribute('content', 'https://synthpify.ai/wesley.jpg');
+    }
   }, []);
 
   const generateVCard = async () => {
