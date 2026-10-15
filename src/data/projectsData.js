@@ -341,7 +341,84 @@ export const projects = [
       { label: 'Report Quality', value: 'Institutional', desc: 'Standardized underwriting acceptable to private lenders' }
     ],
     screenshot: '/propshinsa.png',
-    placeholderIcon: 'TrendingUp'
+    placeholderIcon: 'TrendingUp',
+    gallery: [
+      {
+        id: 'dashboard',
+        tabName: 'Investment Dashboard',
+        title: 'Portfolio Investment Dashboard & Deal Pipeline',
+        category: 'Portfolio Management & KPI Intelligence',
+        urlPath: 'propshinsa.com/dashboard',
+        image: '/propshinsa-dashboard.png',
+        desc: 'Central command for real estate investors and syndicators. Surfaces aggregate portfolio valuation, equity accrual, monthly net cash flows, target cap rate benchmarks, and active deal underwriting status across the acquisition pipeline.',
+        highlights: [
+          'High-level portfolio KPIs: Total Portfolio Value ($14.5M+), Total Asset Equity ($4.5M+), and Monthly Cash Flow ($17.7K+)',
+          'Acquisition funnel tracker monitoring counts for New Leads (57), Analyzing (1), Offers Sent (2), and Under Contract (1)',
+          'Active Property Analyses data table with inline multi-select, Strategy indicators, AI Audit tags, Cap Rates, Cash-on-Cash ROI, and Action menus',
+          'Institutional Investment Summary sidebar featuring average cap rate gauges and algorithmic Risk Profile distribution (Avoid, Moderate Risk, High Risk, Worth Pursuing)'
+        ]
+      },
+      {
+        id: 'rental-analysis',
+        tabName: 'Rental Strategy',
+        title: 'Long-Term Rental Financial Modeling & Cash Flow Breakdown',
+        category: 'Cash Flow & Debt Underwriting',
+        urlPath: 'propshinsa.com/property/2171-12th-st-sw/rental',
+        image: '/propshinsa-rental-analysis.png',
+        desc: 'In-depth rental investment analyzer modeling gross rents, operating expenses, debt service coverage, and net cash flow with real-time sensitivity analysis and instant cap rate recalculation.',
+        highlights: [
+          'Dynamic rental math engine calculating Cap Rate (3.0%), All-in Cap Rate (2.8%), DSCR (0.40), and Cash-on-Cash Return ROI (-45.8%)',
+          'Granular upfront cash-to-close ledger detailing down payment, rehab budget ($8,000), origination fees, closing fees, title fees, and broker commissions',
+          'Monthly cash flow waterfall breaking down Gross Rent ($1,200), Vacancy Loss (-$96), Operating Expenses (-$838), and Debt Service P&I (-$663)',
+          'Integrated Cap Rate Strategy Signal and local rental market comp analysis verifying fair market single-unit benchmarks against active property rates'
+        ]
+      },
+      {
+        id: 'fix-and-flip',
+        tabName: 'Fix & Flip Audit',
+        title: 'Fix & Flip Profitability & AI Deal Audit Engine',
+        category: 'Automated Risk Assessment & Flipping',
+        urlPath: 'propshinsa.com/property/2171-12th-st-sw/fix-and-flip',
+        image: '/propshinsa-fix-flip-audit.png',
+        desc: 'Rapid exit-strategy comparison engine contrasting rental cash flows against fix-and-flip margins, powered by an AI Deal Audit that cross-references financial viability, neighborhood safety, and macroeconomic trends.',
+        highlights: [
+          'Fix & Flip profitability model calculating Net Profit (-$21,267), ROI (-17.9%), Annualized ROI (-32.5%), and total Cash Needed ($119,017)',
+          'Capital expenditure breakdown detailing purchase closing costs ($3,000), holding costs ($3,117), financing expense, and rehab contingencies',
+          'Algorithmic AI Deal Audit decision badge (AVOID / PURSUE) synthesizing debt coverage, negative cash flows, and neighborhood risk scores',
+          'Multi-factor risk evaluation tracking property safety ratings (30/100) and localized YoY rent growth trends (-4.35%)'
+        ]
+      },
+      {
+        id: 'pricing-plans',
+        tabName: 'SaaS Tiers & Credits',
+        title: 'Subscription Tiers & AI Underwriting Credit Matrix',
+        category: 'SaaS Monetization & Credit Engine',
+        urlPath: 'propshinsa.com/pricing',
+        image: '/propshinsa-pricing-plans.png',
+        desc: 'Tiered subscription engine supporting individual hobbyist investors through full-scale investment syndicates, equipped with real-time AI credit quotas, monthly/annual billing cycles, and feature access gates.',
+        highlights: [
+          'Flexible billing cycles with annual subscription discount toggle (~20% savings)',
+          'Tiered packaging spanning Free ($0/mo), Starter ($8/mo), Experienced ($19/mo), and institutional Pro ($29/mo)',
+          'Granular resource quotas regulating AI Underwriting Credits, active property pipeline limits (up to 300 properties), and advanced strategy tools',
+          'Self-serve subscription lifecycle management with instant upgrades, prorated billing, and current credit balance monitoring'
+        ]
+      },
+      {
+        id: 'property-intake',
+        tabName: 'Property Intake',
+        title: 'Omni-Channel Property Intake & Data Ingestion Engine',
+        category: 'Multi-Source Data Extraction',
+        urlPath: 'propshinsa.com/properties/add',
+        image: '/propshinsa-add-property.png',
+        desc: 'A flexible, multi-modal intake system allowing investors to ingest property leads from URLs, MLS PDF brochures, parcel records, or GPS coordinates directly in the field.',
+        highlights: [
+          'Listing URL scraper supporting one-click extraction from Zillow, Redfin, and major broker portals',
+          'Document & MLS OCR parser extracting financials, lot dimensions, and bedroom/bathroom counts from uploaded PDF flyers and images',
+          'County Assessor APN (Assessor Parcel Number) lookup resolving tax records, deed history, and structural metadata',
+          'Field-ready geolocation inputs supporting raw GPS coordinates, address geocoding, and mobile Device GPS intake'
+        ]
+      }
+    ]
   },
   {
     id: 'voice-ordering',

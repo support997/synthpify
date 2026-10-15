@@ -279,7 +279,7 @@ export default function ProjectModal({ project, onClose, onScheduleClick }) {
                   <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">
                     Click to switch production screen:
                   </div>
-                  <div className={`grid gap-2 ${project.gallery.length > 4 ? 'grid-cols-2 sm:grid-cols-4 md:grid-cols-7' : 'grid-cols-2 sm:grid-cols-4'}`}>
+                  <div className={`grid gap-2 ${project.gallery.length === 5 ? 'grid-cols-2 sm:grid-cols-3 md:grid-cols-5' : project.gallery.length > 4 ? 'grid-cols-2 sm:grid-cols-4 md:grid-cols-7' : 'grid-cols-2 sm:grid-cols-4'}`}>
                     {project.gallery.map((screen, idx) => (
                       <button
                         key={screen.id}
