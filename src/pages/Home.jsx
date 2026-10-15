@@ -439,10 +439,10 @@ export default function Home({ onScheduleClick }) {
                 <p className="text-slate-700 italic mb-6">"Having our custom shift scheduling and payroll calculation automated through Beanpilot saved our managers 10 hours every week. Zero calculation errors."</p>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center font-bold text-blue-600 text-xs">DT</div>
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center font-bold text-blue-600 text-xs">TM</div>
                 <div>
-                  <div className="text-sm font-bold text-slate-900">David Tan</div>
-                  <div className="text-xs text-slate-500">Operations Director, Metro Hospitality</div>
+                  <div className="text-sm font-bold text-slate-900">Tracy Ma</div>
+                  <div className="text-xs text-slate-500">Managing Director, Micco Cafe</div>
                 </div>
               </div>
             </div>
