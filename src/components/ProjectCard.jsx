@@ -15,7 +15,10 @@ export default function ProjectCard({ project, onSelect }) {
   return (
     <div className="bg-white rounded-3xl border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col overflow-hidden group hover:-translate-y-1">
       {/* Top Media / Mockup Area */}
-      <div className="relative h-56 bg-slate-900 overflow-hidden flex items-center justify-center p-6 border-b border-slate-100">
+      <div 
+        onClick={() => onSelect(project)}
+        className="relative h-56 bg-slate-900 overflow-hidden flex items-center justify-center p-6 border-b border-slate-100 cursor-pointer"
+      >
         {/* Background Ambient Glow */}
         <div className={`absolute inset-0 bg-gradient-to-br ${project.colorTheme.primary} opacity-20 group-hover:opacity-30 transition-opacity`} />
         
@@ -69,6 +72,16 @@ export default function ProjectCard({ project, onSelect }) {
             {project.badge}
           </span>
         </div>
+
+        {/* Gallery Screen Count Badge Overlaid */}
+        {project.gallery?.length > 0 && (
+          <div className="absolute top-4 right-4 z-20">
+            <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-slate-950/85 text-emerald-400 border border-emerald-500/40 backdrop-blur-md shadow-sm flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>{project.gallery.length} Production Screens</span>
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Card Body */}
