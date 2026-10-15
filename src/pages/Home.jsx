@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Activity, PhoneMissed, Bot, ClipboardList, Mic, Banknote, Clock, Shield,
   Star, BarChart3, Settings, CheckCircle, Headphones, Sparkles, Code2, Cpu,
@@ -12,6 +12,10 @@ import ProjectModal from '../components/ProjectModal'
 
 export default function Home({ onScheduleClick }) {
   const [activeProject, setActiveProject] = useState(null);
+
+  useEffect(() => {
+    document.title = "Synthpify | Retain & Get Repeat Customers + Google Reviews | Kiosk/POS Solutions";
+  }, []);
 
   // Take the top 3 featured client projects
   const featuredProjects = projects.slice(0, 3);

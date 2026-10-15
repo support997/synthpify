@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { projects } from '../data/projectsData';
 import ProjectCard from '../components/ProjectCard';
 import ProjectModal from '../components/ProjectModal';
@@ -8,6 +8,10 @@ import { Link } from 'react-router-dom';
 export default function Projects({ onScheduleClick }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [activeProject, setActiveProject] = useState(null);
+
+  useEffect(() => {
+    document.title = "Projects & Case Studies | Synthpify";
+  }, []);
 
   const categories = ['All', 'Custom Web App / SaaS', 'Customer Engagement & RepTech', 'FinTech & PropTech', 'Conversational AI & POS Sync'];
 

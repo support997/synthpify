@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Download, Phone, Mail, Globe, Briefcase, Calendar, MapPin, Share2, 
@@ -22,6 +22,10 @@ import {
 
 const Connect = () => {
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    document.title = "Wesley Lin | Synthpify.ai - Connect";
+  }, []);
 
   const generateVCard = async () => {
     // Fetch photo, crop to a square from the top, and convert to Base64
