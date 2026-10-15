@@ -131,7 +131,7 @@ const Connect = () => {
     {
       title: "Home & Field Trade Services",
       icon: <Wrench className="h-5 w-5 text-red-500" />,
-      desc: "24/7 conversational voice assistants that answer incoming calls, triage urgent jobs, schedule technician visits, and dispatch preliminary quotes—fully synchronized with your Google Calendar, CRM, and customer SMS updates."
+      desc: "24/7 conversational voice assistants that answer incoming calls, triage urgent jobs, schedule technician visits, and dispatch preliminary quotes, fully synchronized with your Google Calendar, CRM, and customer SMS updates."
     },
     {
       title: "Healthcare, Dental & Wellness",

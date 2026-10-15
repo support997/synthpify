@@ -141,7 +141,7 @@ export const projects = [
       },
       {
         title: 'In-Browser Countertop Camera QR Scanner',
-        desc: 'Cashiers scan customer loyalty QR codes directly using any phone or tablet camera—no hardware scanners needed.'
+        desc: 'Cashiers scan customer loyalty QR codes directly using any phone or tablet camera with no dedicated hardware scanners needed.'
       },
       {
         title: 'Live Member Points Ledger & Search',

@@ -27,7 +27,7 @@ export default function About() {
             </div>
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Our Engineering Mission</h2>
             <p className="text-slate-600 text-base leading-relaxed mb-4">
-              Off-the-shelf software rarely fits how a business actually runs. We partner with founders and business owners to build bespoke web applications—such as workforce timesheet engines, customer loyalty platforms, and dynamic financial underwriting tools.
+              Off-the-shelf software rarely fits how a business actually runs. We partner with founders and business owners to build bespoke web applications, such as workforce timesheet engines, customer loyalty platforms, and dynamic financial underwriting tools.
             </p>
             <p className="text-slate-600 text-base leading-relaxed">
               We focus on clean code, secure multi-tenant architectures, and intuitive user experiences that empower teams to do more with less overhead.

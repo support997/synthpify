@@ -47,7 +47,7 @@ export default function Home({ onScheduleClick }) {
               Engineering Custom Web Platforms & <span className="text-brand-300">Intelligent AI Agents.</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-200 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
-              We design and build bespoke software—from workforce management engines and client portals to 24/7 autonomous voice receptionists that never miss an order.
+              We design and build bespoke software, ranging from workforce management engines and client portals to 24/7 autonomous voice receptionists that never miss an order.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
@@ -219,7 +219,7 @@ export default function Home({ onScheduleClick }) {
               Solving the Two Biggest Bottlenecks in Local Business
             </h2>
             <p className="text-slate-500 text-base md:text-lg mt-3">
-              We eliminate lost revenue at every customer touchpoint—transforming one-time walk-ins into repeat regulars and capturing every phone order.
+              We eliminate lost revenue at every customer touchpoint by transforming one-time walk-ins into repeat regulars and capturing every phone order.
             </p>
           </div>
 
@@ -236,7 +236,7 @@ export default function Home({ onScheduleClick }) {
               </div>
               <h3 className="text-3xl font-bold text-slate-900">The Problem: One-Time Walk-ins & Missing Reviews</h3>
               <p className="text-slate-600 leading-relaxed text-lg">
-                Over 70% of first-time customers walk out your door and never return. Traditional paper punch cards get lost in wallets, bulky App Store apps suffer 90%+ download friction, and delighted guests rarely remember to leave a review—leaving you reliant on costly ad spend while local competitors outrank you on Google.
+                Over 70% of first-time customers walk out your door and never return. Traditional paper punch cards get lost in wallets, bulky app store downloads create friction, and delighted guests rarely remember to leave a review. This leaves you reliant on costly ad spend while local competitors outrank you on Google.
               </p>
 
               {/* Problem Stats */}
@@ -263,7 +263,7 @@ export default function Home({ onScheduleClick }) {
               </div>
               <h3 className="text-3xl font-bold text-slate-900">The Solution: Zero-Download Rewards & 5-Star Reviews</h3>
               <p className="text-slate-600 leading-relaxed text-lg">
-                Turn first-time visitors into repeat regulars with frictionless digital loyalty (like our Engivo system). Customers join in 5 seconds via phone camera scan—no App Store downloads or passwords needed. Tiered reward milestones bring them back 3x more often, while post-visit automated prompts effortlessly generate verified 5-star Google reviews.
+                Turn first-time visitors into repeat regulars with frictionless digital loyalty (like our Engivo system). Customers join in 5 seconds using their phone camera with no app store downloads or passwords needed. Tiered reward milestones bring them back 3x more often, and post-visit automated prompts effortlessly generate verified 5-star Google reviews.
               </p>
 
               {/* Solution Stats */}
@@ -296,7 +296,7 @@ export default function Home({ onScheduleClick }) {
               </div>
               <h3 className="text-3xl font-bold text-slate-900">The Problem: Missed Inbound Calls</h3>
               <p className="text-slate-600 leading-relaxed text-lg">
-                You're a business owner, not a call center. The phone rings during rush hours, but your team is already stretched thin. Serving the customer in front of you often means missing the customer on the line—leading to lost orders and wasted marketing dollars.
+                You're a business owner, not a call center. The phone rings during rush hours, but your team is already stretched thin. Serving the customer in front of you often means missing the customer on the line, which leads to lost orders and wasted marketing dollars.
               </p>
 
               {/* Problem Stats */}
@@ -374,7 +374,7 @@ export default function Home({ onScheduleClick }) {
               </div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">Flexible Fulfillment & POS Sync</h3>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Choose how you handle orders—physical printer receipts, Kitchen Display Systems (KDS), or direct Clover POS injection.
+                Choose how you handle orders with options like physical printer receipts, Kitchen Display Systems (KDS), or direct Clover POS injection.
               </p>
             </div>
 
