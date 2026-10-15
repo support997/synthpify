@@ -174,6 +174,21 @@ export const projects = [
     placeholderIcon: 'Star',
     gallery: [
       {
+        id: 'customer-app',
+        tabName: 'Customer App',
+        title: 'Customer Loyalty, Rewards & Google Review Funnel',
+        category: 'End-User Experience (PWA)',
+        urlPath: 'engivo-1.onrender.com',
+        image: '/engivo-customer-app.png',
+        desc: 'Zero-download customer web application accessible via counter or table QR codes. Greets returning patrons, tracks live points progress towards rewards, provides instant digital loyalty cards, and automatically prompts happy customers to leave 5-star Google reviews.',
+        highlights: [
+          'Instant QR onboarding with personalized customer greeting ("Welcome back, John!")',
+          'Dynamic points progress bar and reward unlock milestones (e.g. 300 / 500 pts)',
+          'One-click "Show My QR Card" for cashier counter scanning',
+          'Automated Google 5-star review acceleration funnel driving organic search visibility'
+        ]
+      },
+      {
         id: 'corporate',
         tabName: 'Corporate Hub',
         title: 'Corporate Hub & Multi-Unit Analytics',
