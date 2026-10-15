@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {
   Activity, PhoneMissed, Bot, ClipboardList, Mic, Banknote, Clock, Shield,
   Star, BarChart3, Settings, CheckCircle, Headphones, Sparkles, Code2, Cpu,
-  Zap, ArrowRight, Layers, Smartphone, ExternalLink
+  Zap, ArrowRight, Layers, Smartphone, ExternalLink, UserX, Gift
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import HeroBg from '../assets/hero_bg_new.png'
@@ -206,16 +206,95 @@ export default function Home({ onScheduleClick }) {
         </div>
       </section>
 
-      {/* Voice AI Problem / Solution Section */}
-      <section className="py-20 bg-white border-y border-slate-100">
+      {/* Core Revenue Bottlenecks: Problem / Solution Section */}
+      <section className="py-24 bg-white border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-6">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold mb-4">
+              <Sparkles size={14} className="text-brand-600" />
+              <span>Core Revenue Drivers</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Solving the Two Biggest Bottlenecks in Local Business
+            </h2>
+            <p className="text-slate-500 text-base md:text-lg mt-3">
+              We eliminate lost revenue at every customer touchpoint—transforming one-time walk-ins into repeat regulars and capturing every phone order.
+            </p>
+          </div>
+
+          {/* Pair 1: Reward, Loyalty & Google Reviews */}
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left Column: The Problem */}
             <div className="space-y-6">
-              <div className="inline-block p-3 rounded-xl bg-red-50 text-red-500 mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
+                <UserX size={13} className="text-rose-500" />
+                <span>Customer Retention & Reputation</span>
+              </div>
+              <div className="p-3 rounded-xl bg-rose-50 text-rose-500 w-fit">
+                <UserX size={24} />
+              </div>
+              <h3 className="text-3xl font-bold text-slate-900">The Problem: One-Time Walk-ins & Missing Reviews</h3>
+              <p className="text-slate-600 leading-relaxed text-lg">
+                Over 70% of first-time customers walk out your door and never return. Traditional paper punch cards get lost in wallets, bulky App Store apps suffer 90%+ download friction, and delighted guests rarely remember to leave a review—leaving you reliant on costly ad spend while local competitors outrank you on Google.
+              </p>
+
+              {/* Problem Stats */}
+              <div className="grid grid-cols-2 gap-4 mt-6">
+                <div className="bg-white p-5 rounded-2xl shadow-card border border-slate-100">
+                  <div className="text-3xl font-bold text-slate-900 mb-1">72%</div>
+                  <div className="text-xs text-slate-500 font-medium uppercase tracking-wide">One-Time Customer Churn</div>
+                </div>
+                <div className="bg-white p-5 rounded-2xl shadow-card border border-slate-100">
+                  <div className="text-3xl font-bold text-slate-900 mb-1">5x More</div>
+                  <div className="text-xs text-slate-500 font-medium uppercase tracking-wide">Cost to Acquire vs. Retain</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: The Solution */}
+            <div className="space-y-6 lg:border-l lg:border-slate-100 lg:pl-12">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-semibold">
+                <Star size={13} className="text-amber-500 fill-amber-500" />
+                <span>Zero-Friction Loyalty Engine</span>
+              </div>
+              <div className="p-3 rounded-xl bg-amber-50 text-amber-500 w-fit">
+                <Gift size={24} />
+              </div>
+              <h3 className="text-3xl font-bold text-slate-900">The Solution: Zero-Download Rewards & 5-Star Reviews</h3>
+              <p className="text-slate-600 leading-relaxed text-lg">
+                Turn first-time visitors into repeat regulars with frictionless digital loyalty (like our Engivo system). Customers join in 5 seconds via phone camera scan—no App Store downloads or passwords needed. Tiered reward milestones bring them back 3x more often, while post-visit automated prompts effortlessly generate verified 5-star Google reviews.
+              </p>
+
+              {/* Solution Stats */}
+              <div className="grid grid-cols-2 gap-4 mt-6">
+                <div className="bg-amber-50/70 p-5 rounded-2xl shadow-card border border-amber-200/80 ring-2 ring-amber-500/10">
+                  <div className="text-3xl font-bold text-amber-600 mb-1">3.2x</div>
+                  <div className="text-xs text-amber-700 font-medium uppercase tracking-wide">Repeat Visit Frequency</div>
+                </div>
+                <div className="bg-white p-5 rounded-2xl shadow-card border border-slate-100">
+                  <div className="text-3xl font-bold text-slate-900 mb-1">+48%</div>
+                  <div className="text-xs text-slate-500 font-medium uppercase tracking-wide">5-Star Google Reviews</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="my-16 border-t border-slate-100" />
+
+          {/* Pair 2: Inbound Phone Operations */}
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left Column: The Problem */}
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-red-700 text-xs font-semibold">
+                <PhoneMissed size={13} className="text-red-500" />
+                <span>Inbound Call Congestion</span>
+              </div>
+              <div className="p-3 rounded-xl bg-red-50 text-red-500 w-fit">
                 <PhoneMissed size={24} />
               </div>
-              <h2 className="text-3xl font-bold text-slate-900">The Problem: Missed Inbound Calls</h2>
+              <h3 className="text-3xl font-bold text-slate-900">The Problem: Missed Inbound Calls</h3>
               <p className="text-slate-600 leading-relaxed text-lg">
                 You're a business owner, not a call center. The phone rings during rush hours, but your team is already stretched thin. Serving the customer in front of you often means missing the customer on the line—leading to lost orders and wasted marketing dollars.
               </p>
@@ -235,10 +314,14 @@ export default function Home({ onScheduleClick }) {
 
             {/* Right Column: The Solution */}
             <div className="space-y-6 lg:border-l lg:border-slate-100 lg:pl-12">
-              <div className="inline-block p-3 rounded-xl bg-green-50 text-green-500 mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 border border-green-200 text-green-700 text-xs font-semibold">
+                <Bot size={13} className="text-green-600" />
+                <span>Autonomous Voice Reception</span>
+              </div>
+              <div className="p-3 rounded-xl bg-green-50 text-green-500 w-fit">
                 <Bot size={24} />
               </div>
-              <h2 className="text-3xl font-bold text-slate-900">The Solution: Autonomous AI Voice Agents</h2>
+              <h3 className="text-3xl font-bold text-slate-900">The Solution: Autonomous AI Voice Agents</h3>
               <p className="text-slate-600 leading-relaxed text-lg">
                 Our intelligent voice agents sound and react just like human team members. They answer on ring one, accurately capture complex orders or bookings, and dispatch directly to your kitchen, calendar, or POS system.
               </p>
