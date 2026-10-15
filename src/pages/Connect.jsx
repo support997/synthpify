@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Download, Phone, Mail, Globe, Briefcase, Calendar, MapPin, Share2, ArrowLeft, Utensils, Wrench, Building2, Home as HomeIcon, Stethoscope, Truck, ShoppingCart, Copy, Smartphone, Mic } from 'lucide-react';
+import { 
+  Download, Phone, Mail, Globe, Briefcase, Calendar, MapPin, Share2, 
+  ArrowLeft, Utensils, Wrench, Building2, Home as HomeIcon, Stethoscope, 
+  Truck, ShoppingCart, Copy, Smartphone, Mic, Code2, Layers, Zap, Star, 
+  Sparkles, ExternalLink, ArrowRight, Store
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Accordion,
@@ -27,14 +32,11 @@ const Connect = () => {
         img.crossOrigin = 'Anonymous';
         img.onload = () => {
           const canvas = document.createElement('canvas');
-          // Make it a perfect square based on width
           const size = Math.min(img.width, img.height);
           canvas.width = size;
           canvas.height = size;
           
           const ctx = canvas.getContext('2d');
-          
-          // Crop from the very top (srcY = 0) so the face sits in the middle of the square
           const srcX = (img.width - size) / 2;
           const srcY = 0; 
           
@@ -55,11 +57,11 @@ const Connect = () => {
       'VERSION:3.0',
       'FN:Wesley Lin',
       'ORG:Synthpify.ai',
-      'TITLE:Founder, Business Development',
+      'TITLE:Founder & Solutions Architect',
       'TEL;TYPE=CELL:347-738-0038',
       'EMAIL:Wlin@synthpify.ai',
       'URL:https://www.synthpify.ai',
-      'NOTE:Synthpify.ai specializes in developing advanced business automation tools and conversational AI assistants to streamline complex operational workflows. By seamlessly orchestrating intelligent voice agents and automated logic pipelines, the platform transforms how companies manage customer interactions and day-to-day tasks. We also offer merchant service, custom App dev and online ordering service.',
+      'NOTE:Wesley Lin - Founder & Solutions Architect at Synthpify.ai. Bespoke full-stack web software, autonomous 24/7 conversational voice AI, custom POS registers, self-service kiosks, and business workflow automations. Deployed client applications include Beanpilot (workforce payroll), Engivo (customer loyalty & Google reviews), Propshinsa (real estate underwriting), and Clover POS integrations. Learn more at https://www.synthpify.ai',
       photoBase64 ? `PHOTO;ENCODING=b;TYPE=JPEG:${photoBase64}` : '',
       'END:VCARD'
     ].filter(Boolean).join('\r\n');
@@ -88,39 +90,34 @@ const Connect = () => {
 
   const industries = [
     {
-      title: "Restaurants & Cafes",
+      title: "Restaurants, Cafes & QSR",
       icon: <Utensils className="h-5 w-5 text-red-500" />,
-      desc: "Phone order taking agent. No more missed calls, so you can take care of the customer in front of you while having the AI handle inbound calls, loyalty program questions, and menu troubleshooting."
+      desc: "Complete QSR technology: custom POS registers, self-service kiosks, online ordering apps, 24/7 autonomous phone order taking with direct Clover POS/KDS ticket routing, and customer loyalty engines (like Engivo) that accelerate 5-star Google reviews."
     },
     {
-      title: "Home Services",
-      icon: <Wrench className="h-5 w-5 text-red-500" />,
-      desc: "Plumbing, Electrical, Roofing: While you are out on the job, our agent can answer your calls, check your availability, book appointments, and send preliminary quotes directly to the caller."
+      title: "Workforce & Multi-Location Teams",
+      icon: <Briefcase className="h-5 w-5 text-red-500" />,
+      desc: "Bespoke workforce management systems (like Beanpilot) featuring on-site QR/GPS shift timekeeping, attendance fraud prevention, missed punch variance detection, and automated split-rate wage calculations (cash/check/tips)."
     },
     {
-      title: "Real Estate Investment & Agencies",
+      title: "Real Estate Investment & PropTech",
       icon: <Building2 className="h-5 w-5 text-red-500" />,
-      desc: "Instantly pre-qualify inbound leads, capture seller details, and answer property-specific questions 24/7, ensuring you never miss a potential fix-and-flip deal or client inquiry while analyzing other properties."
+      desc: "Institutional financial modeling platforms (like Propshinsa.com) for real-time cap-rate, cash-on-cash, and fix-and-flip deal underwriting in under 2 minutes, paired with 24/7 conversational voice agents capturing prospective buyer and seller leads."
     },
     {
-      title: "Property Management",
-      icon: <HomeIcon className="h-5 w-5 text-red-500" />,
-      desc: "Field routine tenant FAQs and late-night maintenance requests. The AI can triage urgent issues to your on-call staff and log standard work orders without waking up your team."
+      title: "Home & Field Trade Services",
+      icon: <Wrench className="h-5 w-5 text-red-500" />,
+      desc: "24/7 conversational voice assistants that answer incoming calls, triage urgent jobs, schedule technician visits, and dispatch preliminary quotes—fully synchronized with your Google Calendar, CRM, and customer SMS updates."
     },
     {
-      title: "Healthcare Clinics & Dental Offices",
+      title: "Healthcare, Dental & Wellness",
       icon: <Stethoscope className="h-5 w-5 text-red-500" />,
-      desc: "Handle high volumes of routine patient calls for appointment scheduling, rescheduling, and basic intake, reducing front-desk burnout and keeping the focus on patient care."
+      desc: "Intelligent patient intake, automated appointment booking, and routine FAQ triage that eliminate phone hold times, minimize no-shows, and relieve front-desk staff from administrative burnout."
     },
     {
-      title: "Logistics & Delivery",
-      icon: <Truck className="h-5 w-5 text-red-500" />,
-      desc: "Automate driver dispatch updates, provide customers with real-time tracking information over the phone, and handle route rescheduling requests without requiring a human dispatcher."
-    },
-    {
-      title: "E-Commerce & Retail",
+      title: "Retail & Franchise Chains",
       icon: <ShoppingCart className="h-5 w-5 text-red-500" />,
-      desc: "Act as a front-line customer support agent to handle order status checks, process return requests, and answer common product questions, seamlessly routing complex issues to your live support team."
+      desc: "Zero-download digital loyalty cards, countertop camera QR scanners, real-time push broadcasts, and multi-unit corporate analytics hubs for cross-store performance tracking."
     }
   ];
 
@@ -133,7 +130,7 @@ const Connect = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="w-full max-w-[420px] relative z-10 my-auto h-[85vh] min-h-[600px] max-h-[850px] flex flex-col"
+        className="w-full max-w-[420px] relative z-10 my-auto h-[88vh] min-h-[620px] max-h-[880px] flex flex-col"
       >
         {/* The Card */}
         <div className="bg-[#F8F9FA] rounded-[36px] overflow-hidden shadow-2xl shadow-red-900/10 flex-1 relative flex flex-col border border-white/10">
@@ -189,32 +186,32 @@ const Connect = () => {
             {/* Main Info */}
             <div className="px-6 pt-16 pb-6 shrink-0">
               <h1 className="text-3xl font-bold text-neutral-900 tracking-tight mb-1">Wesley Lin</h1>
-              <p className="text-neutral-500 font-semibold text-[15px] leading-snug">
-                Founder & Business Development<br/>
-                Synthpify | AI Agency
+              <p className="text-neutral-500 font-semibold text-[14px] leading-snug">
+                Founder & Solutions Architect<br/>
+                <span className="text-neutral-700 font-bold">Synthpify.ai</span> • Custom Apps • AI Voice • POS
               </p>
               
               {/* Connection Details block */}
-              <div className="mt-7">
+              <div className="mt-6">
                 <p className="text-[11px] font-bold text-neutral-400 uppercase tracking-widest mb-3">Organization details</p>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-[15px] text-neutral-700 font-semibold">
-                    <Calendar className="w-5 h-5 text-neutral-400" /> 
+                <div className="space-y-2.5">
+                  <div className="flex items-center gap-3 text-[14px] text-neutral-700 font-semibold">
+                    <Calendar className="w-4 h-4 text-neutral-400" /> 
                     <span>Founded June 2025</span>
                   </div>
-                  <div className="flex items-center gap-3 text-[15px] text-neutral-700 font-semibold">
-                    <MapPin className="w-5 h-5 text-neutral-400" /> 
+                  <div className="flex items-center gap-3 text-[14px] text-neutral-700 font-semibold">
+                    <MapPin className="w-4 h-4 text-neutral-400" /> 
                     <span>New York, NY</span>
                   </div>
                 </div>
               </div>
 
-              {/* Action Buttons (View Card & Add Tag) */}
-              <div className="flex gap-3 mt-7">
+              {/* Action Buttons (View Card & Share) */}
+              <div className="flex gap-3 mt-6">
                 <Button 
                   onClick={generateVCard}
                   variant="outline" 
-                  className="flex-1 bg-transparent border-2 border-neutral-200 hover:bg-neutral-100 text-neutral-800 rounded-xl py-6 font-semibold text-base shadow-none transition-colors"
+                  className="flex-1 bg-transparent border-2 border-neutral-200 hover:bg-neutral-100 text-neutral-800 rounded-xl py-5 font-semibold text-sm shadow-none transition-colors"
                 >
                   View card
                 </Button>
@@ -222,17 +219,17 @@ const Connect = () => {
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button 
-                      className="flex-[0.8] bg-[#1A1A1A] hover:bg-black text-white rounded-xl py-6 px-5 font-semibold text-base shadow-md transition-colors"
+                      className="flex-[0.8] bg-[#1A1A1A] hover:bg-black text-white rounded-xl py-5 px-5 font-semibold text-sm shadow-md transition-colors"
                     >
-                      <Share2 className="w-5 h-5 mr-2" /> Share
+                      <Share2 className="w-4 h-4 mr-2" /> Share
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" sideOffset={8} className="w-48 bg-[#1A1A1A] text-white border-white/10 rounded-xl p-2 shadow-2xl">
-                    <DropdownMenuItem onClick={handleCopyLink} className="focus:bg-white/10 rounded-lg cursor-pointer font-medium py-2">
+                    <DropdownMenuItem onClick={handleCopyLink} className="focus:bg-white/10 rounded-lg cursor-pointer font-medium py-2 text-xs">
                       <Copy className="w-4 h-4 mr-2" />
                       {copied ? "Copied!" : "Copy Link"}
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={handleEmailShare} className="focus:bg-white/10 rounded-lg cursor-pointer font-medium py-2">
+                    <DropdownMenuItem onClick={handleEmailShare} className="focus:bg-white/10 rounded-lg cursor-pointer font-medium py-2 text-xs">
                       <Mail className="w-4 h-4 mr-2" />
                       Share via Email
                     </DropdownMenuItem>
@@ -243,97 +240,185 @@ const Connect = () => {
 
             {/* Contact Info List */}
             <div className="px-6 pb-6 shrink-0">
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 {/* Email */}
-                <a href="mailto:Wlin@synthpify.ai" className="flex items-center gap-4 group p-2 -mx-2 rounded-2xl hover:bg-neutral-100/60 transition-colors">
-                  <div className="w-[46px] h-[46px] rounded-full bg-[#FF4E4E] flex items-center justify-center flex-shrink-0 group-hover:bg-[#CC2B2B] transition-colors shadow-sm shadow-red-500/20">
-                    <Mail className="w-[22px] h-[22px] text-white" />
+                <a href="mailto:Wlin@synthpify.ai" className="flex items-center gap-3.5 group p-2 -mx-2 rounded-2xl hover:bg-neutral-100/60 transition-colors">
+                  <div className="w-[42px] h-[42px] rounded-full bg-[#FF4E4E] flex items-center justify-center flex-shrink-0 group-hover:bg-[#CC2B2B] transition-colors shadow-sm shadow-red-500/20">
+                    <Mail className="w-[20px] h-[20px] text-white" />
                   </div>
-                  <div className="font-semibold text-neutral-800 text-[16px] break-all">Wlin@synthpify.ai</div>
+                  <div className="font-semibold text-neutral-800 text-[15px] break-all">Wlin@synthpify.ai</div>
                 </a>
                 
                 {/* Phone */}
-                <a href="tel:3477380038" className="flex items-center gap-4 group p-2 -mx-2 rounded-2xl hover:bg-neutral-100/60 transition-colors">
-                  <div className="w-[46px] h-[46px] rounded-full bg-[#FF4E4E] flex items-center justify-center flex-shrink-0 group-hover:bg-[#CC2B2B] transition-colors shadow-sm shadow-red-500/20">
-                    <Phone className="w-[22px] h-[22px] text-white" />
+                <a href="tel:3477380038" className="flex items-center gap-3.5 group p-2 -mx-2 rounded-2xl hover:bg-neutral-100/60 transition-colors">
+                  <div className="w-[42px] h-[42px] rounded-full bg-[#FF4E4E] flex items-center justify-center flex-shrink-0 group-hover:bg-[#CC2B2B] transition-colors shadow-sm shadow-red-500/20">
+                    <Phone className="w-[20px] h-[20px] text-white" />
                   </div>
-                  <div className="font-semibold text-neutral-800 text-[16px]">(347) 738-0038</div>
+                  <div className="font-semibold text-neutral-800 text-[15px]">(347) 738-0038</div>
                 </a>
                 
                 {/* Website */}
-                <a href="https://www.synthpify.ai" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group p-2 -mx-2 rounded-2xl hover:bg-neutral-100/60 transition-colors">
-                  <div className="w-[46px] h-[46px] rounded-full bg-[#FF4E4E] flex items-center justify-center flex-shrink-0 group-hover:bg-[#CC2B2B] transition-colors shadow-sm shadow-red-500/20">
-                    <Globe className="w-[22px] h-[22px] text-white" />
+                <a href="https://www.synthpify.ai" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3.5 group p-2 -mx-2 rounded-2xl hover:bg-neutral-100/60 transition-colors">
+                  <div className="w-[42px] h-[42px] rounded-full bg-[#FF4E4E] flex items-center justify-center flex-shrink-0 group-hover:bg-[#CC2B2B] transition-colors shadow-sm shadow-red-500/20">
+                    <Globe className="w-[20px] h-[20px] text-white" />
                   </div>
-                  <div className="font-semibold text-neutral-800 text-[16px]">synthpify.ai</div>
+                  <div className="font-semibold text-neutral-800 text-[15px]">synthpify.ai</div>
                 </a>
               </div>
             </div>
 
             {/* Divider */}
             <div className="px-8 shrink-0">
-              <div className="h-px bg-neutral-200/80 w-full mb-8"></div>
+              <div className="h-px bg-neutral-200/80 w-full mb-6"></div>
             </div>
 
-            {/* About & Industries */}
+            {/* About & Core Capabilities */}
             <div className="px-6 pb-6 shrink-0">
-              <h2 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest mb-4">About</h2>
-              <p className="text-neutral-700 text-[15px] leading-relaxed mb-10 font-medium">
-                Synthpify.ai specializes in developing advanced business automation tools and conversational AI assistants to streamline complex operational workflows. By seamlessly orchestrating intelligent voice agents and automated logic pipelines, the platform transforms how companies manage customer interactions and day-to-day tasks.
+              <h2 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest mb-3">About Synthpify</h2>
+              <p className="text-neutral-700 text-[14px] leading-relaxed mb-6 font-medium">
+                Synthpify bridges bespoke full-stack web software with autonomous AI systems and modern point-of-sale integrations. We engineer production SaaS platforms (workforce scheduling, timesheets, and customer loyalty engines), deploy 24/7 human-like voice agents that never miss a call, and build end-to-end POS & kiosk ecosystems tailored for high-growth businesses.
               </p>
 
-              <div className="grid grid-cols-4 gap-2 pb-6 mb-4">
+              {/* 4 Core Pillars Grid */}
+              <div className="grid grid-cols-4 gap-2 pb-6 mb-2">
                 
-                {/* Card 1: Clover */}
-                <div className="bg-white rounded-xl p-2.5 shadow-sm ring-1 ring-black/[0.03] flex flex-col justify-between items-center text-center h-[90px]">
-                  <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center p-1.5 mb-1.5 shrink-0">
-                    <img src="/clover-logo.png" alt="Clover" className="w-full h-full object-contain" />
+                {/* Card 1: Custom Web & SaaS */}
+                <div className="bg-white rounded-xl p-2 shadow-sm ring-1 ring-black/[0.04] flex flex-col justify-between items-center text-center h-[96px]">
+                  <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mb-1 shrink-0">
+                    <Code2 className="w-4 h-4 text-blue-600" />
                   </div>
-                  <span className="font-bold text-[9px] text-neutral-800 leading-[1.1]">Merchant services</span>
-                </div>
-
-                {/* Card 2: Custom App */}
-                <div className="bg-white rounded-xl p-2.5 shadow-sm ring-1 ring-black/[0.03] flex flex-col justify-between items-center text-center h-[90px]">
-                  <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mb-1.5 shrink-0">
-                    <Smartphone className="w-4 h-4 text-blue-600" />
-                  </div>
-                  <span className="font-bold text-[9px] text-neutral-800 leading-[1.1]">Custom App</span>
-                </div>
-
-                {/* Card 3: AI Voice */}
-                <div className="bg-white rounded-xl p-2.5 shadow-sm ring-1 ring-black/[0.03] flex flex-col justify-between items-center text-center h-[90px]">
-                  <div className="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center mb-1.5 shrink-0">
-                    <Mic className="w-4 h-4 text-purple-600" />
-                  </div>
-                  <span className="font-bold text-[8.5px] text-neutral-800 leading-[1.1]">
-                    AI Voice<br/>
-                    <span className="font-medium text-neutral-500">Workflow Automation</span>
+                  <span className="font-bold text-[9px] text-neutral-800 leading-[1.15]">
+                    Custom Web<br/>& SaaS
                   </span>
                 </div>
 
-                {/* Card 4: Online Ordering */}
-                <div className="bg-white rounded-xl p-2.5 shadow-sm ring-1 ring-black/[0.03] flex flex-col justify-between items-center text-center h-[90px]">
-                  <div className="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center mb-1.5 shrink-0">
-                    <ShoppingCart className="w-4 h-4 text-orange-600" />
+                {/* Card 2: 24/7 AI Voice */}
+                <div className="bg-white rounded-xl p-2 shadow-sm ring-1 ring-black/[0.04] flex flex-col justify-between items-center text-center h-[96px]">
+                  <div className="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center mb-1 shrink-0">
+                    <Mic className="w-4 h-4 text-purple-600" />
                   </div>
-                  <span className="font-bold text-[9px] text-neutral-800 leading-[1.1]">Online ordering</span>
+                  <span className="font-bold text-[9px] text-neutral-800 leading-[1.15]">
+                    24/7 Voice<br/>AI Agents
+                  </span>
+                </div>
+
+                {/* Card 3: POS & Kiosks */}
+                <div className="bg-white rounded-xl p-2 shadow-sm ring-1 ring-black/[0.04] flex flex-col justify-between items-center text-center h-[96px]">
+                  <div className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center mb-1 shrink-0">
+                    <img src="/clover-logo.png" alt="Clover" className="w-4 h-4 object-contain" />
+                  </div>
+                  <span className="font-bold text-[9px] text-neutral-800 leading-[1.15]">
+                    POS, Kiosk<br/>& QSR Tech
+                  </span>
+                </div>
+
+                {/* Card 4: Loyalty & Reviews */}
+                <div className="bg-white rounded-xl p-2 shadow-sm ring-1 ring-black/[0.04] flex flex-col justify-between items-center text-center h-[96px]">
+                  <div className="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center mb-1 shrink-0">
+                    <Star className="w-4 h-4 text-amber-600" />
+                  </div>
+                  <span className="font-bold text-[9px] text-neutral-800 leading-[1.15]">
+                    Loyalty &<br/>Google Reviews
+                  </span>
                 </div>
 
               </div>
 
-              <h3 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest mb-4">Industries</h3>
-              <Accordion type="single" collapsible className="w-full space-y-3">
+              {/* Deployed Client Projects Showcase */}
+              <div className="mb-8 pt-2">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest">Deployed Systems</h3>
+                  <a href="/projects" className="text-[11px] font-bold text-red-600 hover:text-red-700 flex items-center gap-1 transition">
+                    <span>View All</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </a>
+                </div>
+                
+                <div className="space-y-2.5">
+                  {/* Beanpilot */}
+                  <a 
+                    href="/projects" 
+                    className="block p-3 rounded-2xl bg-white border border-neutral-200/70 hover:border-emerald-300 shadow-sm transition-all group hover:shadow"
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-bold text-[13px] text-neutral-900 group-hover:text-emerald-600 transition-colors">Beanpilot</span>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                        Workforce & Payroll SaaS
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-neutral-500 leading-snug">
+                      QR/GPS shift timekeeping, missed punch variance detection & automated cash/check/tips payroll calculation.
+                    </p>
+                  </a>
+
+                  {/* Engivo */}
+                  <a 
+                    href="https://engivo-1.onrender.com/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block p-3 rounded-2xl bg-white border border-neutral-200/70 hover:border-blue-300 shadow-sm transition-all group hover:shadow"
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-bold text-[13px] text-neutral-900 group-hover:text-blue-600 transition-colors">Engivo</span>
+                        <ExternalLink className="w-3 h-3 text-neutral-400" />
+                      </div>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+                        Customer Loyalty & Reviews
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-neutral-500 leading-snug">
+                      Zero-download customer rewards ledger, in-browser camera QR scanner & 5-star Google review growth funnel.
+                    </p>
+                  </a>
+
+                  {/* Propshinsa */}
+                  <a 
+                    href="https://propshinsa.com/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block p-3 rounded-2xl bg-white border border-neutral-200/70 hover:border-amber-300 shadow-sm transition-all group hover:shadow"
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-bold text-[13px] text-neutral-900 group-hover:text-amber-600 transition-colors">Propshinsa.com</span>
+                        <ExternalLink className="w-3 h-3 text-neutral-400" />
+                      </div>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
+                        Real Estate FinTech
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-neutral-500 leading-snug">
+                      Intelligent property deal underwriting, cap-rate & cash-on-cash financial modeling, and PDF pitch summaries.
+                    </p>
+                  </a>
+                </div>
+
+                <div className="mt-3 text-center">
+                  <a 
+                    href="/projects" 
+                    className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 px-4 rounded-xl bg-neutral-900 hover:bg-black text-white text-xs font-bold transition shadow-sm"
+                  >
+                    <span>Inspect Full Case Studies & Screenshots</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Industries Served Accordion */}
+              <h3 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest mb-3">Industries Served</h3>
+              <Accordion type="single" collapsible className="w-full space-y-2.5">
                 {industries.map((ind, i) => (
-                  <AccordionItem value={`item-${i}`} key={i} className="border-none bg-white rounded-2xl overflow-hidden shadow-sm ring-1 ring-black/[0.03] transition-all hover:shadow-md">
-                    <AccordionTrigger className="hover:no-underline text-[15px] font-bold text-neutral-800 py-4 px-5">
+                  <AccordionItem value={`item-${i}`} key={i} className="border-none bg-white rounded-2xl overflow-hidden shadow-sm ring-1 ring-black/[0.04] transition-all hover:shadow-md">
+                    <AccordionTrigger className="hover:no-underline text-[14px] font-bold text-neutral-800 py-3.5 px-4">
                       <div className="flex items-center gap-3 text-left">
-                        <div className="p-2.5 rounded-full bg-red-50">
+                        <div className="p-2 rounded-full bg-red-50 shrink-0">
                           {ind.icon}
                         </div>
-                        {ind.title}
+                        <span>{ind.title}</span>
                       </div>
                     </AccordionTrigger>
-                    <AccordionContent className="text-neutral-600 text-[14px] leading-relaxed pb-5 pt-1 px-5 font-medium">
+                    <AccordionContent className="text-neutral-600 text-[13px] leading-relaxed pb-4 pt-1 px-4 font-medium">
                       {ind.desc}
                     </AccordionContent>
                   </AccordionItem>
@@ -344,11 +429,11 @@ const Connect = () => {
           </div>
 
           {/* Floating Bottom Action Bar */}
-          <div className="absolute bottom-6 left-6 right-6 z-30 pointer-events-none">
+          <div className="absolute bottom-5 left-5 right-5 z-30 pointer-events-none">
             <div className="bg-[#111111] rounded-[20px] p-2 flex items-center gap-2 shadow-2xl ring-1 ring-white/10 pointer-events-auto">
               <Button 
                 variant="ghost" 
-                className="text-neutral-400 hover:text-white hover:bg-white/10 rounded-xl px-5 font-semibold text-[15px]"
+                className="text-neutral-400 hover:text-white hover:bg-white/10 rounded-xl px-4 font-semibold text-[14px]"
                 onClick={() => {
                   const scrollArea = document.getElementById('scrollable-content');
                   if (scrollArea) {
@@ -364,17 +449,17 @@ const Connect = () => {
                 <DropdownMenuTrigger asChild>
                   <Button 
                     variant="ghost" 
-                    className="text-white hover:bg-white/10 bg-white/5 rounded-xl font-semibold text-[15px] hidden sm:flex"
+                    className="text-white hover:bg-white/10 bg-white/5 rounded-xl font-semibold text-[14px] hidden sm:flex"
                   >
                     Share
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="center" sideOffset={12} className="w-48 bg-[#1A1A1A] text-white border-white/10 rounded-xl p-2 shadow-2xl">
-                  <DropdownMenuItem onClick={handleCopyLink} className="focus:bg-white/10 rounded-lg cursor-pointer font-medium py-2">
+                  <DropdownMenuItem onClick={handleCopyLink} className="focus:bg-white/10 rounded-lg cursor-pointer font-medium py-2 text-xs">
                     <Copy className="w-4 h-4 mr-2" />
                     {copied ? "Copied!" : "Copy Link"}
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={handleEmailShare} className="focus:bg-white/10 rounded-lg cursor-pointer font-medium py-2">
+                  <DropdownMenuItem onClick={handleEmailShare} className="focus:bg-white/10 rounded-lg cursor-pointer font-medium py-2 text-xs">
                     <Mail className="w-4 h-4 mr-2" />
                     Share via Email
                   </DropdownMenuItem>
@@ -382,7 +467,7 @@ const Connect = () => {
               </DropdownMenu>
 
               <Button 
-                className="bg-white text-black hover:bg-neutral-200 rounded-xl font-bold text-[15px] px-6" 
+                className="bg-white text-black hover:bg-neutral-200 rounded-xl font-bold text-[14px] px-5" 
                 onClick={generateVCard}
               >
                 Save Contact
