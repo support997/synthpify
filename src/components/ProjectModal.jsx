@@ -84,17 +84,23 @@ export default function ProjectModal({ project, onClose, onScheduleClick }) {
             </p>
 
             {project.liveUrl && (
-              <div className="mt-4">
+              <div className="mt-4 flex flex-wrap items-center gap-2.5">
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2.5 bg-white text-slate-900 rounded-xl text-xs sm:text-sm font-bold hover:bg-slate-100 transition shadow-md"
                 >
-                  <span>Live Sample:</span>
+                  <span>{project.adminUrl ? 'Live Customer App:' : 'Live Sample:'}</span>
                   <span className="text-blue-600 underline font-mono text-xs">{project.liveUrl}</span>
                   <ExternalLink size={14} className="text-slate-600" />
                 </a>
+                {project.adminUrl && (
+                  <div className="inline-flex items-center gap-1.5 px-3 py-2 bg-white/15 backdrop-blur-md text-white rounded-xl text-xs font-semibold border border-white/20">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Admin Portal Showcase (Screens Below)</span>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -102,7 +108,24 @@ export default function ProjectModal({ project, onClose, onScheduleClick }) {
           {/* Modal Body (Scrollable) */}
           <div className="p-5 sm:p-8 overflow-y-auto space-y-8 flex-1">
             {/* Live Link Callout Banner if applicable */}
-            {project.liveUrl && (
+            {project.adminUrl ? (
+              <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
+                <div>
+                  <span className="text-[11px] font-bold text-blue-700 uppercase tracking-wider block">Dual-Portal Deployment</span>
+                  <span className="text-sm font-semibold text-slate-900 block">Live Customer Web App + Mobile Merchant Admin Suite</span>
+                  <span className="text-xs text-slate-600 block mt-0.5">The customer QR check-in & 5-star review app is live online; the merchant administrative views are showcased below.</span>
+                </div>
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow shrink-0"
+                >
+                  <span>Open Customer App</span>
+                  <ExternalLink size={14} />
+                </a>
+              </div>
+            ) : project.liveUrl ? (
               <div className="p-4 rounded-2xl bg-blue-50/90 border border-blue-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
                 <div>
                   <span className="text-[11px] font-bold text-blue-700 uppercase tracking-wider block">Live Deployed Application</span>
@@ -118,7 +141,7 @@ export default function ProjectModal({ project, onClose, onScheduleClick }) {
                   <ExternalLink size={14} />
                 </a>
               </div>
-            )}
+            ) : null}
 
             {/* Production Application Visual Gallery (When screenshots exist) */}
             {hasGallery && (
@@ -185,14 +208,16 @@ export default function ProjectModal({ project, onClose, onScheduleClick }) {
 
                   {/* Main Screen Preview */}
                   <div 
-                    className="relative bg-slate-950 cursor-pointer overflow-hidden flex items-center justify-center min-h-[260px] sm:min-h-[380px]"
+                    className="relative bg-slate-950 cursor-pointer overflow-hidden flex items-center justify-center min-h-[280px] sm:min-h-[440px] p-4 sm:p-6"
                     onClick={() => setLightboxOpen(true)}
                   >
-                    <img
-                      src={currentScreen.image}
-                      alt={currentScreen.title}
-                      className="w-full h-auto max-h-[500px] object-contain transition-transform duration-300 group-hover:scale-[1.01]"
-                    />
+                    <div className="relative flex items-center justify-center max-w-full">
+                      <img
+                        src={currentScreen.image}
+                        alt={currentScreen.title}
+                        className="w-auto h-auto max-h-[480px] max-w-full object-contain rounded-2xl shadow-2xl border border-white/10 transition-transform duration-300 group-hover:scale-[1.01]"
+                      />
+                    </div>
 
                     {/* Prev / Next Floating Navigation */}
                     <button
@@ -219,7 +244,7 @@ export default function ProjectModal({ project, onClose, onScheduleClick }) {
                     {/* Hover Inspect Banner */}
                     <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-700 text-slate-200 text-xs flex items-center gap-1.5 pointer-events-none">
                       <Maximize2 size={13} className="text-emerald-400" />
-                      <span>Click anywhere to zoom in</span>
+                      <span>Click to zoom</span>
                     </div>
                   </div>
                 </div>
@@ -254,7 +279,7 @@ export default function ProjectModal({ project, onClose, onScheduleClick }) {
                   <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">
                     Click to switch production screen:
                   </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div className={`grid gap-2 ${project.gallery.length > 4 ? 'grid-cols-2 sm:grid-cols-4 md:grid-cols-7' : 'grid-cols-2 sm:grid-cols-4'}`}>
                     {project.gallery.map((screen, idx) => (
                       <button
                         key={screen.id}
@@ -364,7 +389,7 @@ export default function ProjectModal({ project, onClose, onScheduleClick }) {
                   rel="noopener noreferrer"
                   className="flex-1 sm:flex-none px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold flex items-center justify-center gap-2 transition shadow cursor-pointer"
                 >
-                  <span>Visit Live Site</span>
+                  <span>{project.adminUrl ? 'Visit End-User App' : 'Visit Live Site'}</span>
                   <ExternalLink size={15} />
                 </a>
               )}

@@ -126,39 +126,159 @@ export const projects = [
       accent: 'blue',
       iconBg: 'bg-blue-100 text-blue-600'
     },
-    summary: 'A modern customer engagement platform that turns one-time patrons into repeat advocates by accelerating 5-star Google reviews and rewarding repeat visits through a digital points system.',
-    challenge: 'Local retail and dining businesses struggled with inconsistent Google reviews, losing prospective walk-ins to competitors. Off-the-shelf loyalty apps were overly complex, required slow app-store downloads, and charged exorbitant subscription fees.',
-    solution: 'We built a zero-download web platform accessible instantly via counter QR codes. Customers check in seamlessly, earn redeemable perks, and are dynamically routed through an automated review funnel that drives authentic Google 5-star ratings.',
+    summary: 'A complete customer loyalty, retention, and reputation ecosystem featuring a zero-download customer web application (for QR check-ins, reward points, and automated 5-star Google reviews) paired with a mobile-first merchant admin suite for cashier scanning, points ledger audits, push broadcasts, and real-time branding customization.',
+    adminUrl: 'https://engivo-admin.onrender.com',
+    challenge: 'Local retail and dining businesses struggled with inconsistent Google reviews, losing prospective walk-ins to competitors. Traditional loyalty systems required cumbersome app store downloads, expensive barcode scanner hardware at checkout, and charged prohibitive monthly subscription fees while offering zero operational control to store managers.',
+    solution: 'We engineered a seamless two-sided platform: an instant customer web app (accessible via counter QR codes) that guides happy customers to leave 5-star Google reviews, plus a dedicated mobile-first merchant admin portal (engivo-admin.onrender.com) equipped with an in-browser camera scanner, live member ledger, web push broadcast engine, Cloudinary theme customizer, and digital menu management.',
     keyFeatures: [
       {
-        title: 'Zero-Download QR Onboarding',
-        desc: 'Customers scan a counter or table QR code and join the program in under 10 seconds.'
+        title: 'Zero-Download Customer Loyalty PWA',
+        desc: 'Patrons scan table/counter QR codes and enroll in under 5 seconds with zero app store friction.'
       },
       {
-        title: 'Automated 5-Star Review Funnel',
-        desc: 'Directs satisfied customers to leave verified Google reviews with pre-formatted prompts.'
+        title: 'Merchant Admin Portal (engivo-admin.onrender.com)',
+        desc: 'Mobile-first management suite for store managers and cashiers to audit points, launch promos, and edit branding.'
       },
       {
-        title: 'Digital Points & Rewards Ledger',
-        desc: 'Tracks customer spending, visit frequency, and unlocks tiered loyalty perks.'
+        title: 'In-Browser Countertop Camera QR Scanner',
+        desc: 'Cashiers scan customer loyalty QR codes directly using any phone or tablet camera—no hardware scanners needed.'
       },
       {
-        title: 'Merchant Analytics Dashboard',
-        desc: 'Gives business owners live visibility into customer retention, top spenders, and review velocity.'
+        title: 'Live Member Points Ledger & Search',
+        desc: 'Real-time transaction feed, instant name/email search, points balance tracking, and audit histories.'
       },
       {
-        title: 'SMS & WhatsApp Engagement',
-        desc: 'Sends automated anniversary perks, win-back offers, and points reminders.'
+        title: 'Direct-to-Device Push Broadcast Engine',
+        desc: 'Send instant promotional announcements, flash discounts, and VIP notifications straight to customer screens.'
+      },
+      {
+        title: 'Cloudinary CDN Theme & Branding Editor',
+        desc: 'Upload custom restaurant hero banners and logos with instant real-time sync across the customer web app.'
+      },
+      {
+        title: 'Automated 5-Star Google Review Funnel',
+        desc: 'Directs satisfied customers to leave verified Google reviews with pre-formatted prompts to drive organic walk-ins.'
+      },
+      {
+        title: 'Digital Menu & 22-Point RBAC Security',
+        desc: 'Manage section items, pricing, and live publish states with granular roles (Staff vs. Corporate Admin).'
       }
     ],
-    techStack: ['React / TypeScript', 'Node.js', 'Prisma', 'Cloudinary', 'SMS Automation', 'Tailwind CSS'],
+    techStack: ['React / TypeScript', 'Node.js', 'Prisma', 'Cloudinary CDN', 'Web Push API', 'QR Video Stream API', 'Tailwind CSS', 'Render Cloud'],
     metrics: [
       { label: 'Review Growth', value: '3.5x', desc: 'Increase in organic 5-star Google review volume' },
-      { label: 'Retention Rate', value: '+42%', desc: 'Higher repeat customer visits within 60 days' },
-      { label: 'Check-In Speed', value: '< 5 sec', desc: 'Lightning-fast onboarding without app store friction' }
+      { label: 'Check-In Speed', value: '< 5 sec', desc: 'Lightning-fast onboarding without app store friction' },
+      { label: 'Hardware Cost', value: '$0 Hardware', desc: 'Camera QR scanning runs directly in mobile browsers' }
     ],
     screenshot: '/engivo.png',
-    placeholderIcon: 'Star'
+    placeholderIcon: 'Star',
+    gallery: [
+      {
+        id: 'corporate',
+        tabName: 'Corporate Hub',
+        title: 'Corporate Hub & Multi-Unit Analytics',
+        category: 'Brand Governance & Analytics',
+        urlPath: 'engivo-admin.onrender.com',
+        image: '/engivo-admin-corporate.png',
+        desc: 'Global multi-unit brand governance portal providing corporate management with real-time visibility across branch locations (e.g. Slimak), active loyalty members, and points issuance economics (+2,700 bonus pts / +78 earned pts).',
+        highlights: [
+          'Multi-store branch network tracking (active store branches)',
+          'Live member enrollment totals (active vs. inactive customer tracking)',
+          'Points issuance tracking across earned customer spend vs. promotional bonus awards',
+          'Corporate rewards program governance and cross-location sync'
+        ]
+      },
+      {
+        id: 'members',
+        tabName: 'Member Ledger',
+        title: 'Members Directory & Real-Time Points Ledger',
+        category: 'Customer Directory & Activity',
+        urlPath: 'engivo-admin.onrender.com/members',
+        image: '/engivo-admin-members.png',
+        desc: 'Real-time customer directory and points ledger for store operators. Displays live daily transaction activity, instant name/email search, member filter tabs, balances (e.g. 300 pts), and audit histories.',
+        highlights: [
+          'Live daily transaction feed (earn transactions, bonus awards, reward redemptions)',
+          'Fast search & filter tags: All members, Has Points, Enrolled today',
+          'Individual customer balance ledgers with transaction history drill-down',
+          'Instant member account management & fraud protection controls'
+        ]
+      },
+      {
+        id: 'scanner',
+        tabName: 'QR Scanner',
+        title: 'Countertop Camera QR Code Reader',
+        category: 'Point-of-Sale Loyalty Checkout',
+        urlPath: 'engivo-admin.onrender.com/scanner',
+        image: '/engivo-admin-scanner.png',
+        desc: 'Mobile-first in-browser camera scanner allowing cashiers and servers to instantly scan customer loyalty QR codes directly from a phone or tablet at the register without buying expensive hardware scanners.',
+        highlights: [
+          'Zero-hardware camera scanner running directly in the browser',
+          'Target bracket viewfinder with animated laser scan detection',
+          'Instant customer profile lookup & point crediting upon scan',
+          'Works on any iOS / Android staff device at the counter'
+        ]
+      },
+      {
+        id: 'promotions',
+        tabName: 'Push Broadcasts',
+        title: 'Member Promotions & Real-Time Push Broadcasts',
+        category: 'Marketing & Retention Automation',
+        urlPath: 'engivo-admin.onrender.com/promotions',
+        image: '/engivo-admin-promotions.png',
+        desc: 'Direct-to-device push notification broadcast engine. Store managers can broadcast promotional drops, flash deals, and VIP incentives directly to customer phones with real-time delivery telemetry.',
+        highlights: [
+          'Broadcast instant web push notifications directly to customer lock-screens',
+          'Live audience telemetry: Target Subscribers, Total Enrolled Network Devices',
+          'Historical broadcast campaign tracker and delivery auditing',
+          'Eliminates third-party SMS fees by leveraging native web push standards'
+        ]
+      },
+      {
+        id: 'menus',
+        tabName: 'Menu Manager',
+        title: 'Digital Menu & Catalog Manager',
+        category: 'Product & Menu Operations',
+        urlPath: 'engivo-admin.onrender.com/menus',
+        image: '/engivo-admin-menus.png',
+        desc: 'Centralized catalog and digital menu manager for restaurants and retail. Allows operators to organize multi-section menus, edit item pricing, and instantly publish or unpublish items in real time.',
+        highlights: [
+          'Multi-section menu hierarchy (e.g. 5 Sections, 35 Items for Slimak location)',
+          'Instant One-Click Publish and Unpublish controls for live customer menus',
+          'Interactive visual item and section catalog editor',
+          'Direct sync with customer-facing web ordering and digital menus'
+        ]
+      },
+      {
+        id: 'theme',
+        tabName: 'Theme Editor',
+        title: 'Real-Time App Theme & Cloudinary Asset Editor',
+        category: 'White-Label Branding & Media',
+        urlPath: 'engivo-admin.onrender.com/theme',
+        image: '/engivo-admin-theme.png',
+        desc: 'No-code branding customization suite powered by Cloudinary. Store owners can customize the look and feel of their customer-facing app in real time by uploading custom venue banners and store logos.',
+        highlights: [
+          'Direct Cloudinary CDN upload pipeline for high-res hero banners and store logos',
+          'Instant real-time sync with customer web app without redeploying code',
+          'Automatic image optimization, compression, and responsive CDN formatting',
+          'Location-specific white-label branding controls'
+        ]
+      },
+      {
+        id: 'roles',
+        tabName: 'Roles & RBAC',
+        title: 'Staff Roles & Granular Permissions Governance',
+        category: 'Security & Access Control',
+        urlPath: 'engivo-admin.onrender.com/roles',
+        image: '/engivo-admin-roles.png',
+        desc: 'Role-based access control engine with 22 granular permission toggles, cleanly separating frontline cashier capabilities (scanner only) from corporate administrators (analytics, menus, billing).',
+        highlights: [
+          'Dual-tier default system roles: Staff / Cashier (0% sensitive access) vs Corporate Admin (100%)',
+          '22 granular permission toggles covering Scanner, Members, Menus, Theme, and Analytics',
+          'Custom role builder for regional managers, shift leads, and franchise partners',
+          'Prevents unauthorized menu pricing changes or points ledger tampering'
+        ]
+      }
+    ]
   },
   {
     id: 'propshinsa',
