@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {
   Activity, PhoneMissed, Bot, ClipboardList, Mic, Banknote, Clock, Shield,
   Star, BarChart3, Settings, CheckCircle, Headphones, Sparkles, Code2, Cpu,
-  Zap, ArrowRight, Layers, Smartphone, ExternalLink, UserX, Gift
+  Zap, ArrowRight, Layers, Smartphone, ExternalLink, UserX, Gift, ShieldCheck
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import HeroBg from '../assets/hero_bg_new.png'
@@ -213,13 +213,13 @@ export default function Home({ onScheduleClick }) {
           <div className="text-center max-w-3xl mx-auto mb-20">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold mb-4">
               <Sparkles size={14} className="text-brand-600" />
-              <span>Core Revenue Drivers</span>
+              <span>Core Revenue & Operations Drivers</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Solving the Two Biggest Bottlenecks in Local Business
+              Solving the Three Biggest Bottlenecks in Modern Business
             </h2>
             <p className="text-slate-500 text-base md:text-lg mt-3">
-              We eliminate lost revenue at every customer touchpoint by transforming one-time walk-ins into repeat regulars and capturing every phone order.
+              We eliminate lost revenue and administrative drag at every customer and employee touchpoint, from retaining walk-ins and verifying labor hours to capturing every phone order.
             </p>
           </div>
 
@@ -283,7 +283,67 @@ export default function Home({ onScheduleClick }) {
           {/* Divider */}
           <div className="my-16 border-t border-slate-100" />
 
-          {/* Pair 2: Inbound Phone Operations */}
+          {/* Pair 2: Timesheet, Attendance & Payroll */}
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left Column: The Problem */}
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-semibold">
+                <Clock size={13} className="text-indigo-600" />
+                <span>Shift Attendance & Payroll Drag</span>
+              </div>
+              <div className="p-3 rounded-xl bg-indigo-50 text-indigo-600 w-fit">
+                <Clock size={24} />
+              </div>
+              <h3 className="text-3xl font-bold text-slate-900">The Problem: Buddy Punching, Missed Punches & Payroll Errors</h3>
+              <p className="text-slate-600 leading-relaxed text-lg">
+                Manual punch cards and generic timesheets invite buddy punching and off-site clock-ins that quietly inflate labor costs. Shift workers forget to clock out, managers spend hours chasing missed punches at the end of each pay period, and manually calculating split wages for cash, check, and pooled tips in spreadsheets triggers expensive payroll errors and team disputes.
+              </p>
+
+              {/* Problem Stats */}
+              <div className="grid grid-cols-2 gap-4 mt-6">
+                <div className="bg-white p-5 rounded-2xl shadow-card border border-slate-100">
+                  <div className="text-3xl font-bold text-slate-900 mb-1">5-8 hrs</div>
+                  <div className="text-xs text-slate-500 font-medium uppercase tracking-wide">Wasted Auditing Punches Weekly</div>
+                </div>
+                <div className="bg-white p-5 rounded-2xl shadow-card border border-slate-100">
+                  <div className="text-3xl font-bold text-slate-900 mb-1">5-7%</div>
+                  <div className="text-xs text-slate-500 font-medium uppercase tracking-wide">Payroll Lost to Time Theft</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: The Solution */}
+            <div className="space-y-6 lg:border-l lg:border-slate-100 lg:pl-12">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-700 text-xs font-semibold">
+                <ShieldCheck size={13} className="text-teal-600" />
+                <span>Verified Attendance Engine</span>
+              </div>
+              <div className="p-3 rounded-xl bg-teal-50 text-teal-600 w-fit">
+                <ShieldCheck size={24} />
+              </div>
+              <h3 className="text-3xl font-bold text-slate-900">The Solution: QR/GPS Timekeeping & Automated Payroll</h3>
+              <p className="text-slate-600 leading-relaxed text-lg">
+                Our custom workforce platform (like our Beanpilot system) verifies physical attendance at the door. Staff clock in via dynamic on-site QR codes with real-time GPS geofencing on their phones, stopping proxy punching without biometric hardware. Automated variance queues detect missed punches immediately, while our multi-tier wage engine reconciles cash, check, and pooled tips into audit-ready payroll in seconds.
+              </p>
+
+              {/* Solution Stats */}
+              <div className="grid grid-cols-2 gap-4 mt-6">
+                <div className="bg-teal-50/70 p-5 rounded-2xl shadow-card border border-teal-200/80 ring-2 ring-teal-500/10">
+                  <div className="text-3xl font-bold text-teal-700 mb-1">10+ hrs/wk</div>
+                  <div className="text-xs text-teal-800 font-medium uppercase tracking-wide">Saved on Payroll & Reconciliation</div>
+                </div>
+                <div className="bg-white p-5 rounded-2xl shadow-card border border-slate-100">
+                  <div className="text-3xl font-bold text-slate-900 mb-1">100%</div>
+                  <div className="text-xs text-slate-500 font-medium uppercase tracking-wide">On-Site Clock-In Verification</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="my-16 border-t border-slate-100" />
+
+          {/* Pair 3: Inbound Phone Operations */}
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left Column: The Problem */}
             <div className="space-y-6">
