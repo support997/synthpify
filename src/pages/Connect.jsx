@@ -61,7 +61,7 @@ const Connect = () => {
       'TEL;TYPE=CELL:347-738-0038',
       'EMAIL:Wlin@synthpify.ai',
       'URL:https://www.synthpify.ai',
-      'NOTE:Wesley Lin - Founder & Solutions Architect at Synthpify.ai. Bespoke full-stack web software, autonomous 24/7 conversational voice AI, custom POS registers, self-service kiosks, and business workflow automations. Deployed client applications include Beanpilot (workforce payroll), Engivo (customer loyalty & Google reviews), Propshinsa (real estate underwriting), and Clover POS integrations. Learn more at https://www.synthpify.ai',
+      'NOTE:Wesley Lin - Founder & Solutions Architect at Synthpify.ai. Merchant services (Clover POS integrations), bespoke full-stack web software, autonomous 24/7 conversational voice AI, custom POS registers, self-service kiosks, and business workflow automations. Deployed client applications include Beanpilot (workforce payroll), Engivo (customer loyalty & Google reviews), Propshinsa (real estate underwriting), and Clover POS integrations. Learn more at https://www.synthpify.ai',
       photoBase64 ? `PHOTO;ENCODING=b;TYPE=JPEG:${photoBase64}` : '',
       'END:VCARD'
     ].filter(Boolean).join('\r\n');
@@ -188,7 +188,7 @@ const Connect = () => {
               <h1 className="text-3xl font-bold text-neutral-900 tracking-tight mb-1">Wesley Lin</h1>
               <p className="text-neutral-500 font-semibold text-[14px] leading-snug">
                 Founder & Solutions Architect<br/>
-                <span className="text-neutral-700 font-bold">Synthpify.ai</span> • Custom Apps • AI Voice • POS
+                <span className="text-neutral-700 font-bold">Synthpify.ai</span> • Merchant Services • Custom Apps • AI Voice • POS
               </p>
               
               {/* Connection Details block */}
@@ -276,7 +276,7 @@ const Connect = () => {
             <div className="px-6 pb-6 shrink-0">
               <h2 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest mb-3">About Synthpify</h2>
               <p className="text-neutral-700 text-[14px] leading-relaxed mb-6 font-medium">
-                Synthpify bridges bespoke full-stack web software with autonomous AI systems and modern point-of-sale integrations. We engineer production SaaS platforms (workforce scheduling, timesheets, and customer loyalty engines), deploy 24/7 human-like voice agents that never miss a call, and build end-to-end POS & kiosk ecosystems tailored for high-growth businesses.
+                Synthpify bridges bespoke full-stack web software with autonomous AI systems, merchant payment processing, and modern point-of-sale integrations. We engineer production SaaS platforms, deploy 24/7 human-like voice agents that never miss a call, and provide integrated Clover merchant services, custom POS registers, and self-service kiosks.
               </p>
 
               {/* 4 Core Pillars Grid */}
@@ -302,13 +302,13 @@ const Connect = () => {
                   </span>
                 </div>
 
-                {/* Card 3: POS & Kiosks */}
+                {/* Card 3: Merchant Services & POS */}
                 <div className="bg-white rounded-xl p-2 shadow-sm ring-1 ring-black/[0.04] flex flex-col justify-between items-center text-center h-[96px]">
                   <div className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center mb-1 shrink-0">
                     <img src="/clover-logo.png" alt="Clover" className="w-4 h-4 object-contain" />
                   </div>
-                  <span className="font-bold text-[9px] text-neutral-800 leading-[1.15]">
-                    POS, Kiosk<br/>& QSR Tech
+                  <span className="font-bold text-[8px] text-neutral-800 leading-[1.15]">
+                    Merchant Services<br/>& POS / Kiosks
                   </span>
                 </div>
 
