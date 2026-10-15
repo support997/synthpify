@@ -24,21 +24,21 @@ const Connect = () => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    document.title = "Wesley Lin | Retain Repeat Customers, Google Reviews & Kiosk/POS Solutions";
+    document.title = "Wesley Lin | Reward/Loyalty/Google Review App • Custom Apps • AI Voice • Kiosk/POS Solutions";
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Connect with Wesley Lin, Founder & Solutions Architect at Synthpify.ai. Helping businesses retain repeat customers, automate 5-star Google reviews, deploy modern Kiosks & POS systems, and run 24/7 AI voice receptionists.');
+      metaDescription.setAttribute('content', 'Connect with Wesley Lin, Founder & Solutions Architect at Synthpify.ai. Reward/Loyalty/Google review app, custom apps, AI voice, and Kiosk/POS/online ordering solutions.');
     }
 
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-      ogTitle.setAttribute('content', 'Wesley Lin | Retain Repeat Customers, Google Reviews & Kiosk/POS Solutions');
+      ogTitle.setAttribute('content', 'Wesley Lin | Reward/Loyalty/Google Review App • Custom Apps • AI Voice • Kiosk/POS Solutions');
     }
 
     const ogDesc = document.querySelector('meta[property="og:description"]');
     if (ogDesc) {
-      ogDesc.setAttribute('content', 'Connect with Wesley Lin, Founder & Solutions Architect at Synthpify.ai. Helping businesses retain repeat customers, automate 5-star Google reviews, deploy modern Kiosks & POS systems, and run 24/7 AI voice receptionists.');
+      ogDesc.setAttribute('content', 'Connect with Wesley Lin, Founder & Solutions Architect at Synthpify.ai. Reward/Loyalty/Google review app, custom apps, AI voice, and Kiosk/POS/online ordering solutions.');
     }
 
     const ogImage = document.querySelector('meta[property="og:image"]');
@@ -85,7 +85,7 @@ const Connect = () => {
       'TEL;TYPE=CELL:347-738-0038',
       'EMAIL:Wlin@synthpify.ai',
       'URL:https://www.synthpify.ai',
-      'NOTE:Wesley Lin - Founder & Solutions Architect at Synthpify.ai. Merchant services (Clover POS integrations), bespoke full-stack web software, autonomous 24/7 conversational voice AI, custom POS registers, self-service kiosks, and business workflow automations. Deployed client applications include Beanpilot (workforce payroll), Engivo (customer loyalty & Google reviews), Propshinsa (real estate underwriting), and Clover POS integrations. Learn more at https://www.synthpify.ai',
+      'NOTE:Wesley Lin - Founder & Solutions Architect at Synthpify.ai. Reward/Loyalty/Google review apps (Engivo), bespoke custom apps (Beanpilot, Propshinsa), autonomous 24/7 conversational voice AI, and Kiosk/POS/online ordering solutions (Clover integrations). Learn more at https://www.synthpify.ai',
       photoBase64 ? `PHOTO;ENCODING=b;TYPE=JPEG:${photoBase64}` : '',
       'END:VCARD'
     ].filter(Boolean).join('\r\n');
@@ -212,7 +212,7 @@ const Connect = () => {
               <h1 className="text-3xl font-bold text-neutral-900 tracking-tight mb-1">Wesley Lin</h1>
               <p className="text-neutral-500 font-semibold text-[14px] leading-snug">
                 Founder & Solutions Architect<br/>
-                <span className="text-neutral-700 font-bold">Synthpify.ai</span> • Merchant Services • Custom Apps • AI Voice • POS
+                <span className="text-neutral-700 font-bold">Synthpify.ai</span> • Reward/Loyalty/Google Review App • Custom Apps • AI Voice • Kiosk/POS/Online Ordering Solution
               </p>
               
               {/* Connection Details block */}
