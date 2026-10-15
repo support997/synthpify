@@ -197,7 +197,7 @@ const Connect = () => {
                 <div className="space-y-2.5">
                   <div className="flex items-center gap-3 text-[14px] text-neutral-700 font-semibold">
                     <Calendar className="w-4 h-4 text-neutral-400" /> 
-                    <span>Founded June 2025</span>
+                    <span>Founded June 2020</span>
                   </div>
                   <div className="flex items-center gap-3 text-[14px] text-neutral-700 font-semibold">
                     <MapPin className="w-4 h-4 text-neutral-400" /> 
