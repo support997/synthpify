@@ -65,7 +65,7 @@ export default function About() {
             See the Deployed Platforms We've Engineered
           </h3>
           <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
-            Explore our deep-dive case studies on <strong>Beanpilot</strong> (workforce timesheet and payroll engine), <strong>Envigo</strong> (loyalty rewards & Google review acceleration), and <strong>Propshinsa.com</strong> (real estate investment underwriting platform).
+            Explore our deep-dive case studies on <strong>Beanpilot</strong> (workforce timesheet and payroll engine), <strong>Engivo</strong> (loyalty rewards & Google review acceleration), and <strong>Propshinsa.com</strong> (real estate investment underwriting platform).
           </p>
           <Link
             to="/projects"

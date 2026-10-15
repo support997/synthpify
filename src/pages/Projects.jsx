@@ -119,7 +119,7 @@ export default function Projects({ onScheduleClick }) {
               Ready to Build Your Custom Software or AI Agent?
             </h2>
             <p className="text-slate-300 text-base md:text-lg mb-8 max-w-2xl mx-auto">
-              Whether you need an internal workforce tool like Beanpilot, a customer growth engine like Envigo, or an autonomous 24/7 voice agent—we bring your vision to life.
+              Whether you need an internal workforce tool like Beanpilot, a customer growth engine like Engivo, or an autonomous 24/7 voice agent—we bring your vision to life.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link

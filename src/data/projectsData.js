@@ -47,8 +47,8 @@ export const projects = [
     placeholderIcon: 'Users'
   },
   {
-    id: 'envigo',
-    name: 'Envigo',
+    id: 'engivo',
+    name: 'Engivo',
     liveUrl: 'https://engivo-1.onrender.com/',
     tagline: 'Customer Loyalty, Rewards Ledger & Google Review Growth Engine',
     category: 'Customer Engagement & RepTech',
@@ -91,7 +91,7 @@ export const projects = [
       { label: 'Retention Rate', value: '+42%', desc: 'Higher repeat customer visits within 60 days' },
       { label: 'Check-In Speed', value: '< 5 sec', desc: 'Lightning-fast onboarding without app store friction' }
     ],
-    screenshot: '/envigo.png',
+    screenshot: '/engivo.png',
     placeholderIcon: 'Star'
   },
   {

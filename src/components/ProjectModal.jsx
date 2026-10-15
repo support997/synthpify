@@ -53,10 +53,11 @@ export default function ProjectModal({ project, onClose, onScheduleClick }) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-slate-900 rounded-xl text-xs font-bold hover:bg-slate-100 transition shadow"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-white text-slate-900 rounded-xl text-xs sm:text-sm font-bold hover:bg-slate-100 transition shadow-md"
               >
-                <span>Visit Live Application</span>
-                <ExternalLink size={14} />
+                <span>Live Sample:</span>
+                <span className="text-blue-600 underline font-mono text-xs">{project.liveUrl}</span>
+                <ExternalLink size={14} className="text-slate-600" />
               </a>
             </div>
           )}
@@ -64,6 +65,24 @@ export default function ProjectModal({ project, onClose, onScheduleClick }) {
 
         {/* Modal Body (Scrollable) */}
         <div className="p-6 sm:p-8 overflow-y-auto space-y-8 flex-1">
+          {/* Live Link Callout Banner */}
+          {project.liveUrl && (
+            <div className="p-4 rounded-2xl bg-blue-50/90 border border-blue-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
+              <div>
+                <span className="text-[11px] font-bold text-blue-700 uppercase tracking-wider block">Live Deployed Application</span>
+                <span className="text-sm font-semibold text-slate-900">Experience the working online build:</span>
+              </div>
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow"
+              >
+                <span>Open {project.liveUrl.replace('https://', '').replace(/\/$/, '')}</span>
+                <ExternalLink size={14} />
+              </a>
+            </div>
+          )}
           {/* Key Impact Stats */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Key Results & Impact</h4>

@@ -96,9 +96,26 @@ export default function ProjectCard({ project, onSelect }) {
             {project.tagline}
           </p>
 
-          <p className="text-slate-600 text-sm leading-relaxed mb-6">
+          <p className="text-slate-600 text-sm leading-relaxed mb-4">
             {project.summary}
           </p>
+
+          {/* Explicit Live Sample Link */}
+          {project.liveUrl && (
+            <div className="mb-5">
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-semibold border border-blue-200 transition"
+              >
+                <span>Live Link:</span>
+                <span className="font-mono text-[11px] underline">{project.liveUrl}</span>
+                <ExternalLink size={12} />
+              </a>
+            </div>
+          )}
 
           {/* Metrics Spotlight Grid */}
           <div className="grid grid-cols-2 gap-3 mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-100">
