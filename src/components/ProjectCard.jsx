@@ -35,7 +35,9 @@ export default function ProjectCard({ project, onSelect }) {
                 <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                <span className="text-[11px] font-mono text-slate-400 ml-2 tracking-tight">app.{project.id}.live</span>
+                <span className="text-[11px] font-mono text-slate-400 ml-2 tracking-tight">
+                  {project.liveUrl ? project.liveUrl.replace('https://', '').replace(/\/$/, '') : `app.${project.id}.live`}
+                </span>
               </div>
               <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-white/10 text-emerald-400 flex items-center gap-1 font-semibold">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Live in Prod
@@ -126,14 +128,28 @@ export default function ProjectCard({ project, onSelect }) {
           </div>
         </div>
 
-        {/* Action Button */}
-        <button
-          onClick={() => onSelect(project)}
-          className="w-full mt-2 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm flex items-center justify-center gap-2 group-hover:gap-3 transition-all cursor-pointer shadow-sm hover:shadow"
-        >
-          <span>View Case Study</span>
-          <ArrowRight size={16} />
-        </button>
+        {/* Action Button Row */}
+        <div className="flex items-center gap-2 mt-2">
+          <button
+            onClick={() => onSelect(project)}
+            className="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm flex items-center justify-center gap-2 group-hover:gap-3 transition-all cursor-pointer shadow-sm hover:shadow"
+          >
+            <span>View Case Study</span>
+            <ArrowRight size={16} />
+          </button>
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="py-3 px-3.5 rounded-xl border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold text-sm flex items-center justify-center transition shadow-sm"
+              title="Visit Live Application"
+            >
+              <ExternalLink size={16} />
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );
