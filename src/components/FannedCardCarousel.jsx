@@ -5,13 +5,13 @@ import { ChevronLeft, ChevronRight, ArrowLeftRight } from 'lucide-react';
 
 const SHOWCASE_CARDS = [
   {
-    id: 'halal-grill',
-    title: 'Halal Grill Eats',
+    id: 'halal-king',
+    title: 'Halal King',
     subtitle: 'QSR & Fast Casual',
-    domain: 'app.engivo.com/halal-grill',
+    domain: 'app.engivo.com/halal-king',
     badge: 'Customer PWA',
-    image: '/engivo-app-halalgrill.png',
-    tag: 'Halal Grill Eats'
+    image: '/engivo-app-halalking.png',
+    tag: 'Halal King'
   },
   {
     id: 'mumbai-spice',
@@ -43,7 +43,7 @@ export default function FannedCardCarousel() {
   return (
     <div className="w-full flex flex-col items-center select-none">
       {/* 3D Fanned Card Stack Container */}
-      <div className="relative w-full max-w-[320px] h-[520px] sm:h-[550px] flex items-center justify-center">
+      <div className="relative w-full max-w-[320px] h-[540px] sm:h-[570px] flex items-center justify-center">
         {SHOWCASE_CARDS.map((card, i) => {
           // Calculate relative offset from active card: 0 = front, 1 = right, 2 = left
           const offset = (i - activeIdx + SHOWCASE_CARDS.length) % SHOWCASE_CARDS.length;
@@ -81,7 +81,7 @@ export default function FannedCardCarousel() {
           return (
             <motion.div
               key={card.id}
-              className="absolute top-2 w-[255px] sm:w-[270px] cursor-grab active:cursor-grabbing origin-bottom"
+              className="absolute top-2 w-[250px] sm:w-[265px] cursor-grab active:cursor-grabbing origin-bottom"
               style={{
                 zIndex,
                 touchAction: 'pan-y'
@@ -117,10 +117,10 @@ export default function FannedCardCarousel() {
               }}
               whileHover={!isFront ? { scale: 0.95, opacity: 0.95, filter: 'brightness(0.92)' } : undefined}
             >
-              {/* Phone Mockup Frame */}
-              <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-800 bg-slate-950 ring-1 ring-white/10">
+              {/* Phone Mockup Frame - tightly wrapping the image with 0 gap */}
+              <div className="w-full rounded-[24px] overflow-hidden shadow-2xl border-2 sm:border-[3px] border-slate-700/80 bg-slate-950 ring-1 ring-white/10 flex flex-col">
                 {/* Browser bar */}
-                <div className="bg-slate-900 text-[11px] text-slate-400 px-3 py-1.5 flex items-center justify-between border-b border-slate-800">
+                <div className="bg-slate-900 text-[11px] text-slate-300 px-3 py-1.5 flex items-center justify-between border-b border-slate-800/90 shrink-0">
                   <span className="font-semibold text-white flex items-center gap-1.5 truncate max-w-[160px]">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
                     {card.domain}
@@ -128,12 +128,12 @@ export default function FannedCardCarousel() {
                   <span className="text-[10px] text-slate-400 shrink-0">{card.badge}</span>
                 </div>
 
-                {/* Screenshot viewport */}
-                <div className="relative overflow-hidden bg-slate-950 aspect-[470/1000] max-h-[460px] sm:max-h-[490px]">
+                {/* Screenshot viewport - full width & height, tightly fitted */}
+                <div className="relative w-full h-[490px] sm:h-[520px] overflow-hidden bg-slate-950">
                   <img
                     src={card.image}
                     alt={card.title}
-                    className="w-full h-full object-cover object-top select-none pointer-events-none"
+                    className="w-full h-full object-cover object-top block select-none pointer-events-none"
                     draggable={false}
                   />
 
