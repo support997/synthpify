@@ -189,38 +189,61 @@ export default function Engivo({ onScheduleClick }) {
           </div>
 
           {/* Core Business Value Pillars */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto pt-8 border-t border-slate-800/80">
-            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm text-left hover:border-blue-500/40 transition-all group">
-              <div className="w-12 h-12 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
-                <Bell size={24} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto pt-8 border-t border-slate-800/80">
+            {/* Card 1: Stop 3rd-Party Commissions */}
+            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm text-left hover:border-teal-500/40 transition-all group flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-teal-500/15 text-teal-400 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                  <CreditCard size={24} />
+                </div>
+                <h3 className="text-lg md:text-xl font-bold text-white mb-1.5">Take Back Your Customers</h3>
+                <div className="text-xs font-semibold text-teal-400 uppercase tracking-wider mb-2">Stop Paying 15%–30% Fees</div>
+                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  Reduce paying 3rd-party online ordering site commissions on customers who repeatedly order from you. Keep 100% of your sales with direct ordering.
+                </p>
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-white mb-1.5">Direct Customer Reach</h3>
-              <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-2">Lock-Screen Push • $0 SMS Fees</div>
-              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                Reach diners directly on their phone lock screens to fill slow shifts with time-sensitive flash specials and announcements on demand.
-              </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm text-left hover:border-amber-500/40 transition-all group">
-              <div className="w-12 h-12 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
-                <Star size={24} />
+            {/* Card 2: Direct Customer Reach */}
+            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm text-left hover:border-blue-500/40 transition-all group flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                  <Bell size={24} />
+                </div>
+                <h3 className="text-lg md:text-xl font-bold text-white mb-1.5">Direct Customer Reach</h3>
+                <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-2">Lock-Screen Push • $0 SMS Fees</div>
+                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  Reach diners directly on their phone lock screens to fill slow shifts with time-sensitive flash specials and announcements on demand.
+                </p>
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-white mb-1.5">More Google Reviews & Instagram Posts</h3>
-              <div className="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-2">Automated Quests & Social Bounties</div>
-              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                Encourage diners to leave verified 5-star Google reviews and post Instagram stories tagging your restaurant in exchange for bonus reward points.
-              </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm text-left hover:border-emerald-500/40 transition-all group">
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
-                <Flame size={24} />
+            {/* Card 3: More Reviews & Social Posts */}
+            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm text-left hover:border-amber-500/40 transition-all group flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                  <Star size={24} />
+                </div>
+                <h3 className="text-lg md:text-xl font-bold text-white mb-1.5">Google Reviews & Instagram</h3>
+                <div className="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-2">Automated Quests & Social Bounties</div>
+                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  Encourage diners to leave verified 5-star Google reviews and post Instagram stories tagging your restaurant in exchange for bonus reward points.
+                </p>
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-white mb-1.5">Increase Repeat Visits</h3>
-              <div className="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-2">Gamified VIP Retention Engine</div>
-              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                Turn one-time diners into regulars with instant welcome bonuses, 5-tier milestone progress bars, unlockable perks, and interactive mini-games.
-              </p>
+            </div>
+
+            {/* Card 4: Increase Repeat Visits */}
+            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm text-left hover:border-emerald-500/40 transition-all group flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                  <Flame size={24} />
+                </div>
+                <h3 className="text-lg md:text-xl font-bold text-white mb-1.5">Increase Repeat Visits</h3>
+                <div className="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-2">Gamified VIP Retention Engine</div>
+                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  Turn one-time diners into regulars with instant welcome bonuses, 5-tier milestone progress bars, unlockable perks, and interactive mini-games.
+                </p>
+              </div>
             </div>
           </div>
 
