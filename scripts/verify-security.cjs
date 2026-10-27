@@ -48,7 +48,7 @@ try {
     .filter(Boolean);
 
   const leakedTracked = trackedFiles.filter(f => 
-    f.includes('.env') || 
+    (f.includes('.env') && !f.endsWith('.example')) || 
     f.endsWith('test.html') || 
     f.includes('credential') || 
     f.endsWith('.map')

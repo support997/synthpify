@@ -182,18 +182,8 @@ export default function Engivo({ onScheduleClick }) {
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto px-7 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl border border-white/20 backdrop-blur-md transition-all flex items-center justify-center gap-2 text-base"
               >
-                <span>Open Live Customer PWA</span>
+                <span>Demo Site</span>
                 <ExternalLink size={16} />
-              </a>
-
-              <a
-                href="https://engivo-admin.onrender.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-6 py-4 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold rounded-xl border border-slate-700 transition-all flex items-center justify-center gap-2 text-sm"
-              >
-                <span>Merchant Admin Suite</span>
-                <ExternalLink size={14} />
               </a>
             </div>
           </div>
@@ -235,7 +225,7 @@ export default function Engivo({ onScheduleClick }) {
                       <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                       engivo-1.onrender.com
                     </span>
-                    <span>Customer PWA</span>
+                    <span>Demo Site</span>
                   </div>
                   <img
                     src="/engivo-customer-app.png"

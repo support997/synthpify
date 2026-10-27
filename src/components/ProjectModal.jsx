@@ -91,7 +91,7 @@ export default function ProjectModal({ project, onClose, onScheduleClick }) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2.5 bg-white text-slate-900 rounded-xl text-xs sm:text-sm font-bold hover:bg-slate-100 transition shadow-md"
                 >
-                  <span>{project.adminUrl ? 'Live Customer App:' : 'Live Sample:'}</span>
+                  <span>{project.adminUrl ? 'Demo Site:' : 'Live Sample:'}</span>
                   <span className="text-blue-600 underline font-mono text-xs">{project.liveUrl}</span>
                   <ExternalLink size={14} className="text-slate-600" />
                 </a>
@@ -111,9 +111,9 @@ export default function ProjectModal({ project, onClose, onScheduleClick }) {
             {project.adminUrl ? (
               <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
                 <div>
-                  <span className="text-[11px] font-bold text-blue-700 uppercase tracking-wider block">Dual-Portal Deployment</span>
-                  <span className="text-sm font-semibold text-slate-900 block">Live Customer Web App + Mobile Merchant Admin Suite</span>
-                  <span className="text-xs text-slate-600 block mt-0.5">The customer QR check-in & 5-star review app is live online; the merchant administrative views are showcased below.</span>
+                  <span className="text-[11px] font-bold text-blue-700 uppercase tracking-wider block">Platform Showcase</span>
+                  <span className="text-sm font-semibold text-slate-900 block">Interactive Demo Site + Mobile Merchant Admin Suite</span>
+                  <span className="text-xs text-slate-600 block mt-0.5">The demo ordering and loyalty app is live online; the merchant administrative views are showcased below.</span>
                 </div>
                 <a
                   href={project.liveUrl}
@@ -121,7 +121,7 @@ export default function ProjectModal({ project, onClose, onScheduleClick }) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow shrink-0"
                 >
-                  <span>Open Customer App</span>
+                  <span>Open Demo Site</span>
                   <ExternalLink size={14} />
                 </a>
               </div>
@@ -389,7 +389,7 @@ export default function ProjectModal({ project, onClose, onScheduleClick }) {
                   rel="noopener noreferrer"
                   className="flex-1 sm:flex-none px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold flex items-center justify-center gap-2 transition shadow cursor-pointer"
                 >
-                  <span>{project.adminUrl ? 'Visit End-User App' : 'Visit Live Site'}</span>
+                  <span>{project.adminUrl ? 'Visit Demo Site' : 'Visit Live Site'}</span>
                   <ExternalLink size={15} />
                 </a>
               )}

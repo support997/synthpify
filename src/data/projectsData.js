@@ -127,16 +127,16 @@ export const projects = [
       iconBg: 'bg-blue-100 text-blue-600'
     },
     summary: 'A complete customer loyalty, retention, and reputation ecosystem featuring a zero-download customer web application (for QR check-ins, reward points, and automated 5-star Google reviews) paired with a mobile-first merchant admin suite for cashier scanning, points ledger audits, push broadcasts, and real-time branding customization.',
-    adminUrl: 'https://engivo-admin.onrender.com',
+    adminUrl: true,
     challenge: 'Local retail and dining businesses struggled with inconsistent Google reviews, losing prospective walk-ins to competitors. Traditional loyalty systems required cumbersome app store downloads, expensive barcode scanner hardware at checkout, and charged prohibitive monthly subscription fees while offering zero operational control to store managers.',
-    solution: 'We engineered a seamless two-sided platform: an instant customer web app (accessible via counter QR codes) that guides happy customers to leave 5-star Google reviews, plus a dedicated mobile-first merchant admin portal (engivo-admin.onrender.com) equipped with an in-browser camera scanner, live member ledger, web push broadcast engine, Cloudinary theme customizer, and digital menu management.',
+    solution: 'We engineered a seamless two-sided platform: an instant customer web app (accessible via counter QR codes) that guides happy customers to leave 5-star Google reviews, plus a dedicated mobile-first merchant admin portal equipped with an in-browser camera scanner, live member ledger, web push broadcast engine, Cloudinary theme customizer, and digital menu management.',
     keyFeatures: [
       {
         title: 'Zero-Download Customer Loyalty PWA',
         desc: 'Patrons scan table/counter QR codes and enroll in under 5 seconds with zero app store friction.'
       },
       {
-        title: 'Merchant Admin Portal (engivo-admin.onrender.com)',
+        title: 'Merchant Admin Portal',
         desc: 'Mobile-first management suite for store managers and cashiers to audit points, launch promos, and edit branding.'
       },
       {
@@ -193,7 +193,7 @@ export const projects = [
         tabName: 'Corporate Hub',
         title: 'Corporate Hub & Multi-Unit Analytics',
         category: 'Brand Governance & Analytics',
-        urlPath: 'engivo-admin.onrender.com',
+        urlPath: 'admin.engivo.internal',
         image: '/engivo-admin-corporate.png',
         desc: 'Global multi-unit brand governance portal providing corporate management with real-time visibility across branch locations (e.g. Slimak), active loyalty members, and points issuance economics (+2,700 bonus pts / +78 earned pts).',
         highlights: [
@@ -208,7 +208,7 @@ export const projects = [
         tabName: 'Member Ledger',
         title: 'Members Directory & Real-Time Points Ledger',
         category: 'Customer Directory & Activity',
-        urlPath: 'engivo-admin.onrender.com/members',
+        urlPath: 'admin.engivo.internal/members',
         image: '/engivo-admin-members.png',
         desc: 'Real-time customer directory and points ledger for store operators. Displays live daily transaction activity, instant name/email search, member filter tabs, balances (e.g. 300 pts), and audit histories.',
         highlights: [
@@ -223,7 +223,7 @@ export const projects = [
         tabName: 'QR Scanner',
         title: 'Countertop Camera QR Code Reader',
         category: 'Point-of-Sale Loyalty Checkout',
-        urlPath: 'engivo-admin.onrender.com/scanner',
+        urlPath: 'admin.engivo.internal/scanner',
         image: '/engivo-admin-scanner.png',
         desc: 'Mobile-first in-browser camera scanner allowing cashiers and servers to instantly scan customer loyalty QR codes directly from a phone or tablet at the register without buying expensive hardware scanners.',
         highlights: [
@@ -238,7 +238,7 @@ export const projects = [
         tabName: 'Push Broadcasts',
         title: 'Member Promotions & Real-Time Push Broadcasts',
         category: 'Marketing & Retention Automation',
-        urlPath: 'engivo-admin.onrender.com/promotions',
+        urlPath: 'admin.engivo.internal/promotions',
         image: '/engivo-admin-promotions.png',
         desc: 'Direct-to-device push notification broadcast engine. Store managers can broadcast promotional drops, flash deals, and VIP incentives directly to customer phones with real-time delivery telemetry.',
         highlights: [
@@ -253,7 +253,7 @@ export const projects = [
         tabName: 'Menu Manager',
         title: 'Digital Menu & Catalog Manager',
         category: 'Product & Menu Operations',
-        urlPath: 'engivo-admin.onrender.com/menus',
+        urlPath: 'admin.engivo.internal/menus',
         image: '/engivo-admin-menus.png',
         desc: 'Centralized catalog and digital menu manager for restaurants and retail. Allows operators to organize multi-section menus, edit item pricing, and instantly publish or unpublish items in real time.',
         highlights: [
@@ -268,7 +268,7 @@ export const projects = [
         tabName: 'Theme Editor',
         title: 'Real-Time App Theme & Cloudinary Asset Editor',
         category: 'White-Label Branding & Media',
-        urlPath: 'engivo-admin.onrender.com/theme',
+        urlPath: 'admin.engivo.internal/theme',
         image: '/engivo-admin-theme.png',
         desc: 'No-code branding customization suite powered by Cloudinary. Store owners can customize the look and feel of their customer-facing app in real time by uploading custom venue banners and store logos.',
         highlights: [
@@ -283,7 +283,7 @@ export const projects = [
         tabName: 'Roles & RBAC',
         title: 'Staff Roles & Granular Permissions Governance',
         category: 'Security & Access Control',
-        urlPath: 'engivo-admin.onrender.com/roles',
+        urlPath: 'admin.engivo.internal/roles',
         image: '/engivo-admin-roles.png',
         desc: 'Role-based access control engine with 22 granular permission toggles, cleanly separating frontline cashier capabilities (scanner only) from corporate administrators (analytics, menus, billing).',
         highlights: [
