@@ -30,9 +30,12 @@ export default function N8nChatEmbed() {
     (async () => {
       try {
         const { createChat } = await import(/* @vite-ignore */ N8N_ESM);
+        const chatEndpoint = typeof window !== 'undefined' && window.location.origin
+          ? `${window.location.origin}/api/chat`
+          : '/api/chat';
 
         const inst = createChat({
-          webhookUrl: 'https://n8n-synthpify.onrender.com/webhook/fa608d72-de1f-4d49-9b6e-36d20e4d61d1/chat',
+          webhookUrl: chatEndpoint,
           mode: 'window',                  // FAB + modal (bottom-right)
           loadPreviousSession: true,
           showWelcomeScreen: false,

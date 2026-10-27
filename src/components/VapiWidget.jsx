@@ -1,46 +1,41 @@
+// src/components/VapiWidget.jsx
 import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import Vapi from '@vapi-ai/web';
 
 const VapiWidget = forwardRef(({
-  apiKey,
-  assistantId,          // NEW: what App.jsx passes
-  assistantVoiceId,     // OLD: back-compat if some parts still pass this
-  config = {},
   hideStartButton = false
 }, ref) => {
   const [vapi, setVapi] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [transcript, setTranscript] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    if (!apiKey) {
-      console.error('❌ VapiWidget: No apiKey provided. Skipping initialization.');
-      return;
-    }
-    console.log('🔧 Initializing Vapi with apiKey:', apiKey);
-    const vapiInstance = new Vapi(apiKey);
+    // Route API calls through authenticated server-side endpoint
+    // Sensitive API keys and assistant IDs remain strictly server-side
+    const apiBaseUrl = typeof window !== 'undefined' && window.location.origin
+      ? `${window.location.origin}/api/vapi`
+      : '/api/vapi';
+
+    const vapiInstance = new Vapi('session', apiBaseUrl);
     setVapi(vapiInstance);
-    console.log('✅ Vapi instance created');
 
     vapiInstance.on('call-start', () => {
-      console.log('📞 Call started');
       setIsConnected(true);
+      setErrorMessage(null);
     });
 
     vapiInstance.on('call-end', () => {
-      console.log('📴 Call ended');
       setIsConnected(false);
       setIsSpeaking(false);
     });
 
     vapiInstance.on('speech-start', () => {
-      console.log('🗣️ Assistant started speaking');
       setIsSpeaking(true);
     });
 
     vapiInstance.on('speech-end', () => {
-      console.log('🤐 Assistant stopped speaking');
       setIsSpeaking(false);
     });
 
@@ -51,60 +46,33 @@ const VapiWidget = forwardRef(({
     });
 
     vapiInstance.on('error', (error) => {
-      console.error('❌ Vapi error:', error);
-      if (error?.error?.status === 401) {
-        console.error('🚫 Unauthorized – check your API key and assistant ID.');
-      }
+      const errMsg = error?.message || error?.error?.message || 'Voice connection unavailable.';
+      setErrorMessage(errMsg);
     });
 
     return () => {
-      vapiInstance?.stop();
-    };
-  }, [apiKey]);
-
-  useEffect(() => {
-    if (!vapi) return;
-    const onError = async (err) => {
-      if (err?.error instanceof Response) {
-        const text = await err.error.text().catch(() => '');
-        console.error('❌ Vapi HTTP ', err.error.status, text);
-      } else {
-        console.error('❌ Vapi error', err);
+      try {
+        vapiInstance?.stop();
+      } catch (err) {
+        // Ignore expected cleanup termination
+        void err;
       }
     };
-    vapi.on('error', onError);
-    return () => {
-      // remove listener if supported
-      vapi.off && vapi.off('error', onError);
-    };
-  }, [vapi]);
-
+  }, []);
 
   const startCall = async () => {
-    const id = (assistantId ?? assistantVoiceId)?.toString().trim();
-    console.log('▶️ startCall triggered', { hasVapi: !!vapi, id });
-
     if (!vapi) return;
-    if (!id) {
-      console.error('⚠️ No assistant id provided to VapiWidget.');
-      return;
-    }
+    setErrorMessage(null);
 
     try {
-      // 1) Prefer the string signature → produces { assistant: "uuid" }
-      await vapi.start(id);
-    } catch (e1) {
-      console.warn('String start failed, trying object form…', e1);
-      try {
-        // 2) Fallback for SDKs that require object
-        await vapi.start({ assistant: id });
-      } catch (e2) {
-        console.error('🔥 Error starting call (both signatures failed):', e2);
-      }
+      // Passes 'default' to satisfy client-side SDK validation;
+      // The backend proxy securely enforces and injects the server-configured assistant ID.
+      await vapi.start('default');
+    } catch (err) {
+      console.warn('Voice call initiation status:', err?.message || err);
+      setErrorMessage('Unable to start voice session. Please schedule a tech consultation or contact support.');
     }
   };
-
-
 
   const endCall = () => {
     vapi?.stop();
@@ -153,6 +121,25 @@ const VapiWidget = forwardRef(({
           🎤 Talk to Assistant
         </button>
       )}
+
+      {errorMessage && !isConnected && (
+        <div style={{
+          position: 'absolute',
+          bottom: '70px',
+          left: '0',
+          background: '#1e293b',
+          color: '#f8fafc',
+          padding: '12px 16px',
+          borderRadius: '8px',
+          fontSize: '13px',
+          maxWidth: '300px',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+          border: '1px solid #334155'
+        }}>
+          {errorMessage}
+        </div>
+      )}
+
       {isConnected && (
         <div style={{
           background: '#fff',

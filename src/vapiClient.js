@@ -1,12 +1,15 @@
 // src/vapiClient.js
-import Vapi from '@vapi-ai/web'
+import Vapi from '@vapi-ai/web';
 
-let vapiClient = null
+let vapiClient = null;
 
 export function getVapiClient() {
   if (!vapiClient) {
-    vapiClient = new Vapi(import.meta.env.VITE_VAPI_API_KEY)
+    const apiBaseUrl = typeof window !== 'undefined' && window.location.origin
+      ? `${window.location.origin}/api/vapi`
+      : '/api/vapi';
+    vapiClient = new Vapi('session', apiBaseUrl);
   }
 
-  return vapiClient
+  return vapiClient;
 }

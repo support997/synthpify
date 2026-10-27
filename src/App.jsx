@@ -15,6 +15,7 @@ import Contact from './pages/Contact'
 import Support from './pages/Support'
 import Connect from './pages/Connect'
 import Projects from './pages/Projects'
+import Engivo from './pages/Engivo'
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -36,6 +37,7 @@ function AppContent({ handleStartCall, vapiRef }) {
 
       <Routes>
         <Route path="/" element={<Home onScheduleClick={handleStartCall} />} />
+        <Route path="/engivo" element={<Engivo onScheduleClick={handleStartCall} />} />
         <Route path="/projects" element={<Projects onScheduleClick={handleStartCall} />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
@@ -47,7 +49,7 @@ function AppContent({ handleStartCall, vapiRef }) {
       </Routes>
 
       {!isConnectPage && <Footer />}
-      {!isConnectPage && <VapiWidget ref={vapiRef} apiKey={import.meta.env.VITE_VAPI_API_KEY} assistantId={import.meta.env.VITE_VAPI_ASSISTANT_ID} />}
+      {!isConnectPage && <VapiWidget ref={vapiRef} />}
     </div>
   );
 }

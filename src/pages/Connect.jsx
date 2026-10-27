@@ -375,11 +375,8 @@ const Connect = () => {
                     </p>
                   </a>
 
-                  {/* Engivo */}
                   <a 
-                    href="https://engivo-1.onrender.com/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                    href="/engivo" 
                     className="block p-3 rounded-2xl bg-white border border-neutral-200/70 hover:border-blue-300 shadow-sm transition-all group hover:shadow"
                   >
                     <div className="flex items-center justify-between mb-1">

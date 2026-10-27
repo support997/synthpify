@@ -4,13 +4,10 @@ import React, { useRef, useState } from "react";
 const VAPI_WIDGET_SRC =
   "https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js";
 
-// Must exist on the **frontend** env (.env, .env.production etc)
-const VAPI_PUBLIC_KEY = import.meta.env.VITE_VAPI_API_KEY;
-const VAPI_ASSISTANT_ID = import.meta.env.VITE_VAPI_ASSISTANT_ID;
-
 export default function VapiChatLauncher() {
   const [opened, setOpened] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [errorNotice, setErrorNotice] = useState(null);
   const chatRootRef = useRef(null);
 
   const loadScriptOnce = (src) =>
@@ -31,24 +28,25 @@ export default function VapiChatLauncher() {
     });
 
   const mountVapiChat = async () => {
-    if (!VAPI_PUBLIC_KEY || !VAPI_ASSISTANT_ID) {
-      console.error("Missing VAPI env vars on the FRONTEND build.");
-      throw new Error("Missing VAPI configuration");
+    // Check voice service status from secure backend
+    const statusRes = await fetch('/api/vapi/status').catch(() => null);
+    const statusData = statusRes ? await statusRes.json().catch(() => ({})) : {};
+
+    if (!statusData.active) {
+      throw new Error("Chat assistant is currently offline. Please use the contact form.");
     }
+
     await loadScriptOnce(VAPI_WIDGET_SRC);
 
     if (chatRootRef.current) chatRootRef.current.innerHTML = "";
 
     const widget = document.createElement("vapi-widget");
-    widget.setAttribute("public-key", VAPI_PUBLIC_KEY);
-    widget.setAttribute("assistant-id", VAPI_ASSISTANT_ID);
-
-    // Keep it INLINE chat so it never floats over the voice button
+    // Connects through server-side proxy
     widget.setAttribute("mode", "chat");
     widget.setAttribute("position", "inline");
     widget.setAttribute("theme", "dark");
     widget.setAttribute("title", "TALK WITH AI");
-    widget.setAttribute("chat-first-message", "Hey, How can I help you today?");
+    widget.setAttribute("chat-first-message", "Hey, how can I help you today?");
     widget.setAttribute("chat-placeholder", "Type your message...");
 
     chatRootRef.current.appendChild(widget);
@@ -57,11 +55,12 @@ export default function VapiChatLauncher() {
   const handleOpenChat = async () => {
     try {
       setBusy(true);
+      setErrorNotice(null);
       setOpened(true);
       await mountVapiChat();
     } catch (e) {
-      console.error(e);
-      alert("Could not open chat. Please try again.");
+      console.warn("Vapi chat status:", e.message);
+      setErrorNotice(e.message || "Could not open chat. Please contact us via the contact form.");
       setOpened(false);
     } finally {
       setBusy(false);
@@ -70,6 +69,11 @@ export default function VapiChatLauncher() {
 
   return (
     <div className="w-full">
+      {errorNotice && (
+        <div className="mb-4 text-xs text-red-600 bg-red-50 p-3 rounded-lg border border-red-200">
+          {errorNotice}
+        </div>
+      )}
       {!opened ? (
         <button
           onClick={handleOpenChat}

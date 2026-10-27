@@ -277,6 +277,16 @@ export default function Home({ onScheduleClick }) {
                   <div className="text-xs text-slate-500 font-medium uppercase tracking-wide">5-Star Google Reviews</div>
                 </div>
               </div>
+
+              <div className="pt-2">
+                <Link
+                  to="/engivo"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs sm:text-sm font-bold transition-all shadow-sm hover:shadow"
+                >
+                  <span>Explore Engivo Operating & Loyalty Platform</span>
+                  <ArrowRight size={16} />
+                </Link>
+              </div>
             </div>
           </div>
 

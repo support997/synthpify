@@ -5,7 +5,7 @@ const { forwardToAutomationWorkflow } = require('../utils/automation.cjs');
 
 // Define validation matching the frontend Zod schema
 const validateLead = (req, res, next) => {
-    const { name, email, company } = req.body;
+    const { name, email } = req.body;
     
     if (!name || typeof name !== 'string' || name.trim().length < 2) {
         return res.status(400).json({ error: "Valid name is required (minimum 2 characters)." });

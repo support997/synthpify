@@ -1,9 +1,38 @@
+# Environment files (CRITICAL: never commit credentials)
 .env
+.env.*
+!.env.example
+*.env
+*.env.local
+server/.env*
+!server/.env.example
+
+# Dependencies
 node_modules/
+server/node_modules/
+
+# Production build artifacts
 dist/
+dist-ssr/
+*.local
+
+# Logs
 *.log
-.env.local
-.env.development
-.env.production
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# System & editor metadata
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.idea/
+.vscode/
+
+# Scratch & test debug artifacts
 screenshot*.png
 puppeteer_*.cjs
+*test.html

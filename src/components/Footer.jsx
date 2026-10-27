@@ -35,8 +35,8 @@ export default function Footer() {
                                 <ArrowUpRight size={12} className="opacity-60" />
                             </Link>
                         </li>
+                        <li><Link to="/engivo" className="hover:text-white transition-colors text-blue-400 font-semibold flex items-center gap-1"><span>Engivo (Restaurant Operating & Loyalty)</span><ArrowUpRight size={12} /></Link></li>
                         <li><Link to="/projects" className="hover:text-white transition-colors text-slate-400">Beanpilot (Payroll)</Link></li>
-                        <li><Link to="/projects" className="hover:text-white transition-colors text-slate-400">Engivo (Loyalty)</Link></li>
                         <li><Link to="/projects" className="hover:text-white transition-colors text-slate-400">Propshinsa (PropTech)</Link></li>
                         <li><Link to="/projects" className="hover:text-white transition-colors text-slate-400">Voice AI & POS</Link></li>
                     </ul>

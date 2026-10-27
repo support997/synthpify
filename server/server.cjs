@@ -1,94 +1,117 @@
 // server/server.cjs
-require('dotenv').config(); // harmless on Render; only used if you run locally
+const path = require('path');
+// Load environment variables from server/.env or root .env
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
+const rateLimit = require('express-rate-limit');
 
 //
-// Fail fast if required env vars are missing
+// Verify SMTP configuration (optional in mock mode)
 //
-const required = [
+const requiredSmtp = [
   'SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS',
-  'MAIL_FROM', 'MAIL_TO', 'CORS_ORIGIN'
-  // PORT is provided by Render at runtime; we still allow your own fallback
+  'MAIL_FROM', 'MAIL_TO'
 ];
 
-const missing = required.filter(k => !process.env[k]);
+const missingSmtp = requiredSmtp.filter(k => !process.env[k]);
 let mockMode = false;
 
-if (missing.length) {
-  console.warn(`⚠️  Missing environment variables: ${missing.join(', ')}`);
-  console.warn(`⚠️  Starting in MOCK MODE. Emails will be logged to console but not sent.`);
+if (missingSmtp.length) {
+  console.warn(`⚠️ Missing SMTP variables: ${missingSmtp.join(', ')}`);
+  console.warn(`⚠️ Starting mail service in MOCK MODE (messages logged to console).`);
   mockMode = true;
 }
 
 //
-// Express app
+// Express app initialization
 //
 const app = express();
 app.use(express.json({ limit: '100kb' }));
 
-// Allow single or comma-separated origins in CORS_ORIGIN
-const corsOrigins = (process.env.CORS_ORIGIN || (mockMode ? 'http://localhost:5001' : ''))
-  .split(',')
+//
+// Security Headers
+//
+app.use((_req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'microphone=(self "https://api.vapi.ai")');
+  next();
+});
+
+//
+// CORS Configuration
+//
+const defaultOrigins = ['http://localhost:5173', 'http://localhost:5001', 'http://localhost:3001'];
+const corsOrigins = (process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : defaultOrigins)
   .map(s => s.trim())
   .filter(Boolean);
 
 app.use(cors({
   origin(origin, cb) {
-    // Allow non-browser tools (no origin) and allowed origins
-    if (!origin || corsOrigins.includes(origin)) return cb(null, true);
-    return cb(new Error('Not allowed by CORS'));
+    // Allow non-browser tools (e.g. server-to-server curl/health checks) and allowed origins
+    if (!origin || corsOrigins.includes(origin) || corsOrigins.includes('*')) {
+      return cb(null, true);
+    }
+    return cb(new Error('Origin blocked by CORS policy'));
   },
   credentials: true
 }));
 
 //
-// SMTP transporter (Gmail or any SMTP)
-//
-//
-// SMTP transporter (Gmail or any SMTP)
+// SMTP Transporter
 //
 let transporter;
 if (!mockMode) {
   transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,                 // e.g. smtp.gmail.com
-    port: Number(process.env.SMTP_PORT),         // 587 for STARTTLS, 465 for SSL
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT),
     secure: process.env.SMTP_SECURE === 'true' || Number(process.env.SMTP_PORT) === 465,
     auth: {
-      user: process.env.SMTP_USER,               // e.g. youremail@gmail.com
-      pass: process.env.SMTP_PASS                // e.g. Gmail App Password
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS
     }
   });
-}
 
-// Verify SMTP on startup (logs warning if it fails, but server can still run)
-// Verify SMTP on startup (logs warning if it fails, but server can still run)
-if (!mockMode && transporter) {
   transporter.verify()
-    .then(() => console.log('✅ SMTP ready'))
-    .catch(err => console.warn('⚠️ SMTP verify failed:', err.message));
+    .then(() => console.log('✅ SMTP transporter verified'))
+    .catch(err => console.warn('⚠️ SMTP verify warning:', err.message));
 }
 
-const rateLimit = require('express-rate-limit');
-
 //
-// Routes
+// Route Limiters
 //
-app.get('/api/health', (_req, res) => res.json({ ok: true }));
-
 const contactLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // Limit each IP to 5 requests per windowMs
-  message: { error: 'Too many requests, please try again later.' },
-  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+  windowMs: 15 * 60 * 1000,
+  max: 5,
+  message: { error: 'Too many submissions. Please try again later.' },
+  standardHeaders: true,
+  legacyHeaders: false,
 });
 
-const leadsRoute = require('./routes/leads.cjs');
-app.use('/api', contactLimiter, leadsRoute);
+//
+// Health Check
+//
+app.get('/api/health', (_req, res) => res.json({ ok: true, timestamp: new Date().toISOString() }));
 
+//
+// Sub-routers (Sensitive Operations Moved Server-Side)
+//
+const leadsRoute = require('./routes/leads.cjs');
+const vapiRoute = require('./routes/vapi.cjs');
+const chatRoute = require('./routes/chat.cjs');
+
+app.use('/api', leadsRoute);
+app.use('/api/vapi', vapiRoute);
+app.use('/api', chatRoute);
+
+//
+// Contact Form Submission
+//
 app.post('/api/contact', contactLimiter, async (req, res) => {
   const { name = '', email = '', phone = '', subject = '', message = '' } = req.body || {};
 
@@ -98,12 +121,12 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 
   try {
     const mailOptions = {
-      from: `"Synthpify Contact" <${process.env.MAIL_FROM}>`,
-      to: process.env.MAIL_TO,
-      replyTo: email, // lets you reply straight to the user
-      subject: subject || `New contact from ${name}`,
+      from: `"Synthpify Contact" <${process.env.MAIL_FROM || 'support@synthpify.ai'}>`,
+      to: process.env.MAIL_TO || 'contact@synthpify.ai',
+      replyTo: email,
+      subject: subject || `New contact inquiry from ${name}`,
       text:
-        `New contact submission
+`New contact submission:
 
 Name: ${name}
 Email: ${email}
@@ -113,7 +136,7 @@ Message:
 ${message}
 `,
       html: `
-        <h2>New Contact Submission</h2>
+        <h2>New Contact Inquiry</h2>
         <p><strong>Name:</strong> ${escapeHtml(name)}</p>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
         <p><strong>Phone:</strong> ${escapeHtml(phone || '-')}</p>
@@ -124,31 +147,40 @@ ${message}
     };
 
     if (mockMode) {
-      console.log('📝 [MOCK MODE] Email would be sent:');
+      console.log('📝 [MOCK MODE] Email captured:');
       console.log(mailOptions);
-      // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 500));
-      return res.json({ ok: true });
+      await new Promise(resolve => setTimeout(resolve, 300));
+      return res.json({ ok: true, mock: true });
     }
 
     await transporter.sendMail(mailOptions);
     return res.json({ ok: true });
   } catch (err) {
-    console.error('❌ Contact send error:', err);
-    return res.status(500).json({ error: 'Failed to send message.' });
+    console.error('❌ Contact submission error:', err.message);
+    return res.status(500).json({ error: 'Failed to deliver contact message.' });
   }
 });
 
 //
-// Start server
+// Global Error Handler (Prevents stack trace / sensitive leakage to client)
 //
-const PORT = process.env.PORT || 3001; // Render sets PORT automatically
-app.listen(PORT, () => {
-  console.log(`🚀 Server listening on port ${PORT}`);
+app.use((err, _req, res, _next) => {
+  console.error('❌ Unhandled server error:', err.message);
+  return res.status(err.status || 500).json({
+    error: 'Internal server error. Please try again later.'
+  });
 });
 
 //
-// tiny HTML escaper (prevents HTML injection in emails)
+// Start Server
+//
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`🚀 Secure Synthpify backend running on port ${PORT}`);
+});
+
+//
+// HTML Sanitizer
 //
 function escapeHtml(str = '') {
   return String(str)

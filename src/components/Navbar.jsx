@@ -29,6 +29,13 @@ export default function Navbar({ onScheduleClick }) {
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
                     <Link
+                        to="/engivo"
+                        className={`transition-colors flex items-center gap-1.5 ${location.pathname === '/engivo' ? 'text-blue-600 font-bold' : 'hover:text-slate-900'}`}
+                    >
+                        <span>Engivo</span>
+                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 font-bold border border-blue-200">App</span>
+                    </Link>
+                    <Link
                         to="/projects"
                         className={`transition-colors ${location.pathname === '/projects' ? 'text-brand-600 font-bold' : 'hover:text-slate-900'}`}
                     >
@@ -72,12 +79,20 @@ export default function Navbar({ onScheduleClick }) {
                 <div id="mobile-menu" className="md:hidden bg-white border-b border-slate-100 p-5 absolute w-full top-16 left-0 animate-in slide-in-from-top-2 overflow-y-auto max-h-[85vh] shadow-2xl">
                     <div className="flex flex-col gap-3 text-sm font-medium text-slate-700">
                         <Link
+                            to="/engivo"
+                            className="font-bold text-blue-600 py-1.5 flex items-center justify-between"
+                            onClick={handleMobileLinkClick}
+                        >
+                            <span>Engivo (Restaurant Operating & Loyalty)</span>
+                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 font-bold border border-blue-200">App</span>
+                        </Link>
+                        <Link
                             to="/projects"
-                            className="font-bold text-brand-600 py-1.5 flex items-center justify-between"
+                            className="font-bold text-slate-700 py-1.5 flex items-center justify-between"
                             onClick={handleMobileLinkClick}
                         >
                             <span>Case Studies (Deployed Work)</span>
-                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-brand-50 text-brand-700 font-bold">New</span>
+                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-bold">3 Case Studies</span>
                         </Link>
                         <a href="/#services" className="hover:text-slate-900 py-1" onClick={() => setMobileMenuOpen(false)}>Services & Architecture</a>
                         <a href="/#features" className="hover:text-slate-900 py-1" onClick={() => setMobileMenuOpen(false)}>Voice & POS Features</a>
