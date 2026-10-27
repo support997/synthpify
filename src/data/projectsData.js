@@ -195,7 +195,7 @@ export const projects = [
         category: 'Brand Governance & Analytics',
         urlPath: 'admin.engivo.internal',
         image: '/engivo-admin-corporate.png',
-        desc: 'Global multi-unit brand governance portal providing corporate management with real-time visibility across branch locations (e.g. Slimak), active loyalty members, and points issuance economics (+2,700 bonus pts / +78 earned pts).',
+        desc: 'Global multi-unit brand governance portal providing corporate management with real-time visibility across branch locations (e.g. Halal Grill Eats), active loyalty members, and points issuance economics (+2,700 bonus pts / +78 earned pts).',
         highlights: [
           'Multi-store branch network tracking (active store branches)',
           'Live member enrollment totals (active vs. inactive customer tracking)',
@@ -257,7 +257,7 @@ export const projects = [
         image: '/engivo-admin-menus.png',
         desc: 'Centralized catalog and digital menu manager for restaurants and retail. Allows operators to organize multi-section menus, edit item pricing, and instantly publish or unpublish items in real time.',
         highlights: [
-          'Multi-section menu hierarchy (e.g. 5 Sections, 35 Items for Slimak location)',
+          'Multi-section menu hierarchy (e.g. 5 Sections, 35 Items for Halal Grill Eats location)',
           'Instant One-Click Publish and Unpublish controls for live customer menus',
           'Interactive visual item and section catalog editor',
           'Direct sync with customer-facing web ordering and digital menus'
