@@ -188,30 +188,39 @@ export default function Engivo({ onScheduleClick }) {
             </div>
           </div>
 
-          {/* Quick Metrics Bar */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto pt-6 border-t border-slate-800/80">
-            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm text-center">
-              <div className="text-3xl md:text-4xl font-extrabold text-blue-400 mb-1">&lt; 50ms</div>
-              <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">SSE Live Sync</div>
-              <div className="text-[11px] text-slate-500 mt-1">Real-time menu 86ing & status streams</div>
+          {/* Core Business Value Pillars */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto pt-8 border-t border-slate-800/80">
+            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm text-left hover:border-blue-500/40 transition-all group">
+              <div className="w-12 h-12 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <Bell size={24} />
+              </div>
+              <h3 className="text-lg md:text-xl font-bold text-white mb-1.5">Direct Customer Reach</h3>
+              <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-2">Lock-Screen Push • $0 SMS Fees</div>
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Reach diners directly on their phone lock screens to fill slow shifts with time-sensitive flash specials and announcements on demand.
+              </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm text-center">
-              <div className="text-3xl md:text-4xl font-extrabold text-teal-400 mb-1">0%</div>
-              <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Order Commissions</div>
-              <div className="text-[11px] text-slate-500 mt-1">Direct Stripe checkout & 100% data ownership</div>
+            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm text-left hover:border-amber-500/40 transition-all group">
+              <div className="w-12 h-12 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <Star size={24} />
+              </div>
+              <h3 className="text-lg md:text-xl font-bold text-white mb-1.5">More Google Reviews & Instagram Posts</h3>
+              <div className="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-2">Automated Quests & Social Bounties</div>
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Encourage diners to leave verified 5-star Google reviews and post Instagram stories tagging your restaurant in exchange for bonus reward points.
+              </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm text-center">
-              <div className="text-3xl md:text-4xl font-extrabold text-indigo-400 mb-1">Port 9100</div>
-              <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">LAN Cloud Printing</div>
-              <div className="text-[11px] text-slate-500 mt-1">Automated ESC/POS kitchen thermal printing</div>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm text-center">
-              <div className="text-3xl md:text-4xl font-extrabold text-amber-400 mb-1">5 Tiers</div>
-              <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">VIP Gamification</div>
-              <div className="text-[11px] text-slate-500 mt-1">Social quests & built-in mini-games</div>
+            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm text-left hover:border-emerald-500/40 transition-all group">
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <Flame size={24} />
+              </div>
+              <h3 className="text-lg md:text-xl font-bold text-white mb-1.5">Increase Repeat Visits</h3>
+              <div className="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-2">Gamified VIP Retention Engine</div>
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Turn one-time diners into regulars with instant welcome bonuses, 5-tier milestone progress bars, unlockable perks, and interactive mini-games.
+              </p>
             </div>
           </div>
 
