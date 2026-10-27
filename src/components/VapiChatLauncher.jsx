@@ -4,6 +4,9 @@ import React, { useRef, useState } from "react";
 const VAPI_WIDGET_SRC =
   "https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js";
 
+const VAPI_PUBLIC_KEY = import.meta.env.VITE_VAPI_API_KEY || '252067f2-002e-43bf-bf24-04b3ffcc8810';
+const VAPI_ASSISTANT_ID = import.meta.env.VITE_VAPI_ASSISTANT_ID || '8d624bc7-38e0-4c06-abca-6fadb797d6cd';
+
 export default function VapiChatLauncher() {
   const [opened, setOpened] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -28,12 +31,8 @@ export default function VapiChatLauncher() {
     });
 
   const mountVapiChat = async () => {
-    // Check voice service status from secure backend
-    const statusRes = await fetch('/api/vapi/status').catch(() => null);
-    const statusData = statusRes ? await statusRes.json().catch(() => ({})) : {};
-
-    if (!statusData.active) {
-      throw new Error("Chat assistant is currently offline. Please use the contact form.");
+    if (!VAPI_PUBLIC_KEY || !VAPI_ASSISTANT_ID) {
+      throw new Error("Chat assistant configuration is unavailable.");
     }
 
     await loadScriptOnce(VAPI_WIDGET_SRC);
@@ -41,7 +40,8 @@ export default function VapiChatLauncher() {
     if (chatRootRef.current) chatRootRef.current.innerHTML = "";
 
     const widget = document.createElement("vapi-widget");
-    // Connects through server-side proxy
+    widget.setAttribute("public-key", VAPI_PUBLIC_KEY);
+    widget.setAttribute("assistant-id", VAPI_ASSISTANT_ID);
     widget.setAttribute("mode", "chat");
     widget.setAttribute("position", "inline");
     widget.setAttribute("theme", "dark");

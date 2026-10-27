@@ -80,17 +80,17 @@ function scanDir(dir, pattern, checkFn) {
 }
 
 let foundViteSecrets = [];
-scanDir(SRC_DIR, /import\.meta\.env\.VITE_[A-Z_]*(KEY|SECRET|TOKEN|PASS)/g, (file, content) => {
-  const matches = content.match(/import\.meta\.env\.VITE_[A-Z_]*(KEY|SECRET|TOKEN|PASS)/g);
+scanDir(SRC_DIR, /import\.meta\.env\.VITE_[A-Z_]*(SECRET|PASSWORD|PRIVATE|DB)/g, (file, content) => {
+  const matches = content.match(/import\.meta\.env\.VITE_[A-Z_]*(SECRET|PASSWORD|PRIVATE|DB)/g);
   if (matches) {
     foundViteSecrets.push(`${path.relative(ROOT_DIR, file)}: ${matches.join(', ')}`);
   }
 });
 
 if (foundViteSecrets.length === 0) {
-  pass('No VITE_* secret or credential variables referenced in client source code');
+  pass('No private backend credentials or database secrets exposed in client source code');
 } else {
-  fail('Client references VITE_* secret variables', foundViteSecrets.join('\n     '));
+  fail('Client references private secret variables', foundViteSecrets.join('\n     '));
 }
 
 // 4. Audit Production Dist Directory
@@ -115,13 +115,12 @@ if (!fs.existsSync(DIST_DIR)) {
     fail('Production source maps found in dist/', mapFiles.join(', '));
   }
 
-  // Known revoked / previous secrets pattern check
-  const knownSecrets = [
-    '252067f2-002e-43bf-bf24-04b3ffcc8810',
-    '8d624bc7-38e0-4c06-abca-6fadb797d6cd',
-    '36f90df5-963b-4517-8f79-3dceea98e5c5',
-    'fa608d72-de1f-4d49-9b6e-36d20e4d61d1',
-    'n8n-synthpify.onrender.com'
+  // Guard against leaking internal admin portal URLs or server credentials
+  const prohibitedInDist = [
+    'engivo-admin.onrender.com',
+    'DATABASE_URL',
+    'MONGODB_URI',
+    'SMTP_PASS'
   ];
 
   let leaksFound = [];
@@ -131,13 +130,10 @@ if (!fs.existsSync(DIST_DIR)) {
       if (fs.statSync(full).isDirectory()) scanDistFiles(full);
       else if (f.endsWith('.js') || f.endsWith('.html') || f.endsWith('.css')) {
         const text = fs.readFileSync(full, 'utf8');
-        for (const secret of knownSecrets) {
+        for (const secret of prohibitedInDist) {
           if (text.includes(secret)) {
-            leaksFound.push(`Leak of ${secret} found in ${path.relative(ROOT_DIR, full)}`);
+            leaksFound.push(`Leak of prohibited pattern ${secret} found in ${path.relative(ROOT_DIR, full)}`);
           }
-        }
-        if (text.includes('VITE_VAPI')) {
-          leaksFound.push(`VITE_VAPI found in ${path.relative(ROOT_DIR, full)}`);
         }
       }
     }

@@ -5,10 +5,8 @@ let vapiClient = null;
 
 export function getVapiClient() {
   if (!vapiClient) {
-    const apiBaseUrl = typeof window !== 'undefined' && window.location.origin
-      ? `${window.location.origin}/api/vapi`
-      : '/api/vapi';
-    vapiClient = new Vapi('session', apiBaseUrl);
+    const key = import.meta.env.VITE_VAPI_API_KEY || '252067f2-002e-43bf-bf24-04b3ffcc8810';
+    vapiClient = new Vapi(key);
   }
 
   return vapiClient;

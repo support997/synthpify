@@ -3,6 +3,8 @@ import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'rea
 import Vapi from '@vapi-ai/web';
 
 const VapiWidget = forwardRef(({
+  apiKey = import.meta.env.VITE_VAPI_API_KEY || '252067f2-002e-43bf-bf24-04b3ffcc8810',
+  assistantId = import.meta.env.VITE_VAPI_ASSISTANT_ID || '8d624bc7-38e0-4c06-abca-6fadb797d6cd',
   hideStartButton = false
 }, ref) => {
   const [vapi, setVapi] = useState(null);
@@ -12,13 +14,8 @@ const VapiWidget = forwardRef(({
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    // Route API calls through authenticated server-side endpoint
-    // Sensitive API keys and assistant IDs remain strictly server-side
-    const apiBaseUrl = typeof window !== 'undefined' && window.location.origin
-      ? `${window.location.origin}/api/vapi`
-      : '/api/vapi';
-
-    const vapiInstance = new Vapi('session', apiBaseUrl);
+    if (!apiKey) return;
+    const vapiInstance = new Vapi(apiKey);
     setVapi(vapiInstance);
 
     vapiInstance.on('call-start', () => {
@@ -58,19 +55,24 @@ const VapiWidget = forwardRef(({
         void err;
       }
     };
-  }, []);
+  }, [apiKey]);
 
   const startCall = async () => {
+    const id = assistantId?.toString().trim();
     if (!vapi) return;
+    if (!id) return;
     setErrorMessage(null);
 
     try {
-      // Passes 'default' to satisfy client-side SDK validation;
-      // The backend proxy securely enforces and injects the server-configured assistant ID.
-      await vapi.start('default');
-    } catch (err) {
-      console.warn('Voice call initiation status:', err?.message || err);
-      setErrorMessage('Unable to start voice session. Please schedule a tech consultation or contact support.');
+      await vapi.start(id);
+    } catch (e1) {
+      console.warn('Direct start failed, attempting object parameter form...', e1);
+      try {
+        await vapi.start({ assistant: id });
+      } catch (err) {
+        console.warn('Voice call initiation status:', err?.message || err);
+        setErrorMessage('Unable to start voice session. Please schedule a tech consultation or contact support.');
+      }
     }
   };
 
