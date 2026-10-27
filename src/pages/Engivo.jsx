@@ -1,6 +1,7 @@
 // src/pages/Engivo.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import FannedCardCarousel from '../components/FannedCardCarousel';
 import {
   Smartphone, Star, Zap, Users, QrCode, Bell, ArrowRight, ExternalLink,
   CheckCircle2, AlertTriangle, Store, Clock, Sparkles, Share2,
@@ -247,21 +248,8 @@ export default function Engivo({ onScheduleClick }) {
           {/* Hero Showcase Card */}
           <div className="mt-14 max-w-5xl mx-auto relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900/70 p-6 sm:p-10">
             <div className="grid md:grid-cols-12 gap-8 items-center">
-              <div className="md:col-span-5 flex justify-center">
-                <div className="relative max-w-[280px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-800 bg-slate-950">
-                  <div className="bg-slate-900 text-[11px] text-slate-400 px-3 py-1.5 flex items-center justify-between border-b border-slate-800">
-                    <span className="font-semibold text-white flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                      app.engivo.com
-                    </span>
-                    <span>Customer PWA</span>
-                  </div>
-                  <img
-                    src="/engivo-customer-app.png"
-                    alt="Engivo Customer Mobile PWA"
-                    className="w-full object-cover"
-                  />
-                </div>
+              <div className="md:col-span-5 flex justify-center py-2">
+                <FannedCardCarousel />
               </div>
 
               <div className="md:col-span-7 space-y-5">
