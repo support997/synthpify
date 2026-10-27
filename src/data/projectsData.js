@@ -115,7 +115,7 @@ export const projects = [
   {
     id: 'engivo',
     name: 'Engivo',
-    liveUrl: 'https://engivo-1.onrender.com/',
+    liveUrl: null,
     tagline: 'Customer Loyalty, Rewards Ledger & Google Review Growth Engine',
     category: 'Customer Engagement & RepTech',
     industry: 'Retail & Hospitality',
@@ -178,7 +178,7 @@ export const projects = [
         tabName: 'Customer App',
         title: 'Customer Loyalty, Rewards & Google Review Funnel',
         category: 'End-User Experience (PWA)',
-        urlPath: 'engivo-1.onrender.com',
+        urlPath: 'app.engivo.com',
         image: '/engivo-customer-app.png',
         desc: 'Zero-download customer web application accessible via counter or table QR codes. Greets returning patrons, tracks live points progress towards rewards, provides instant digital loyalty cards, and automatically prompts happy customers to leave 5-star Google reviews.',
         highlights: [

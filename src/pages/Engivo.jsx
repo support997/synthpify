@@ -176,15 +176,12 @@ export default function Engivo({ onScheduleClick }) {
                 <ArrowRight size={18} />
               </button>
 
-              <a
-                href="https://engivo-1.onrender.com/"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/contact"
                 className="w-full sm:w-auto px-7 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl border border-white/20 backdrop-blur-md transition-all flex items-center justify-center gap-2 text-base"
               >
-                <span>Demo Site</span>
-                <ExternalLink size={16} />
-              </a>
+                <span>Get Custom Quote</span>
+              </Link>
             </div>
           </div>
 
@@ -255,9 +252,9 @@ export default function Engivo({ onScheduleClick }) {
                   <div className="bg-slate-900 text-[11px] text-slate-400 px-3 py-1.5 flex items-center justify-between border-b border-slate-800">
                     <span className="font-semibold text-white flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                      engivo-1.onrender.com
+                      app.engivo.com
                     </span>
-                    <span>Demo Site</span>
+                    <span>Customer PWA</span>
                   </div>
                   <img
                     src="/engivo-customer-app.png"
