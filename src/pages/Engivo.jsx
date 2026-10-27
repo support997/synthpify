@@ -14,7 +14,7 @@ export default function Engivo({ onScheduleClick }) {
   const [activeTier, setActiveTier] = useState('gold');
 
   useEffect(() => {
-    document.title = "Engivo | Restaurant Operating, Online Ordering & Gamified Loyalty Platform | Synthpify";
+    document.title = "Engivo | Multi-Location Ordering, Retail & Gamified Loyalty Platform | Synthpify";
     window.scrollTo(0, 0);
   }, []);
 
@@ -25,12 +25,12 @@ export default function Engivo({ onScheduleClick }) {
       badge: 'Zero-Download Mobile PWA',
       image: '/engivo-customer-app.png',
       headline: 'Instant Countertop QR Access, Online Ordering & Rewards',
-      description: 'Diners scan a table or counter QR code to instantly launch your custom-branded restaurant app in mobile Safari or Chrome without visiting the App Store. Supports "Add to Home Screen" as a high-performance Progressive Web App.',
+      description: 'Customers scan a table, counter, or storefront QR code to instantly launch your custom-branded app in mobile Safari or Chrome without visiting the App Store. Supports "Add to Home Screen" as a high-performance Progressive Web App.',
       highlights: [
         'Instant QR access with personalized greeting ("Welcome back, John!")',
-        'Live interactive menu with dietary tags (Halal, Vegan, Gluten-Free) & modifier add-ons',
+        'Live interactive catalog with categories, dietary tags & modifier add-ons',
         'Integrated Stripe payments (Apple Pay, Google Pay, Credit Cards) with real-time order status updates',
-        'In-app Guest WiFi Quick-Connect drawer for seamless in-store dining experiences'
+        'In-app Guest WiFi Quick-Connect drawer for seamless in-store visits and dining experiences'
       ]
     },
     {
@@ -55,7 +55,7 @@ export default function Engivo({ onScheduleClick }) {
       headline: 'Direct-to-Device Web Push Broadcast Engine',
       description: 'Drive customer traffic on demand. Store owners can broadcast promotional drops, flash specials, and VIP bonuses directly to customer phone lock-screens with real-time delivery telemetry. Zero carrier SMS fees.',
       highlights: [
-        'Send time-sensitive flash offers directly to diners’ phones to boost slow shifts',
+        'Send time-sensitive flash offers directly to customers’ phones to boost slow shifts',
         'Zero per-message SMS carrier fees by using native Web Push API standards',
         'Audience telemetry monitoring total enrolled customer devices',
         'Historical broadcast tracker with delivery timestamps and open auditing'
@@ -67,11 +67,11 @@ export default function Engivo({ onScheduleClick }) {
       badge: 'Customer Intelligence',
       image: '/engivo-admin-members.png',
       headline: 'Real-Time Points Ledger & VIP Customer Activity Feed',
-      description: 'Complete visibility into who your diners are, how frequently they visit, and their historical reward spend. Easily search members by name or email and trigger automated win-back promotions for dormant diners.',
+      description: 'Complete visibility into who your customers are, how frequently they visit, and their historical reward spend. Easily search members by name or email and trigger automated win-back promotions for dormant customers.',
       highlights: [
         'Live transaction ledger detailing points earned, bonuses awarded, and rewards redeemed',
         'Fast search & filter tags: All Members, Has Points, and Enrolled Today',
-        'Flags lapsed diners for targeted automated win-back re-engagement prompts',
+        'Flags lapsed customers for targeted automated win-back re-engagement prompts',
         'Built-in GDPR/CCPA data export, profile management, and privacy compliance tools'
       ]
     },
@@ -81,7 +81,7 @@ export default function Engivo({ onScheduleClick }) {
       badge: 'Multi-Location Governance',
       image: '/engivo-admin-corporate.png',
       headline: 'Multi-Branch Analytics & Cross-Location Loyalty Governance',
-      description: 'Central command for restaurant groups and franchise operators. Enforce brand-wide rules or set location-specific overrides for operating hours, delivery radius, tax rates, and points issuance economics.',
+      description: 'Central command for restaurant groups, retail chains, and franchise operators. Enforce brand-wide rules or set location-specific overrides for operating hours, delivery radius, tax rates, and points issuance economics.',
       highlights: [
         'Manage multiple store branches with independent hours, delivery zones, and tax rates',
         'Consolidated member growth telemetry and earned vs. bonus points economics',
@@ -98,7 +98,7 @@ export default function Engivo({ onScheduleClick }) {
       description: 'Keep your digital catalog in sync across customer devices with multi-section menus, modifier groups, and instant 1-click availability toggles (86ing) that broadcast via Server-Sent Events (<50ms sync).',
       highlights: [
         'Unlimited categories, menu items, modifier groups, and spice level customizers',
-        'Instant 1-click 86ing immediately greys out sold-out items on active diner phones',
+        'Instant 1-click 86ing immediately greys out sold-out items on active customer phones',
         'Cloudinary CDN photo uploads with automatic compression and mobile optimization',
         'Location-specific pricing and category availability overrides'
       ]
@@ -156,15 +156,15 @@ export default function Engivo({ onScheduleClick }) {
           <div className="text-center max-w-4xl mx-auto mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-semibold mb-6 backdrop-blur-md">
               <Sparkles size={14} className="text-blue-400 animate-pulse" />
-              <span>Engivo • Multi-Location Restaurant Operating & Gamified Loyalty Platform</span>
+              <span>Engivo • Multi-Location Restaurant, Retail & Gamified Loyalty Platform</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.12] mb-6">
-              Online Ordering, Kitchen Ops & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-teal-300">Gamified Loyalty</span> in One Unified Ecosystem.
+              Online Ordering, Operations & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-teal-300">Gamified Loyalty</span> in One Unified Ecosystem.
             </h1>
 
             <p className="text-lg md:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto mb-10">
-              Break free from third-party commission traps and fragmented POS data. Engivo combines customer-facing mobile ordering, gamified loyalty rewards, automated thermal kitchen printing, and multi-location corporate management into a real-time platform with sub-50ms sync.
+              Break free from third-party commission traps and fragmented POS data. Engivo combines customer-facing mobile ordering, gamified loyalty rewards, automated thermal receipt and ticket printing, and multi-location corporate management into a real-time platform with sub-50ms sync.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -210,7 +210,7 @@ export default function Engivo({ onScheduleClick }) {
                 <h3 className="text-lg md:text-xl font-bold text-white mb-1.5">Direct Customer Reach</h3>
                 <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-2">Lock-Screen Push • $0 SMS Fees</div>
                 <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                  Reach diners directly on their phone lock screens to fill slow shifts with time-sensitive flash specials and announcements on demand.
+                  Reach customers directly on their phone lock screens to fill slow shifts and quiet hours with time-sensitive flash specials and announcements on demand.
                 </p>
               </div>
             </div>
@@ -224,7 +224,7 @@ export default function Engivo({ onScheduleClick }) {
                 <h3 className="text-lg md:text-xl font-bold text-white mb-1.5">Google Reviews & Instagram</h3>
                 <div className="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-2">Automated Quests & Social Bounties</div>
                 <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                  Encourage diners to leave verified 5-star Google reviews and post Instagram stories tagging your restaurant in exchange for bonus reward points.
+                  Encourage customers to leave verified 5-star Google reviews and post Instagram stories tagging your business in exchange for bonus reward points.
                 </p>
               </div>
             </div>
@@ -238,7 +238,7 @@ export default function Engivo({ onScheduleClick }) {
                 <h3 className="text-lg md:text-xl font-bold text-white mb-1.5">Increase Repeat Visits</h3>
                 <div className="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-2">Gamified VIP Retention Engine</div>
                 <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                  Turn one-time diners into regulars with instant welcome bonuses, 5-tier milestone progress bars, unlockable perks, and interactive mini-games.
+                  Turn one-time customers into regulars with instant welcome bonuses, 5-tier milestone progress bars, unlockable perks, and interactive mini-games.
                 </p>
               </div>
             </div>
@@ -269,10 +269,10 @@ export default function Engivo({ onScheduleClick }) {
                   <Award size={14} /> Complete Operating System
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-white">
-                  The Starbucks-Grade Operating System for Independent Restaurants & Multi-Store Groups
+                  The Starbucks-Grade Operating System for Restaurants, Retail & Multi-Store Groups
                 </h3>
                 <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                  Engivo eliminates the chaos of disjointed systems. Your diners enjoy frictionless mobile ordering, customized modifiers, instant Guest WiFi connection, and gamified loyalty milestones. Your kitchen runs on live kanban status boards with automated thermal ticket printing. And corporate oversees multiple branches from a single unified hub.
+                  Engivo eliminates the chaos of disjointed systems. Your customers enjoy frictionless mobile ordering, customized modifiers, instant Guest WiFi connection, and gamified loyalty milestones. Your fulfillment team runs on live status boards with automated thermal ticket printing. And corporate oversees multiple branches from a single unified hub.
                 </p>
                 <div className="grid grid-cols-2 gap-3 pt-2">
                   <div className="flex items-start gap-2.5 text-xs text-slate-300">
@@ -360,11 +360,11 @@ export default function Engivo({ onScheduleClick }) {
                   Leaving Repeat Business to Chance <span className="text-red-400 font-semibold block text-sm mt-0.5">(The "Hope" Strategy)</span>
                 </h3>
                 <p className="text-sm text-slate-300 leading-relaxed">
-                  Owners provide great food and hospitable service, but once a customer walks out the door, there is no proactive, guaranteed way to get them back. Hoping they remember to return next week is not a predictable growth strategy.
+                  Owners provide great products, food, and hospitality, but once a customer walks out the door, there is no proactive, guaranteed way to get them back. Hoping they remember to return next week is not a predictable growth strategy.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-700/60 text-xs text-red-400 font-semibold flex items-center gap-1.5">
-                <AlertTriangle size={14} /> Zero automated triggers to bring diners back.
+                <AlertTriangle size={14} /> Zero automated triggers to bring customers back.
               </div>
             </div>
 
@@ -378,11 +378,11 @@ export default function Engivo({ onScheduleClick }) {
                   Vulnerability During Slow Periods <span className="text-red-400 font-semibold block text-sm mt-0.5">(Quiet Shift Lulls)</span>
                 </h3>
                 <p className="text-sm text-slate-300 leading-relaxed">
-                  When the restaurant is quiet on rainy afternoons or mid-week evenings, owners lack a direct, immediate channel to reach out to local customers, announce flash specials, and drive instant counter and table foot traffic.
+                  When foot traffic slows down on rainy afternoons or mid-week periods, owners lack a direct, immediate channel to reach out to local customers, announce flash specials, and drive instant in-store or online orders.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-700/60 text-xs text-red-400 font-semibold flex items-center gap-1.5">
-                <AlertTriangle size={14} /> Empty tables with no way to trigger on-demand visits.
+                <AlertTriangle size={14} /> Quiet shifts with no way to trigger on-demand visits.
               </div>
             </div>
 
@@ -396,7 +396,7 @@ export default function Engivo({ onScheduleClick }) {
                   Untapped Word-of-Mouth <span className="text-red-400 font-semibold block text-sm mt-0.5">(Silent Happy Customers)</span>
                 </h3>
                 <p className="text-sm text-slate-300 leading-relaxed">
-                  Customers might love the food, but there is no automated system to incentivize them to refer friends, post on social media, or leave public 5-star Google reviews. Unhappy diners complain online, while satisfied diners stay quiet.
+                  Customers might love the products or service, but there is no automated system to incentivize them to refer friends, post on social media, or leave public 5-star Google reviews. Unhappy customers complain online, while satisfied customers stay quiet.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-700/60 text-xs text-red-400 font-semibold flex items-center gap-1.5">
@@ -414,7 +414,7 @@ export default function Engivo({ onScheduleClick }) {
                   Fragmented Multi-Location Management <span className="text-red-400 font-semibold block text-sm mt-0.5">(Inconsistent Experience)</span>
                 </h3>
                 <p className="text-sm text-slate-300 leading-relaxed">
-                  Trying to run a consistent loyalty and ordering program across an entire restaurant group often results in a disconnected experience. Different stores run disjointed promotions, points don't transfer, and corporate lacks birds-eye data.
+                  Trying to run a consistent loyalty and ordering program across an entire multi-store group often results in a disconnected experience. Different stores run disjointed promotions, points don't transfer, and corporate lacks birds-eye data.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-700/60 text-xs text-red-400 font-semibold flex items-center gap-1.5">
@@ -430,13 +430,13 @@ export default function Engivo({ onScheduleClick }) {
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold mb-4 uppercase tracking-wider">
-              <Sparkles size={14} className="text-emerald-600" /> The Modern Restaurant Playbook
+              <Sparkles size={14} className="text-emerald-600" /> The Modern Omnichannel Playbook
             </div>
             <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
               💡 The Solution: How Your Custom-Branded App Helps
             </h2>
             <p className="text-base md:text-lg text-slate-600 leading-relaxed">
-              Equip your restaurant with the exact mobile engagement and customer retention mechanics pioneered by Starbucks, Sweetgreen, and Chipotle — custom-tailored to your brand.
+              Equip your restaurant or retail brand with the exact mobile engagement and customer retention mechanics pioneered by Starbucks, Sweetgreen, and Sephora — custom-tailored to your brand.
             </p>
           </div>
 
@@ -451,7 +451,7 @@ export default function Engivo({ onScheduleClick }) {
                   Take Back Control of the Customer
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                  By launching a custom-branded app (like Starbucks), restaurants bypass third parties and POS limitations, building a direct, owned connection with their diners.
+                  By launching a custom-branded app (like Starbucks), restaurants and retail brands bypass third parties and POS limitations, building a direct, owned connection with their customers.
                 </p>
                 <ul className="space-y-2 text-xs text-slate-700 font-medium pt-3 border-t border-slate-200">
                   <li className="flex items-center gap-2"><CheckCircle2 size={14} className="text-blue-600 shrink-0" /> 100% owned customer data and order histories</li>
@@ -470,11 +470,11 @@ export default function Engivo({ onScheduleClick }) {
                   Turn One-Time Visitors into Regulars
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                  Built-in rewards and sign-up incentives actively build customer loyalty and give diners a compelling reason to choose you over the competition.
+                  Built-in rewards and sign-up incentives actively build customer loyalty and give customers a compelling reason to choose you over the competition.
                 </p>
                 <ul className="space-y-2 text-xs text-slate-700 font-medium pt-3 border-t border-slate-200">
                   <li className="flex items-center gap-2"><CheckCircle2 size={14} className="text-emerald-600 shrink-0" /> Instant welcome points bonus on first QR scan</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 size={14} className="text-emerald-600 shrink-0" /> Visual milestone progress bar encouraging repeat meals</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 size={14} className="text-emerald-600 shrink-0" /> Visual milestone progress bar encouraging repeat orders</li>
                 </ul>
               </div>
             </div>
@@ -569,7 +569,7 @@ export default function Engivo({ onScheduleClick }) {
               Everything Engivo Powers
             </h2>
             <p className="text-slate-600 text-base md:text-lg">
-              Explore the 5 integrated modules running across diners’ phones, kitchen lines, and corporate headquarters.
+              Explore the 5 integrated modules running across customers’ phones, operations/order fulfillment, and corporate headquarters.
             </p>
           </div>
 
@@ -601,9 +601,9 @@ export default function Engivo({ onScheduleClick }) {
                   <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
                     <Utensils size={20} />
                   </div>
-                  <h4 className="font-bold text-slate-900 mb-2 text-base">Live Interactive Menu</h4>
+                  <h4 className="font-bold text-slate-900 mb-2 text-base">Live Interactive Menu & Catalog</h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Real-time digital menu with categories, dietary tags (Halal, Vegan, Gluten-Free), item customization (modifiers, add-ons, spice levels), and "Today's Specials".
+                    Real-time digital catalog with categories, dietary/product tags, item customization (modifiers, add-ons, options), and featured specials.
                   </p>
                 </div>
 
@@ -633,7 +633,7 @@ export default function Engivo({ onScheduleClick }) {
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-base">In-App Guest WiFi & Quick Connect</h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Quick-connect WiFi drawer for in-store dining allowing diners to connect in 1 tap without typing complex router passwords.
+                    Quick-connect WiFi drawer for in-store visits allowing customers to connect in 1 tap without typing complex router passwords.
                   </p>
                 </div>
 
@@ -643,7 +643,7 @@ export default function Engivo({ onScheduleClick }) {
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-base">Personalized Greeting & Status</h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Dynamic welcome headers remembering diner identity, active points balance, and favorite recurring orders across repeat visits.
+                    Dynamic welcome headers remembering customer identity, active points balance, and favorite recurring orders across repeat visits.
                   </p>
                 </div>
               </div>
@@ -744,7 +744,7 @@ export default function Engivo({ onScheduleClick }) {
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-base">Google Review Quest</h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Awards points when diners submit verified Google reviews, automatically accelerating 5-star customer feedback and local SEO rankings.
+                    Awards points when customers submit verified Google reviews, automatically accelerating 5-star customer feedback and local SEO rankings.
                   </p>
                 </div>
 
@@ -754,7 +754,7 @@ export default function Engivo({ onScheduleClick }) {
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-base">Instagram Story & Post Bounty</h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Diners submit their social media posts for staff verification in the admin queue to earn bonus points, turning diners into brand ambassadors.
+                    Customers submit their social media posts for staff verification in the admin queue to earn bonus points, turning customers into brand ambassadors.
                   </p>
                 </div>
 
@@ -764,7 +764,7 @@ export default function Engivo({ onScheduleClick }) {
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-base">Referral Program</h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Diners share a unique referral code/link to earn bonus rewards once their friend completes a qualifying first order.
+                    Customers share a unique referral code/link to earn bonus rewards once their friend completes a qualifying first order.
                   </p>
                 </div>
 
@@ -774,7 +774,7 @@ export default function Engivo({ onScheduleClick }) {
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-base">Flappy Bird Mini-Game</h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Built-in interactive mini-game where customers can play to earn bonus loyalty points while their food is being prepared.
+                    Built-in interactive mini-game where customers can play to earn bonus loyalty points while their food or order is being prepared.
                   </p>
                 </div>
 
@@ -784,13 +784,13 @@ export default function Engivo({ onScheduleClick }) {
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-base">Custom Perks & Milestones</h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Dynamic tier badges with exclusive perks (priority kitchen prep, tasting invites, concierge access) unlocked automatically as points accrue.
+                    Dynamic tier badges with exclusive perks (priority prep, special event invites, concierge access) unlocked automatically as points accrue.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Pillar 3: Kitchen Operations & Cloud Printing */}
+            {/* Pillar 3: Order Operations & Cloud Printing */}
             <div className="p-8 sm:p-12 rounded-3xl bg-white border border-slate-200 shadow-sm">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center">
@@ -798,7 +798,7 @@ export default function Engivo({ onScheduleClick }) {
                 </div>
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">Module 03</span>
-                  <h3 className="text-2xl font-extrabold text-slate-900">Kitchen Operations & Engivo Print Bridge</h3>
+                  <h3 className="text-2xl font-extrabold text-slate-900">Order Operations & Engivo Print Bridge</h3>
                 </div>
               </div>
 
@@ -809,7 +809,7 @@ export default function Engivo({ onScheduleClick }) {
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-base">Live Order Management Board</h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Real-time kitchen kanban and list views with acoustic chime notifications, live elapsed prep timers, and 1-tap status advancement (Accepted → Kitchen → Ready).
+                    Real-time fulfillment and kitchen kanban views with acoustic chime notifications, live elapsed prep timers, and 1-tap status advancement (Accepted → In Progress → Ready).
                   </p>
                 </div>
 
@@ -819,7 +819,7 @@ export default function Engivo({ onScheduleClick }) {
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-base">Engivo Print Bridge (Auto Thermal)</h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Lightweight background daemon running on Mac, Windows, or Raspberry Pi. Automatically dispatches ESC/POS print jobs directly to kitchen thermal printers (Epson TM-T88, Star TSP143) over raw LAN TCP (Port 9100).
+                    Lightweight background daemon running on Mac, Windows, or Raspberry Pi. Automatically dispatches ESC/POS print jobs directly to kitchen and receipt thermal printers (Epson TM-T88, Star TSP143) over raw LAN TCP (Port 9100).
                   </p>
                 </div>
 
@@ -829,7 +829,7 @@ export default function Engivo({ onScheduleClick }) {
                   </div>
                   <h4 className="font-bold text-slate-900 mb-2 text-base">Staff Scanner Mobile App</h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Front-of-house staff scan diners' digital QR member cards using any mobile phone or iPad camera to instantly redeem reward coupons and credit order points.
+                    Front-of-house and counter staff scan customers' digital QR member cards using any mobile phone or iPad camera to instantly redeem reward coupons and credit order points.
                   </p>
                 </div>
               </div>
@@ -908,21 +908,21 @@ export default function Engivo({ onScheduleClick }) {
                 <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10">
                   <h4 className="font-bold text-white mb-2 text-base">Zero-Latency SSE Streams</h4>
                   <p className="text-xs text-slate-300 leading-relaxed">
-                    Changes made in Engivo Admin (86’d items, menu updates, price adjustments, reward showcase changes) push instantly to all active diner devices without pull-to-refresh.
+                    Changes made in Engivo Admin (86’d items, catalog updates, price adjustments, reward showcase changes) push instantly to all active customer devices without pull-to-refresh.
                   </p>
                 </div>
 
                 <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10">
                   <h4 className="font-bold text-white mb-2 text-base">Live Order Pipeline</h4>
                   <p className="text-xs text-slate-300 leading-relaxed">
-                    When a diner places an order via Apple Pay or Credit Card, tickets appear instantly on the kitchen display board and trigger local thermal ticket printing within milliseconds.
+                    When a customer places an order via Apple Pay or Credit Card, tickets appear instantly on the order display board and trigger local thermal ticket printing within milliseconds.
                   </p>
                 </div>
 
                 <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/10">
                   <h4 className="font-bold text-white mb-2 text-base">Reliable Fallback Mechanisms</h4>
                   <p className="text-xs text-slate-300 leading-relaxed">
-                    Automatic stream reconnection with exponential backoff ensures diners and kitchen staff never miss status transitions even on fluctuating restaurant cellular connections.
+                    Automatic stream reconnection with exponential backoff ensures customers and staff never miss status transitions even on fluctuating cellular connections.
                   </p>
                 </div>
               </div>
@@ -1096,15 +1096,15 @@ export default function Engivo({ onScheduleClick }) {
 
         <div className="max-w-4xl mx-auto text-center relative z-10 space-y-8">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold border border-blue-400/30">
-            <Flame size={14} className="text-amber-400" /> Stop Leaving Repeat Diners to Chance
+            <Flame size={14} className="text-amber-400" /> Stop Leaving Repeat Customers to Chance
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
-            Ready to Take Back Control of Your Diners?
+            Ready to Take Back Control of Your Customers?
           </h2>
 
           <p className="text-slate-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            Let us demonstrate how Engivo can eliminate third-party commission bleed, supercharge repeat visits with gamified VIP loyalty, automate kitchen printing, and boost your restaurant’s Google Maps rank.
+            Let us demonstrate how Engivo can eliminate third-party commission bleed, supercharge repeat visits with gamified VIP loyalty, automate kitchen and receipt printing, and boost your business’s Google Maps rank across dining and retail locations.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
